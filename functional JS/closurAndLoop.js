@@ -12,7 +12,8 @@ for (var i = 1; i <= 5; i++){
         setTimeout(function () {
             console.log(n);
         }, n * 1000);
-    })(i);// here we can use i instead of n in the ife function the structure is function(input parameter){
+    })(i);// here we can use i instead of n in the ife function the structure is ==>
+    // function(input parameter) {
             // codes
     // }(input parameter)
 }
