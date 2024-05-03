@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My learning</title>
-</head>
-<body>
-    <h1>Welcome to my learning</h1>
+    <style>
+      #blink{
+        animation-name:blink;
+        width:280px;
+        animation-duration:2s;
+        animation-timing-function:ease-in;
+        animation-iteration-count:Infinite;
+        }
+      @keyframes blink{
+        0%{color:red;}
+        50%{color:rgb(115, 212, 35);}
+        100%{color:red;}
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to my learning (Chapter 15) <i id="blink">VVI</i></h1>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
