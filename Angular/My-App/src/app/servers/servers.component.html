@@ -1,0 +1,28 @@
+<label for="server-name">Server Name</label>
+<input type="text" class="form-control" name="server-name" (input)="onUpdateServerName($event)">
+<!-- <label for="server-name">Server Name</label>
+<input type="text" class="form-control" name="server-name" [(ngModel)]="serverName"> -->
+
+<button class="btn btn-primary " [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button><hr>
+<app-server *ngFor="let server of servers"></app-server>
+<!-- <app-server></app-server> -->
+<!-- <p>{{serverCreationStatus}}</p> -->
+<p *ngIf="serverCreated">Server Created Successfully! Name of the server is {{serverName}}</p>
+<hr>
+<p >assignment 2</p>
+<hr>
+<label for="userName">User Name</label>
+<input type="text" name="userName" class="form-control" [(ngModel)]="userName"><br>
+<p>
+    <b>user <span class="username">{{userName}}</span> wrote this paragraph</b> <br> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora suscipit ipsam alias rerum, repellendus debitis! Aut, magni officiis nostrum exercitationem impedit accusantium explicabo quisquam quae nisi quas vitae cumque minus!</p>
+    <button class="btn btn-danger" [disabled]="!userName" (click)="onReset()">Reset User Name</button>
+
+<hr>
+<p><b>Assignment 3</b></p>
+<button class="btn btn-primary" (click)="onDisplayDetails()">Display Details</button>
+<p *ngIf="showDetails%2==1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet alias dicta voluptatem. Pariatur quam aperiam accusamus aliquam. Ex, harum enim. 
+</p>
+<br>
+<!-- <div *ngFor="let item of clicksOnButton" [ngStyle]="{backgroundColor:getColorForItem(item)}" [ngClass]="{greaterFive:getItem(item)>=5}">{{item}}<br></div> -->
+
+<div *ngFor="let item of logElement; let index=index" [ngStyle]="{backgroundColor:getColorForItem(index+1)}" [ngClass]="{'greaterFive':index>=4}">{{item}}</div>
