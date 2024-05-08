@@ -13,4 +13,7 @@ export class shoppingListComponent{
     constructor() {
         
     }
+    onAddClicked(items: Ingredients) {
+        this.ingredients.push(items);
+    }
 }

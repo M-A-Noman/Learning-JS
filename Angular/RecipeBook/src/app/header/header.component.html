@@ -5,12 +5,12 @@
         </div>
         <div class="navbar-default">
             <ul class="nav navbar-nav">
-                <li><a href="#">Recipes</a></li>
-                <li><a href="#">Shopping-list</a></li>
+                <li><a role="button" (click)="onClick('recipe')">Recipes</a></li>
+                <li><a role="button" (click)="onClick('shopping')">Shopping-list</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+                    <a  class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Save data</a></li>
                         <li><a href="#">Fetch data</a></li>

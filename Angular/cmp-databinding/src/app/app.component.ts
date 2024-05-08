@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  serverElements = [{type:'server',name:'TestServer',content:'Just a test!'}];
+  serverElements = [{ type: 'server', name: 'TestServer', content: 'Just a test!' }];
+   evenNumbers = [];
+   oddNumbers = [];
   onServerCreated(serverData: { serverName: string, serverContent:string}) {
     this.serverElements.push({
       type: 'server',
@@ -21,6 +23,24 @@ export class AppComponent {
       content: blueprintData.serverContent
     });
   }
-
+  onGameStarted(values:{type:string,value:number}) {
+    if (values.type == 'even') {
+      this.evenNumbers.push(values.value);
+      // console.log(values.value);
+      // console.log(this.evenNumbers)
+    } else {
+      this.oddNumbers.push(values.value);
+    }
+    //  console.log(values);
+  }
+  onGameStopped(stopped:{type:boolean}) {
+    if (stopped.type == true) {
+      this.evenNumbers.splice(0,this.evenNumbers.length)
+      this.oddNumbers.splice(0,this.oddNumbers.length)
+    }
+  }
+  getValue(value) {
+    return { value: value };
+  }
   
 }

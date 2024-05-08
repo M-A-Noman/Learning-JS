@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <li
+          class="list-group-item">
+        </li>
+      </ul>
+      <ng-template [ngIf]="onlyOdd">
+        <p>Only odd</p>
+      </ng-template>
+      <ul>
+        <p appBasicHighlighter>This is styled with basic highlighter</p>
+        <p appBetterDirectives [defaultColor]="'blue'" highlightColor='green'>This is styled with better highlighter</p>
+        <!-- both work same as we pass string only. Caution of use: Only use to those property which clearly not an attribute and understandable to all -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+

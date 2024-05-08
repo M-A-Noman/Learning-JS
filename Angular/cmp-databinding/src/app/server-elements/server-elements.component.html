@@ -3,10 +3,12 @@
       class="panel panel-default">
       <div class="panel-heading">{{ element.name }}</div>
       <div class="panel-body">
-        <p>
+        <!-- <p>
           <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
           <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-        </p>
+        </p> -->
+        <!-- we can explicitly add content of the paragraph by using directives from app module  -->
+        <ng-content></ng-content>
       </div>
     </div>
   </div>
