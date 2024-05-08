@@ -1,24 +1,27 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
-  styleUrl: './recipe-list.component.css'
+  styleUrl: './recipe-list.component.css',
+  // providers:[RecipeService]
 })
-export class RecipeListComponent {
-  @Output('itemDetails') details = new EventEmitter<Recipe>();
-  recipes: Recipe[] = [
-    new Recipe('A test recipe', 'This is for test purpose', 'https://www.simplyrecipes.com/thmb/1EVwzBp5s5MvRDuI9wXrnYtrPJY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Baklava-LEAD-4-a9d125c8d66547ef9f92c6564a5d5241.jpg'),
-    new Recipe('Another test recipe','This is for test purpose','https://www.simplyrecipes.com/thmb/1EVwzBp5s5MvRDuI9wXrnYtrPJY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-Baklava-LEAD-4-a9d125c8d66547ef9f92c6564a5d5241.jpg')
-  ];
-  constructor() {
+export class RecipeListComponent implements OnInit{
+  // @Output('itemDetails') details = new EventEmitter<Recipe>();
+  recipes: Recipe[];
+  constructor(private recipeService:RecipeService) {
     
   }
-
-  onDetailsGet(itemDetails:Recipe) {
-    this.details.emit(itemDetails);
+  ngOnInit(): void {
+    this.recipes = this.recipeService.getRecipe();
   }
+
+  // onDetailsGet(itemDetails:Recipe) {
+    // this.details.emit(itemDetails);
+   
+  // }
 //   getName(item: Recipe) {
 //     return item.name;
 //   }
