@@ -2,12 +2,15 @@
     border: 1px solid blue;
     padding: 5px;
     margin-top: 50px;
-    height: 90%;
-    width: 80%;
+    height: 70%;
+    width: 70%;
     /* display: flex; */
     align-items: center;
     margin-left: 10%;
    
+}
+.container{
+  width: 80%;
 }
 
 /* body {

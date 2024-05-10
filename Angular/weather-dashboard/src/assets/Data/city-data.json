@@ -5,7 +5,7 @@
             "temperature":"38",
             "feelsLike":"42",
             "condition":"Sunny",
-            "imagePath":"https://www.cdc.gov/nceh/features/extremeheat/extremeheat_456px.jpg?_=92916",
+            "imagePath":"https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
             "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
         
     },
@@ -15,7 +15,7 @@
             "temperature":"36",
             "feelsLike":"39",
             "condition":"Sunny",
-            "imagePath":"https://www.cdc.gov/nceh/features/extremeheat/extremeheat_456px.jpg?_=92916",
+            "imagePath":"https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
             "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
         
     },
@@ -25,8 +25,8 @@
             "temperature":"33",
             "feelsLike":"30",
             "condition":"Cloudy",
-            "imagePath":"https://www.hindustantimes.com/ht-img/img/2023/04/07/550x309/The-IMD-said-that-both-day-and-night-temperatures-_1680888412897.jpg",
-            "iconPath":"https://pic.pngsucai.com/00/02/08/7422635e080a66c1.webp"
+            "imagePath":"https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
+            "iconPath":"https://c0.klipartz.com/pngpicture/357/376/gratis-png-nube-luz-del-sol-sol-con-nubes-ilustracion-sol-thumbnail.png"
         
     },
     {
@@ -35,8 +35,8 @@
             "temperature":"30",
             "feelsLike":"25",
             "condition":"Rainy",
-            "imagePath":"https://i.brecorder.com/primary/2023/09/6508f727ee74f.jpg",
-            "iconPath":"https://t3.ftcdn.net/jpg/06/31/84/94/240_F_631849488_xvAA4EtA6A7vMtwJXHgQAO90qHVzpx7C.jpg"
+            "imagePath":"https://static.vecteezy.com/system/resources/thumbnails/007/922/253/small/heavy-rain-in-dark-sky-rainy-season-clouds-and-storm-weather-nature-background-flood-natural-disaster-illustration-vector.jpg",
+            "iconPath":"https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
         
     },
     {
@@ -46,7 +46,7 @@
             "feelsLike":"-13",
             "condition":"Snowy",
             "imagePath":"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp",
-            "iconPath":"https://cdn-icons-png.flaticon.com/512/1163/1163629.png"
+            "iconPath":"https://png.pngtree.com/png-clipart/20230815/original/pngtree-colorful-drawing-of-an-overcast-snowing-weather-icon-with-winter-snowflakes-in-december-nature-vector-picture-image_10823946.png"
         
     }
 ]
