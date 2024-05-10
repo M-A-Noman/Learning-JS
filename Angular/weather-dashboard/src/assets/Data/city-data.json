@@ -1,0 +1,52 @@
+[
+    {
+            "name":"Dhaka",
+            "countryCode":"BD",
+            "temperature":"38",
+            "feelsLike":"42",
+            "condition":"Sunny",
+            "imagePath":"https://www.cdc.gov/nceh/features/extremeheat/extremeheat_456px.jpg?_=92916",
+            "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        
+    },
+    {
+            "name":"Lakshmipur",
+            "countryCode":"BD",
+            "temperature":"36",
+            "feelsLike":"39",
+            "condition":"Sunny",
+            "imagePath":"https://www.cdc.gov/nceh/features/extremeheat/extremeheat_456px.jpg?_=92916",
+            "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        
+    },
+    {
+            "name":"Comilla",
+            "countryCode":"BD",
+            "temperature":"33",
+            "feelsLike":"30",
+            "condition":"Cloudy",
+            "imagePath":"https://www.hindustantimes.com/ht-img/img/2023/04/07/550x309/The-IMD-said-that-both-day-and-night-temperatures-_1680888412897.jpg",
+            "iconPath":"https://pic.pngsucai.com/00/02/08/7422635e080a66c1.webp"
+        
+    },
+    {
+            "name":"Barisal",
+            "countryCode":"BD",
+            "temperature":"30",
+            "feelsLike":"25",
+            "condition":"Rainy",
+            "imagePath":"https://i.brecorder.com/primary/2023/09/6508f727ee74f.jpg",
+            "iconPath":"https://t3.ftcdn.net/jpg/06/31/84/94/240_F_631849488_xvAA4EtA6A7vMtwJXHgQAO90qHVzpx7C.jpg"
+        
+    },
+    {
+            "name":"Moscow",
+            "countryCode":"RU",
+            "temperature":"-10",
+            "feelsLike":"-13",
+            "condition":"Snowy",
+            "imagePath":"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp",
+            "iconPath":"https://cdn-icons-png.flaticon.com/512/1163/1163629.png"
+        
+    }
+]

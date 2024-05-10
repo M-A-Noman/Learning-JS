@@ -1,0 +1,179 @@
+.container{
+    border: 1px solid blue;
+    padding: 5px;
+    margin-top: 50px;
+    height: 90%;
+    width: 80%;
+    /* display: flex; */
+    align-items: center;
+    margin-left: 10%;
+   
+}
+
+/* body {
+    color: #fff;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #CFD8DC;
+    background-repeat: no-repeat;
+}
+
+.card {
+    background-image: url("https://i.imgur.com/dpqZJV5.jpg");
+    background-size: cover;
+    width: 600px;
+    height: 350px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 16px 4px #9E9E9E;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: white;
+}
+
+.time-font {
+    font-size: 50px;
+}
+
+.sm-font {
+    font-size: 18px;
+}
+
+.med-font {
+    font-size: 28px;
+}
+
+.large-font {
+    font-size: 60px;
+} */
+
+
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  height: 100%;
+  background-color: #062c30;
+  transition: all ease;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  overflow-wrap: break-word;
+  color: #023e7d;
+}
+
+/* ------------------- Hero ------------------- */
+.hero {
+  background-size: cover;
+  background-position: bottom;
+  height: 38vh;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(6, 44, 48, 0.7);
+}
+
+.gradient {
+  background: linear-gradient(transparent, #062c30);
+  width: 100%;
+  height: 100%;
+}
+
+/* ------------------ Header ------------------ */
+.header {
+  color: #fefae0;
+  font-size: 5.3rem;
+  padding-top: 20px;
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  right: 100px;
+}
+
+/* ----------------- Sub-header ---------------- */
+.sub-header {
+  color: #fefae0;
+  font-size: 1.5rem;
+  font-weight: 350;
+  padding-top: 20px;
+  position: absolute;
+  top: 210px;
+  left: 50px;
+  right: 100px;
+}
+
+/* ---------------- Media Query --------------- */
+@media screen and (max-width: 1400px) {
+  .header {
+    font-size: 4.5rem;
+  }
+  .sub-header {
+    top: 190px;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .header {
+    font-size: 3.7rem;
+  }
+  .sub-header {
+    top: 175px;
+    font-size: 1.2rem;
+  }
+  .hero {
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .header {
+    font-size: 2.8rem;
+  }
+  .sub-header {
+    top: 155px;
+    font-size: 1.18rem;
+  }
+  .hero {
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header {
+    font-size: 2.8rem;
+  }
+  .sub-header {
+    top: 155px;
+    font-size: 1.18rem;
+  }
+  .hero {
+    height: 30vh;
+  }
+  .search-card {
+    width: 300px;
+  }
+}
+
+

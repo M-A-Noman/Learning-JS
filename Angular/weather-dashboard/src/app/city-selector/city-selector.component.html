@@ -1,0 +1,10 @@
+<div class="dropdown" appDropdown >
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+    Select City
+    <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+    <li><a href="#" *ngFor="let city of citiesName" (click)="onItemSelect(city)">{{city.name}}</a></li>
+    </ul>
+    </div>
