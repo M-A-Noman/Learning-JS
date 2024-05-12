@@ -5,6 +5,49 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-    <li><a href="#" *ngFor="let city of citiesName" (click)="onItemSelect(city)">{{city.name}}</a></li>
+    <li><a href="#" *ngFor="let city of cities" (click)="onItemSelect(city)">{{city.name}}</a></li>
     </ul>
     </div>
+    <!-- <mat-form-field>
+        <mat-label>
+            Select Your City
+        </mat-label>
+        <input matInput type="text"  [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let city of cities" >
+                {{city.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+     -->
+
+     <!-- <div class="card flex justify-content-center">
+        <p-dropdown 
+            [options]="cities"
+            [(ngModel)]="selectedCity"
+            optionLabel="name"
+            
+            filterBy="name"
+            placeholder="Select a Country">
+            <ng-template let-selectedOption pTemplate="selectedItem">
+                <div class="flex align-items-center gap-2">
+                    <img 
+                        src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                        [class]="'flag flag-' + selectedOption.code.toLowerCase()"
+                        style="width: 18px" />
+                    <div>{{ selectedOption.name }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-country pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <img 
+                        src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                        [class]="'flag flag-' + country.code.toLowerCase()"
+                        style="width: 18px" />
+                    <div>{{ country.name }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+    </div>
+    
+     -->

@@ -12,6 +12,8 @@ import { HelperService } from './helper.service';
 import {  HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 
+import { DropdownModule } from 'primeng/dropdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,12 +21,14 @@ import { SearchComponent } from './search/search.component';
     WeatherDisplayComponent,
     WeatherIconComponent,
     DropdownDirective,
-    SearchComponent
+    SearchComponent,
+    // SelectCityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+   
   ],
   providers: [DataService,HelperService],
   bootstrap: [AppComponent]
