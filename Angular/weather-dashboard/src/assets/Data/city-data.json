@@ -24,7 +24,7 @@
             "feelsLike":"30",
             "condition":"Cloudy",
             "imagePath":"https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
-            "iconPath":"https://c0.klipartz.com/pngpicture/357/376/gratis-png-nube-luz-del-sol-sol-con-nubes-ilustracion-sol-thumbnail.png"
+            "iconPath":"https://cdn-icons-png.flaticon.com/512/1850/1850730.png"
         },
         {
             "name":"Barisal",
@@ -32,7 +32,7 @@
             "temperature":"30",
             "feelsLike":"25",
             "condition":"Rainy",
-            "imagePath":"https://static.vecteezy.com/system/resources/thumbnails/007/922/253/small/heavy-rain-in-dark-sky-rainy-season-clouds-and-storm-weather-nature-background-flood-natural-disaster-illustration-vector.jpg",
+            "imagePath":"https://cdn.firstcry.com/education/2022/05/24114747/1071706322-768x525.jpg",
             "iconPath":"https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
         },
         {
@@ -42,7 +42,7 @@
             "feelsLike":"-13",
             "condition":"Snowy",
             "imagePath":"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp",
-            "iconPath":"https://png.pngtree.com/png-clipart/20230815/original/pngtree-colorful-drawing-of-an-overcast-snowing-weather-icon-with-winter-snowflakes-in-december-nature-vector-picture-image_10823946.png"
+            "iconPath":"https://cdn-icons-png.flaticon.com/512/1779/1779932.png"
         },
         {
             "name":"New York",
@@ -60,7 +60,7 @@
             "feelsLike":"12",
             "condition":"Cloudy",
             "imagePath":"https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
-            "iconPath":"https://c0.klipartz.com/pngpicture/357/376/gratis-png-nube-luz-del-sol-sol-con-nubes-ilustracion-sol-thumbnail.png"
+            "iconPath":"https://cdn-icons-png.flaticon.com/512/1850/1850730.png"
         },
         {
             "name":"Sydney",
@@ -74,20 +74,182 @@
         {
             "name":"Tokyo",
             "countryCode":"JP",
-            "temperature":"12",
-            "feelsLike":"10",
+            "temperature":"-2",
+            "feelsLike":"-5",
             "condition":"Snowy",
             "imagePath":"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp",
-            "iconPath":"https://png.pngtree.com/png-clipart/20230815/original/pngtree-colorful-drawing-of-an-overcast-snowing-weather-icon-with-winter-snowflakes-in-december-nature-vector-picture-image_10823946.png"
+            "iconPath":"https://cdn-icons-png.flaticon.com/512/1779/1779932.png"
         },
         {
             "name":"London",
             "countryCode":"GB",
             "temperature":"10",
             "feelsLike":"8",
-            "condition":"Sunny",
-            "imagePath":"https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
-            "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+            "condition":"Breezy",
+            "imagePath":"https://a0.anyrgb.com/pngimg/234/848/illustration-windy-day-cold-weather-people-season-outdoors.png",
+            "iconPath":"https://cdn3d.iconscout.com/3d/premium/thumb/breezy-10154639-8232256.png"
+        },
+        {
+            "name": "Los Angeles",
+            "countryCode": "US",
+            "temperature": "25",
+            "feelsLike": "23",
+            "condition": "Sunny",
+            "imagePath": "https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath": "https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        },
+        {
+            "name": "Mumbai",
+            "countryCode": "IN",
+            "temperature": "32",
+            "feelsLike": "35",
+            "condition": "Sunny",
+            "imagePath": "https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath": "https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        },
+        {
+            "name": "Beijing",
+            "countryCode": "CN",
+            "temperature": "5",
+            "feelsLike": "2",
+            "condition": "Cloudy",
+            "imagePath": "https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
+            "iconPath": "https://cdn-icons-png.flaticon.com/512/1850/1850730.png"
+        },
+        {
+            "name": "Toronto",
+            "countryCode": "CA",
+            "temperature": "-5",
+            "feelsLike": "-8",
+            "condition": "Snowy",
+            "imagePath": "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp",
+            "iconPath": "https://cdn-icons-png.flaticon.com/512/1779/1779932.png"
+        },
+        {
+            "name": "Rio de Janeiro",
+            "countryCode": "BR",
+            "temperature": "28",
+            "feelsLike": "30",
+            "condition": "Rainy",
+            "imagePath": "https://static.vecteezy.com/system/resources/thumbnails/007/922/253/small/heavy-rain-in-dark-sky-rainy-season-clouds-and-storm-weather-nature-background-flood-natural-disaster-illustration-vector.jpg",
+            "iconPath": "https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
+        },
+        {
+            "name": "Chittagong",
+            "countryCode": "BD",
+            "temperature": "34",
+            "feelsLike": "37",
+            "condition": "Sunny",
+            "imagePath": "https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath": "https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        },
+        {
+            "name": "Cox's Bazar",
+            "countryCode": "BD",
+            "temperature": "32",
+            "feelsLike": "35",
+            "condition": "Cloudy",
+            "imagePath": "https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
+            "iconPath": "https://cdn-icons-png.flaticon.com/512/1850/1850730.png"
+        },
+        {
+            "name": "Sylhet",
+            "countryCode": "BD",
+            "temperature": "30",
+            "feelsLike": "28",
+            "condition": "Rainy",
+            "imagePath": "https://cdn.firstcry.com/education/2022/05/24114747/1071706322-768x525.jpg",
+            "iconPath": "https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
+        },
+        {
+            "name": "Rajshahi",
+            "countryCode": "BD",
+            "temperature": "35",
+            "feelsLike": "38",
+            "condition": "Sunny",
+            "imagePath": "https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath": "https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        },
+        {
+            "name": "Khulna",
+            "countryCode": "BD",
+            "temperature": "33",
+            "feelsLike": "36",
+            "condition": "Cloudy",
+            "imagePath": "https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
+            "iconPath": "https://cdn-icons-png.flaticon.com/512/1850/1850730.png"
+        },
+        {
+            "name": "Jessore",
+            "countryCode": "BD",
+            "temperature": "32",
+            "feelsLike": "30",
+            "condition": "Rainy",
+            "imagePath": "https://cdn.firstcry.com/education/2022/05/24114747/1071706322-768x525.jpg",
+            "iconPath": "https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
+        },
+        {
+            "name": "Rangpur",
+            "countryCode": "BD",
+            "temperature": "31",
+            "feelsLike": "29",
+            "condition": "Sunny",
+            "imagePath": "https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath": "https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        },
+        {
+            "name": "Mymensingh",
+            "countryCode": "BD",
+            "temperature": "30",
+            "feelsLike": "28",
+            "condition": "Cloudy",
+            "imagePath": "https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
+            "iconPath": "https://cdn-icons-png.flaticon.com/512/1850/1850730.png"
+        },
+        {
+            "name": "Natore",
+            "countryCode": "BD",
+            "temperature": "32",
+            "feelsLike": "30",
+            "condition": "Rainy",
+            "imagePath": "https://cdn.firstcry.com/education/2022/05/24114747/1071706322-768x525.jpg",
+            "iconPath": "https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
+        },
+        {
+            "name": "Kushtia",
+            "countryCode": "BD",
+            "temperature": "34",
+            "feelsLike": "32",
+            "condition": "Sunny",
+            "imagePath": "https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath": "https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        },
+        {
+            "name": "Dinajpur",
+            "countryCode": "BD",
+            "temperature": "30",
+            "feelsLike": "28",
+            "condition": "Cloudy",
+            "imagePath": "https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
+            "iconPath": "https://cdn-icons-png.flaticon.com/512/1850/1850730.png"
+        },
+        {
+            "name": "Faridpur",
+            "countryCode": "BD",
+            "temperature": "32",
+            "feelsLike": "30",
+            "condition": "Rainy",
+            "imagePath": "https://cdn.firstcry.com/education/2022/05/24114747/1071706322-768x525.jpg",
+            "iconPath": "https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
+        },
+        {
+            "name": "Bogra",
+            "countryCode": "BD",
+            "temperature": "33",
+            "feelsLike": "31",
+            "condition": "Sunny",
+            "imagePath": "https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath": "https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
         }
     ]
     
