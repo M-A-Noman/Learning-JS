@@ -1,5 +1,5 @@
 [
-    {
+        {
             "name":"Dhaka",
             "countryCode":"BD",
             "temperature":"38",
@@ -7,9 +7,8 @@
             "condition":"Sunny",
             "imagePath":"https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
             "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
-        
-    },
-    {
+        },
+        {
             "name":"Lakshmipur",
             "countryCode":"BD",
             "temperature":"36",
@@ -17,9 +16,8 @@
             "condition":"Sunny",
             "imagePath":"https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
             "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
-        
-    },
-    {
+        },
+        {
             "name":"Comilla",
             "countryCode":"BD",
             "temperature":"33",
@@ -27,9 +25,8 @@
             "condition":"Cloudy",
             "imagePath":"https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
             "iconPath":"https://c0.klipartz.com/pngpicture/357/376/gratis-png-nube-luz-del-sol-sol-con-nubes-ilustracion-sol-thumbnail.png"
-        
-    },
-    {
+        },
+        {
             "name":"Barisal",
             "countryCode":"BD",
             "temperature":"30",
@@ -37,9 +34,8 @@
             "condition":"Rainy",
             "imagePath":"https://static.vecteezy.com/system/resources/thumbnails/007/922/253/small/heavy-rain-in-dark-sky-rainy-season-clouds-and-storm-weather-nature-background-flood-natural-disaster-illustration-vector.jpg",
             "iconPath":"https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
-        
-    },
-    {
+        },
+        {
             "name":"Moscow",
             "countryCode":"RU",
             "temperature":"-10",
@@ -47,6 +43,51 @@
             "condition":"Snowy",
             "imagePath":"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp",
             "iconPath":"https://png.pngtree.com/png-clipart/20230815/original/pngtree-colorful-drawing-of-an-overcast-snowing-weather-icon-with-winter-snowflakes-in-december-nature-vector-picture-image_10823946.png"
-        
-    }
-]
+        },
+        {
+            "name":"New York",
+            "countryCode":"US",
+            "temperature":"20",
+            "feelsLike":"18",
+            "condition":"Sunny",
+            "imagePath":"https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        },
+        {
+            "name":"Paris",
+            "countryCode":"FR",
+            "temperature":"15",
+            "feelsLike":"12",
+            "condition":"Cloudy",
+            "imagePath":"https://img.freepik.com/free-photo/black-rain-abstract-dark-power_1127-2380.jpg",
+            "iconPath":"https://c0.klipartz.com/pngpicture/357/376/gratis-png-nube-luz-del-sol-sol-con-nubes-ilustracion-sol-thumbnail.png"
+        },
+        {
+            "name":"Sydney",
+            "countryCode":"AU",
+            "temperature":"25",
+            "feelsLike":"22",
+            "condition":"Rainy",
+            "imagePath":"https://static.vecteezy.com/system/resources/thumbnails/007/922/253/small/heavy-rain-in-dark-sky-rainy-season-clouds-and-storm-weather-nature-background-flood-natural-disaster-illustration-vector.jpg",
+            "iconPath":"https://seeklogo.com/images/R/rainy-weather-symbol-logo-B77AF66DC1-seeklogo.com.png"
+        },
+        {
+            "name":"Tokyo",
+            "countryCode":"JP",
+            "temperature":"12",
+            "feelsLike":"10",
+            "condition":"Snowy",
+            "imagePath":"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp",
+            "iconPath":"https://png.pngtree.com/png-clipart/20230815/original/pngtree-colorful-drawing-of-an-overcast-snowing-weather-icon-with-winter-snowflakes-in-december-nature-vector-picture-image_10823946.png"
+        },
+        {
+            "name":"London",
+            "countryCode":"GB",
+            "temperature":"10",
+            "feelsLike":"8",
+            "condition":"Sunny",
+            "imagePath":"https://static4.depositphotos.com/1000423/456/i/450/depositphotos_4560942-stock-photo-exquisite-landscape-blue-skies-sunshine.jpg",
+            "iconPath":"https://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png"
+        }
+    ]
+    

@@ -17,7 +17,6 @@ import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
-    CitySelectorComponent,
     WeatherDisplayComponent,
     WeatherIconComponent,
     DropdownDirective,
@@ -28,6 +27,7 @@ import { DropdownModule } from 'primeng/dropdown';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    CitySelectorComponent,
    
   ],
   providers: [DataService,HelperService],
