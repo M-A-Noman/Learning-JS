@@ -7,13 +7,13 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-xs-8">{{ currentDate }}</div>
-          <div class="col-xs-4">{{ currentTime }}</div>
+          <div class="col-xs-8"><b>{{ currentDate }}</b></div>
+          <div class="col-xs-4"><b>{{ currentTime }}</b></div>
         </div>
-        <p>
+        <div class="row">
           <app-weather-icon></app-weather-icon>
-          <b>{{ selectedCity.condition }}</b>
-        </p>
+          <h3 style="margin-left: 10px; display: inline-block;"><b>{{ selectedCity.condition }}</b></h3>
+        </div>
         <div class="row">
           <div class="col-xs-6">
             <span class="temperature"
