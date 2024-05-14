@@ -5,7 +5,8 @@
 </div><hr>
 <div class="row">
     <div class="col-xs-12"
-    *ngFor="let item of recipes"
+    *ngFor="let item of recipes,let id=index"
+    [routerLink]="['/recipe',id]"
     >   
     <app-recipe-item [Recipe]="item" ></app-recipe-item>
     </div>

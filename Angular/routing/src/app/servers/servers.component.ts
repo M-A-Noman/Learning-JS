@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ServersComponent implements OnInit {
   public servers: {id: number, name: string, status: string}[] = [];
-
+  
   constructor(private serversService: ServersService,
     private router: Router,
     private route:ActivatedRoute
@@ -21,5 +21,5 @@ export class ServersComponent implements OnInit {
   onReload() {
     // this.router.navigate(['servers'], { relativeTo: this.route }); // we can use relative to the path so that we can navigate to another 
   }
-
+  
 }

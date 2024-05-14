@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
   @Output() featureType = new EventEmitter<string>();
-  constructor() {
+  constructor(private router:ActivatedRoute) {
     
   }
   onClick(feature:string) {
-    this.featureType.emit(feature)
+    this.router.params.subscribe(
+      (params: Params) => {
+        
+      }
+    )
   }
 
 }

@@ -12,6 +12,7 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-it
 import { FormsModule } from '@angular/forms';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingService } from './shopping-list/shopping.service';
+import { NoRecipeSelectComponent } from './recipes/no-recipe-select/no-recipe-select.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ShoppingService } from './shopping-list/shopping.service';
     RecipeListComponent,
     ShoppingEditComponent,
     RecipeItemComponent,
-    DropdownDirective
+    DropdownDirective,
+    NoRecipeSelectComponent
    
   ],
   imports: [
