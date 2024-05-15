@@ -1,7 +1,8 @@
 <a  
 style="cursor: pointer;"
-(click)="onClickRecipe()" class="list-group-item clearfix" 
-
+ class="list-group-item clearfix"
+[routerLink]="[recipeName.id]"
+routerLinkActive="active"
 >
     <div class="pull-left">
         <h4 class="list-group-item-heading">{{getName()}}</h4>
