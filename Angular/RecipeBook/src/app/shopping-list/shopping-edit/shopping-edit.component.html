@@ -1,25 +1,39 @@
 <div class="row">
     <div class="col-xs-12">
-        <form>
+        <form (ngSubmit)="onAdd(f)" #f="ngForm">
             <div class="row">
                 <div class="col-sm-5 form-group" >
                     <label for="name">Name</label>
                     <input type="text" 
                     class="form-control" id="name"
-                    #nameInput>
+                    name="name"
+                    ngModel
+                    #name="ngModel"
+                    required
+                    >
+                    <span class="help-block" *ngIf="!name.valid && name.touched">Name Can't be Empty</span>
                 </div>
                 <div class="col-sm-2">
                     <label for="amount">Amount</label>
                     <input type="number"
                      class="form-control" id="amount"
-                     #amountInput>
+                     name="amount"
+                     ngModel
+                     #amount="ngModel"
+                     required
+                     pattern="^[1-9]+[0-9]*$"
+                    >
+                    <span class="help-block" *ngIf="!amount.valid && amount.touched">Invalid Amount!</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn btn-success btn-space" type="submit" (click)="onAdd()">Add</button>
+                    <button class="btn btn-success btn-space" type="submit"
+                    [disabled]="!name.valid||!amount.valid"
+                    >{{editMode?'Update':'Add'}}</button>
+
                     <button class="btn btn-danger btn-space" type="button">Delete</button>
-                    <button class="btn btn-primary btn-space" type="reset">Clear</button>
+                    <button class="btn btn-primary btn-space" (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>

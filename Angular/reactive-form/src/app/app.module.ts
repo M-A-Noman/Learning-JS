@@ -1,19 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {  ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { AssignmentmComponent } from './assignmentm/assignmentm.component';
+import { AssignmentComponent } from './assignment/assignment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AssignmentmComponent
+    AssignmentComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

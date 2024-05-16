@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onAssignmentSubmit()" #f="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          name="email"
+          type="text"
+          class="form-control"
+          [ngModel]=""
+          required
+          email
+        />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [ngModel]=""
+          required
+
+        />
+        <div class="form-group">
+          <label for="subscription">Subscription</label>
+          <select name="subscription" class="form-control"
+          [ngModel]="'Advance'"
+          >
+            <option value="Basic">Basic</option>
+            <option value="Advance" selected>Advance</option>
+            <option value="Pro">Pro</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-success" [disabled]="!f.valid">Submit</button>
+    </form>
+  </div>
+</div>
+<div class="row" *ngIf="isSubmitted">
+    <div class="col-xs-12">
+        <h2>Your Submitted Data </h2>
+        <p>Your Email:{{user.email}}</p>
+        <p>Your Password:{{user.password}}</p>
+        <p>Your Subscription:{{user.subscription}}</p>
+    </div>
+</div>

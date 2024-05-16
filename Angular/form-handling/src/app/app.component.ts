@@ -44,10 +44,6 @@ export class AppComponent {
     this.user.secretQuestion = this.signupForm.value.secret;
     this.user.answer = this.signupForm.value.questionAnswer;
     this.user.gender = this.signupForm.value.gender;
-    // console.log('User Name: ',this.signupForm.value.userData.username)
-    // console.log('Email ',this.signupForm.value.userData.email)
-    // console.log('Secret Question',this.signupForm.value.secret)
-    // console.log('Answer:', this.signupForm.value.questionAnswer)
-    // console.log('Gender ', this.signupForm.value.gender)
+    this.signupForm.reset();
   }
 }

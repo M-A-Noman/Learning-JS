@@ -27,4 +27,8 @@ export class shoppingListComponent implements OnInit,OnDestroy{
     // onAddClicked(items: Ingredients) {
     //     this.ingredients.push(items);
     // }
+    onEditMode(index:number) {
+        this.shoppingService.onEditModeStart.next(index);
+    }
+    
 }
