@@ -32,8 +32,11 @@
                     [disabled]="!name.valid||!amount.valid"
                     >{{editMode?'Update':'Add'}}</button>
 
-                    <button class="btn btn-danger btn-space" type="button">Delete</button>
-                    <button class="btn btn-primary btn-space" (click)="onClear()">Clear</button>
+                    <button class="btn btn-danger btn-space" type="button"
+                     (click)="onDelete()"
+                     *ngIf="editMode"
+                     >Delete</button>
+                    <button class="btn btn-primary btn-space" type="reset" (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>

@@ -22,7 +22,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
   toShoppingList() {
     for (let item of this.details.ingredients){
-      this.shoppingService.onAddClicked(item);
+      this.shoppingService.onAddClicked(item,item);
       }
   }
 }

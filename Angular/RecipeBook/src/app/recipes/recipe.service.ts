@@ -5,6 +5,7 @@ import { Ingredients } from "../shared/ingredient.model";
 
 export class RecipeService{
     // selectedRecipe = new Subject<{ id:number,recipe:Recipe }>();
+    updateOfRecipe = new Subject<Recipe[]>();
    private recipes: Recipe[] = [
        new Recipe(
            'Shrimp Biryani',
@@ -40,5 +41,16 @@ export class RecipeService{
     }
     getSingleRecipe(id:number) {
         return this.recipes[id];
+    }
+    onUpdateRecipe(index: number, name: string, imagePath: string, description: string) {
+        this.recipes[index].name = name;
+        this.recipes[index].imagePath = imagePath;
+        this.recipes[index].description = description;
+        
+    }
+    onCreateRecipe(name:string,imagePath:string,description:string) {
+        let recipe: Recipe = new Recipe(name,description, imagePath, []);
+        this.recipes.push(recipe);
+        this.updateOfRecipe.next(this.recipes.slice());
     }
 }

@@ -22,7 +22,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy{
   // @ViewChild('amountInput', { static: false }) amountInput: ElementRef;
   editSubscription: Subscription;
   editMode = false;
-  indexToBeEdit: number;
+  indexToBeEdit: number=-1;
   ingredientToBeEdit: Ingredients;
   constructor(private shoppingService: ShoppingService) { }
   ngOnInit(): void {
@@ -47,19 +47,29 @@ export class ShoppingEditComponent implements OnInit, OnDestroy{
 
     // let item = new Ingredients(this.nameInput.nativeElement.value, this.amountInput.nativeElement.value);
     const value = form.value;
-    let item = new Ingredients(value['name'],value['amount']);
-    this.shoppingService.onAddClicked(item)
+    let newItem = new Ingredients(value['name'],value['amount']);
+    let oldItem =this.editMode? (this.shoppingService.getIngredient(this.indexToBeEdit)):newItem;
+    this.shoppingService.onAddClicked(newItem,oldItem)
     this.editMode = false;
     form.reset();
-    console.log(item);
-    console.log(typeof(item))
+    // console.log(item);
+    // console.log(typeof(item))
   }
   checkAmount(amount: Object) {
     console.log(amount);
     // return Number(amount.value) > 0;
   }
   onClear() {
-    this.itemForm.reset();
     this.editMode = false;
+    this.itemForm.reset();
+   
+  }
+  onDelete() {
+    if(this.indexToBeEdit!=-1){
+      this.shoppingService.onDeleteClicked(this.indexToBeEdit);
+    }
+    
+    this.onClear();
+    
   }
 }
