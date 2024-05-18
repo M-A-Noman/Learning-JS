@@ -42,15 +42,29 @@ export class RecipeService{
     getSingleRecipe(id:number) {
         return this.recipes[id];
     }
-    onUpdateRecipe(index: number, name: string, imagePath: string, description: string) {
-        this.recipes[index].name = name;
-        this.recipes[index].imagePath = imagePath;
-        this.recipes[index].description = description;
+    onUpdateRecipe(index: number, recipe:Recipe) {
+        // this.recipes[index].name = name;
+        // this.recipes[index].imagePath = imagePath;
+        // this.recipes[index].description = description;
+        // console.log(typeof(recipe));
+        // this.recipes[index].name = recipe.name;
+        // this.recipes[index].description = recipe.description;
+        // this.recipes[index].imagePath = recipe.imagePath;
+        // this.recipes[index].ingredients = recipe.ingredients;
+        this.recipes[index] = recipe;
+        this.updateOfRecipe.next(this.recipes.slice());
         
     }
-    onCreateRecipe(name:string,imagePath:string,description:string) {
-        let recipe: Recipe = new Recipe(name,description, imagePath, []);
+    onCreateRecipe(recipe:Recipe) {
+        // let recipe: Recipe = new Recipe(name,description, imagePath, []);
+        // this.recipes.push(recipe);
+        // this.updateOfRecipe.next(this.recipes.slice());
         this.recipes.push(recipe);
+        this.updateOfRecipe.next(this.recipes.slice());
+
+    }
+    onDelete(index: number) {
+        this.recipes.splice(index, 1);
         this.updateOfRecipe.next(this.recipes.slice());
     }
 }

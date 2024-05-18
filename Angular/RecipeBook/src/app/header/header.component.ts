@@ -11,12 +11,12 @@ export class HeaderComponent {
   constructor(private router:ActivatedRoute) {
     
   }
-  onClick(feature:string) {
-    this.router.params.subscribe(
-      (params: Params) => {
+  // onClick(feature:string) {
+  //   this.router.params.subscribe(
+  //     (params: Params) => {
         
-      }
-    )
-  }
+  //     }
+  //   )
+  // }
 
 }

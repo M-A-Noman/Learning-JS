@@ -1,16 +1,16 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#" class="navbar-brand">Recipe Book</a>
+            <a class="navbar-brand">Recipe Book</a>
         </div>
         <div class="navbar-default">
             <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a role="button" (click)="onClick('recipe')"
-                    routerLink="/recipes"
+                <li routerLinkActive="active"><a role="button" 
+                    [routerLink]="['/recipes']"
                     
                     >Recipes</a></li>
-                <li routerLinkActive="active"><a role="button" (click)="onClick('shopping-list')"
-                    routerLink="shopping-list"
+                <li routerLinkActive="active"><a role="button"
+                    [routerLink]="['/shopping-list']"
                     >Shopping-list</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
