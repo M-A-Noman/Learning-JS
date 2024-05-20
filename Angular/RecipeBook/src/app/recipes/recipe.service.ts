@@ -1,11 +1,16 @@
 import { Subject } from "rxjs";
+import { Injectable } from "@angular/core";
 
 import { Recipe } from "./recipe-list/recipe.model";
 import { Ingredients } from "../shared/ingredient.model";
+import { DataStorageService } from "../shared/data-storage.service";
 
+@Injectable()
 export class RecipeService{
     // selectedRecipe = new Subject<{ id:number,recipe:Recipe }>();
     updateOfRecipe = new Subject<Recipe[]>();
+
+    constructor(){}
    private recipes: Recipe[] = [
        new Recipe(
            'Shrimp Biryani',
@@ -36,12 +41,19 @@ export class RecipeService{
            ]
        )
     ];
+    setRecipe(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.updateOfRecipe.next(this.recipes.slice());
+    }
+
     getRecipe() {
         return this.recipes.slice();
     }
+
     getSingleRecipe(id:number) {
         return this.recipes[id];
     }
+
     onUpdateRecipe(index: number, recipe:Recipe) {
         // this.recipes[index].name = name;
         // this.recipes[index].imagePath = imagePath;
@@ -52,9 +64,9 @@ export class RecipeService{
         // this.recipes[index].imagePath = recipe.imagePath;
         // this.recipes[index].ingredients = recipe.ingredients;
         this.recipes[index] = recipe;
-        this.updateOfRecipe.next(this.recipes.slice());
-        
+        this.updateOfRecipe.next(this.recipes.slice());   
     }
+
     onCreateRecipe(recipe:Recipe) {
         // let recipe: Recipe = new Recipe(name,description, imagePath, []);
         // this.recipes.push(recipe);
@@ -63,8 +75,30 @@ export class RecipeService{
         this.updateOfRecipe.next(this.recipes.slice());
 
     }
+
     onDelete(index: number) {
         this.recipes.splice(index, 1);
         this.updateOfRecipe.next(this.recipes.slice());
     }
+
+    // onSaveDataToCloud() { 
+    //     this.cloud.postData(this.recipes);
+    // }
+    // onFetchDataFromCloud() {
+    //     this.cloud.fetchData()
+
+    //     //     .subscribe(
+    //     //     (response) => {
+    //     //         this.recipes = response;
+    //     //         console.log(response);
+    //     //         // for (const key in response) {
+    //     //         //     console.log(key, ' value ', response[key]);
+    //     //         // }
+    //     //     },
+    //     //     (error) => {
+    //     //         console.log(error.message);
+    //     //     }
+    //     // );
+    //     this.updateOfRecipe.next(this.recipes.slice());
+    // }
 }
