@@ -17,6 +17,8 @@ import { ShoppingService } from './shopping-list/shopping.service';
 import { NoRecipeSelectComponent } from './recipes/no-recipe-select/no-recipe-select.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
+import { AuthComponent } from './Auth/auth.component';
+import { LoadSpinnerComponent } from './shared/load-spinner/load-spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { RecipeService } from './recipes/recipe.service';
     RecipeItemComponent,
     DropdownDirective,
     NoRecipeSelectComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent,
+    LoadSpinnerComponent
    
   ],
   imports: [
