@@ -34,7 +34,13 @@ export class HeaderComponent implements OnInit,OnDestroy {
     this.cloud.postData();
   }
   onGetData() {
-    this.cloud.fetchData().subscribe();
+    this.cloud.fetchData().subscribe((res) => {
+      console.log(res);
+    });
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
   // onClick(feature:string) {
   //   this.router.params.subscribe(

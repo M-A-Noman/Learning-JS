@@ -5,7 +5,9 @@ import { Recipe } from "./recipe-list/recipe.model";
 import { Ingredients } from "../shared/ingredient.model";
 import { DataStorageService } from "../shared/data-storage.service";
 
-@Injectable()
+@Injectable({
+    providedIn:'root'
+})
 export class RecipeService{
     // selectedRecipe = new Subject<{ id:number,recipe:Recipe }>();
     updateOfRecipe = new Subject<Recipe[]>();

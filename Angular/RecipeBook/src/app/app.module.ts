@@ -1,40 +1,41 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { shoppingListComponent } from './shopping-list/shopping-list.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingService } from './shopping-list/shopping.service';
-import { NoRecipeSelectComponent } from './recipes/no-recipe-select/no-recipe-select.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { RecipeService } from './recipes/recipe.service';
+
+// import { RecipesComponent } from './recipes/recipes.component';
+// import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
+// import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
+// import { NoRecipeSelectComponent } from './recipes/no-recipe-select/no-recipe-select.component';
+// import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+// import { RecipeService } from './recipes/recipe.service';
+// import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
+
+// import { ShoppingService } from './shopping-list/shopping.service';
+// import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+
+// import { DropdownDirective } from './shared/dropdown.directive';
+// import { LoadSpinnerComponent } from './shared/load-spinner/load-spinner.component';
+// import { AlertComponent } from './shared/alert/alert.component';
+
 import { AuthComponent } from './Auth/auth.component';
-import { LoadSpinnerComponent } from './shared/load-spinner/load-spinner.component';
+import { AuthInterceptorService } from './Auth/auth-interceptor.service';
+
+import { RecipeModule } from './recipes/recipe.module';
+import { ShoppingModule } from './shopping-list/shopping.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    shoppingListComponent,
-    RecipesComponent,
-    RecipeDetailsComponent,
-    RecipeListComponent,
-    ShoppingEditComponent,
-    RecipeItemComponent,
-    DropdownDirective,
-    NoRecipeSelectComponent,
-    RecipeEditComponent,
     AuthComponent,
-    LoadSpinnerComponent
+   
    
   ],
   imports: [
@@ -42,9 +43,18 @@ import { LoadSpinnerComponent } from './shared/load-spinner/load-spinner.compone
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RecipeModule,
+    ShoppingModule,
+    SharedModule
   ],
-  providers: [ShoppingService,RecipeService],
+  providers: [
+    // ShoppingService, RecipeService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

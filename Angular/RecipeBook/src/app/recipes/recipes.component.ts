@@ -21,5 +21,6 @@ export class RecipesComponent implements OnInit {
     //     this.finalDetails = recipe;
     //   }
     // )
+    
   }
 }

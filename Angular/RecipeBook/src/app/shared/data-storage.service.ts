@@ -1,16 +1,17 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map,tap } from "rxjs";
+import { exhaustMap, map, take, tap } from "rxjs";
 
 import { Recipe } from "../recipes/recipe-list/recipe.model";
 import { RecipeService } from "../recipes/recipe.service";
+import { AuthService } from "../Auth/auth.service";
 
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root'
 })
-export class DataStorageService{
+export class DataStorageService {
     constructor(private http: HttpClient, private recipeService: RecipeService) { }
-    
+
 
     // postData() { }
     // fetchData(){}
@@ -29,17 +30,19 @@ export class DataStorageService{
         )
     }
     fetchData() {
-        return this.http.get<Recipe[]>('https://recipe-book-7905b-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json')
-            .pipe(map((recipes) => {
+        
+            return this.http.get<Recipe[]>('https://recipe-book-7905b-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json').pipe(
+            map((recipes) => {
                 return recipes.map((recipe) => {
-                    return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients: []};
+                    return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
                 })
             })
             ,
-            tap((recipes:Recipe[]) => {
+            tap((recipes: Recipe[]) => {
                 this.recipeService.setRecipe(recipes);
             })
         )
+
     }
 
     // fetchData() {
@@ -48,20 +51,20 @@ export class DataStorageService{
     //             console.log(response);
     //         }
     //     )
-            
-        //     .pipe(map(
-        //     (response) => {
-        //       const recipeArray :Recipe[]= [];
-        //       for (const key in response) {
-        //         if (response.hasOwnProperty(key)) {
-        //             for (const responseKey in response[key]) {
-        //                 recipeArray.push(response[key][responseKey]);
-        //           }
-        //         }
-        //       }
-        //       return recipeArray;
-        //     })
-        //   ) ;
+
+    //     .pipe(map(
+    //     (response) => {
+    //       const recipeArray :Recipe[]= [];
+    //       for (const key in response) {
+    //         if (response.hasOwnProperty(key)) {
+    //             for (const responseKey in response[key]) {
+    //                 recipeArray.push(response[key][responseKey]);
+    //           }
+    //         }
+    //       }
+    //       return recipeArray;
+    //     })
+    //   ) ;
     // }
     // updateData(recipe: Recipe) {
     //     this.http.put('https://recipe-book-7905b-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json', recipe).subscribe(
