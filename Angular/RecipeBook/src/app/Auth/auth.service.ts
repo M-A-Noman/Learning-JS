@@ -1,9 +1,11 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Subject, catchError,tap } from "rxjs";
-import { throwError } from "rxjs";
-import { User } from "./user.component";
 import { Router } from "@angular/router";
+import { BehaviorSubject, catchError,tap } from "rxjs";
+import { throwError } from "rxjs";
+import { environment } from "../../environments/environment.prod";
+
+import { User } from "./user.component";
 import { DataStorageService } from "../shared/data-storage.service";
 export interface AuthResponse{
     idToken: string,
@@ -22,7 +24,7 @@ export class AuthService{
 
     constructor(private http: HttpClient, private route:Router, private cloudService:DataStorageService) { }
     signUp(email: string, password: string) {
-        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDTaZibv8b7lncwo18IrMbJjMjZDVNTnEs', {
+        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+environment.firebaseAPIKey, {
             email: email,
             password: password,
             returnSecureToken: true
@@ -39,7 +41,7 @@ export class AuthService{
     }
 
     login(email: string, password: string) {
-        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDTaZibv8b7lncwo18IrMbJjMjZDVNTnEs', {
+        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+environment.firebaseAPIKey, {
             email: email,
             password: password,
             returnSecureToken: true

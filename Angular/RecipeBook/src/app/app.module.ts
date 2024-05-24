@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { shoppingListComponent } from './shopping-list/shopping-list.component';
+
+// import { shoppingListComponent } from './shopping-list/shopping-list.component';
 
 // import { RecipesComponent } from './recipes/recipes.component';
 // import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
@@ -23,30 +24,31 @@ import { shoppingListComponent } from './shopping-list/shopping-list.component';
 // import { LoadSpinnerComponent } from './shared/load-spinner/load-spinner.component';
 // import { AlertComponent } from './shared/alert/alert.component';
 
-import { AuthComponent } from './Auth/auth.component';
+// import { AuthComponent } from './Auth/auth.component';
+
 import { AuthInterceptorService } from './Auth/auth-interceptor.service';
 
-import { RecipeModule } from './recipes/recipe.module';
-import { ShoppingModule } from './shopping-list/shopping.module';
+// import { RecipeModule } from './recipes/recipe.module';
+// import { ShoppingModule } from './shopping-list/shopping.module';
+import { AuthModule } from './Auth/auth.module';
+
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AuthComponent,
-   
-   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RecipeModule,
-    ShoppingModule,
-    SharedModule
+
+    // RecipeModule,
+    // ShoppingModule,
+    AuthModule,
+
+    SharedModule,
   ],
   providers: [
     // ShoppingService, RecipeService,
