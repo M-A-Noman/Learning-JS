@@ -4,6 +4,8 @@ import { FormArray, FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +14,7 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit{
   genders = ['male', 'female'];
   signupForm: FormGroup;
+  icon = faRightFromBracket;
   forbiddenUserName=['Noman','M_A_Noman','M A Noman']
   ngOnInit(): void {
     this.signupForm = new FormGroup({

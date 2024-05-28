@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AssignmentComponent } from './assignment/assignment.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AssignmentComponent } from './assignment/assignment.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
