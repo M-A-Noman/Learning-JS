@@ -8,7 +8,7 @@
     <li><a href="#" *ngFor="let city of cities" (click)="onItemSelect(city)">{{city.name}}</a></li>
     </ul>
     </div> -->
-    <!-- <mat-form-field>
+<!-- <mat-form-field>
         <mat-label>
             Select Your City
         </mat-label>
@@ -21,7 +21,7 @@
     </mat-form-field>
      -->
 
-     <!-- <div class="card flex justify-content-center">
+<!-- <div class="card flex justify-content-center">
         <p-dropdown 
             [options]="cities"
             [(ngModel)]="selectedCity"
@@ -59,33 +59,75 @@
     [filter]="true"
 placeholder="Select a City" /> -->
 
-<p-dropdown 
-    [options]="cities"
-    [(ngModel)]="selectedCity"
-    optionLabel="name"
-    [filter]="true"
-    filterBy="name" 
-    [showClear]="true"
-    placeholder="Select a City"
-    (onChange)="onItemSelect(selectedCity)"
-    >
-        <ng-template pTemplate="selectedItem" let-selectedOption>
-            <div class="flex align-items-center gap-2">
-                <img 
-                    src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
-                    
-                    style="width: 18px" />
-                <div>{{ selectedOption.name }}</div>
-            </div>
-        </ng-template>
-        <ng-template let-city pTemplate="item">
-            <div class="flex align-items-center gap-2">
-                <img 
-                    src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
-                    
-                    style="width: 18px" />
-                <div>{{ city.name }}</div>
-            </div>
-        </ng-template>
-</p-dropdown>
+<!-- <p-dropdown
+  [options]="cities"
+  [(ngModel)]="selectedCity"
+  optionLabel="name"
+  [filter]="true"
+  filterBy="name"
+  [showClear]="true"
+  placeholder="Select a City"
+  (onChange)="onItemSelect(selectedCity)"
+>
+  <ng-template pTemplate="selectedItem" let-selectedOption>
+    <div class="flex align-items-center gap-2">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+        style="width: 18px"
+      />
+      <div>{{ selectedOption.name }}</div>
+    </div>
+  </ng-template>
+  <ng-template let-city pTemplate="item">
+    <div class="flex align-items-center gap-2">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+        style="width: 18px"
+      />
+      <div>{{ city.name }}</div>
+    </div>
+  </ng-template>
+</p-dropdown> 
+ -->
 
+
+ <div class="dropdown">
+    <button class="dropdown-toggle" (click)="toggleDropdown()">
+      <span *ngIf="selectedCity; else placeholder">
+        <div class="row">
+          <div class="col-sm-9">
+            {{ selectedCity.name }}
+          </div>
+          <div class="col-sm-1">
+            <span class="dropdown-clear" *ngIf="selectedCity" (click)="clearSelection()">
+              X
+            </span>
+            
+          </div>
+        </div>
+      </span>
+      <ng-template #placeholder>
+        Select a City
+      </ng-template>
+    </button>
+    <div class="dropdown-menu" *ngIf="dropdownOpen">
+      <input
+        type="text"
+        class="dropdown-filter"
+        [(ngModel)]="filterText"
+        placeholder="Search cities..."
+        (input)="filterCities()"
+      />
+      <div class="overflow">
+      <li
+        class="dropdown-item"
+        *ngFor="let city of filteredCities"
+        (click)="selectCity(city)"
+      >
+          {{ city.name }}
+      </li>
+    </div>
+      
+    </div>
+  </div>
+  

@@ -25,6 +25,7 @@ html {
   height: 100%;
 }
 
+
 body {
   font-family: "Jost", sans-serif;
   height: 100%;
@@ -48,7 +49,7 @@ strong {
 .hero {
   background-size: cover;
   background-position: bottom;
-  height: 38vh;
+  height: 20vh;
 }
 
 .overlay {
@@ -69,7 +70,7 @@ strong {
   font-size: 5.3rem;
   padding-top: 20px;
   position: absolute;
-  top: 100px;
+  top: 0px;
   left: 50px;
   right: 100px;
 }
@@ -81,7 +82,7 @@ strong {
   font-weight: 350;
   padding-top: 20px;
   position: absolute;
-  top: 210px;
+  top: 80px;
   left: 50px;
   right: 100px;
 }

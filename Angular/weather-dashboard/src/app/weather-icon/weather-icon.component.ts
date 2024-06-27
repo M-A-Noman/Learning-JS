@@ -15,7 +15,8 @@ export class WeatherIconComponent implements OnInit {
   ngOnInit(): void {
     this.citySelected.selectedCity.subscribe(
       (city:CityInfo) => {
-        this.selectedCity=city;
+        this.selectedCity = city;
+        console.log(this.selectedCity);
       }
     )
   }

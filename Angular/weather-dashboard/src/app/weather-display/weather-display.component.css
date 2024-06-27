@@ -19,3 +19,6 @@
     margin: 10px;
     height: 322px;
 }
+.bg-image{
+    min-height: 55vh;
+}

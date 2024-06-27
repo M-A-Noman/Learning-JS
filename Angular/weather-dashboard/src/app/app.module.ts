@@ -13,6 +13,7 @@ import {  HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 
 import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,13 +22,15 @@ import { DropdownModule } from 'primeng/dropdown';
     WeatherIconComponent,
     DropdownDirective,
     SearchComponent,
-    // SelectCityComponent
+    // SelectCityComponent,
+    CitySelectorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CitySelectorComponent,
+    FormsModule,
+    // CitySelectorComponent,
    
   ],
   providers: [DataService,HelperService],

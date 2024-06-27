@@ -3,44 +3,54 @@ import { DataService } from '../data.service';
 import { CityInfo } from '../city-info.model';
 import { HelperService } from '../helper.service';
 
-import { DropdownModule } from 'primeng/dropdown';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { FormsModule } from '@angular/forms';
-
-
-
 @Component({
   selector: 'app-city-selector',
   templateUrl: './city-selector.component.html',
-  styleUrl: './city-selector.component.css',
-  standalone:true,
-  imports: [
-    DropdownModule,
-    BrowserAnimationsModule,
-    FormsModule
-  ]
+  styleUrls: ['./city-selector.component.css']
 })
-  
 export class CitySelectorComponent implements OnInit {
   cities: CityInfo[] = [];
+  filteredCities: CityInfo[] = [];
   selectedCity: CityInfo | undefined;
-  constructor(private dataService: DataService,private selectedItem:HelperService) { }
+  filterText: string = '';
+  dropdownOpen: boolean = false;
+
+  constructor(private dataService: DataService, private selectedItem: HelperService) {}
+
   ngOnInit(): void {
     this.dataService.fetchCityData().subscribe({
-      next: (res) => {  
-        console.log(res);
-        for (let item of res) {
-          this.cities.push(item)
-        }
-    }})
-  }
-  show() {
-    console.log(this.selectedCity);
+      next: (res) => {
+        this.cities = res;
+        this.filteredCities = this.cities;
+      }
+    });
   }
 
-  onItemSelect(city) {
-    // console.log(city);
-    this.selectedItem.selectedCity.emit(city);
+  toggleDropdown(): void {
+      this.dropdownOpen = !this.dropdownOpen;
   }
-  
+
+  selectCity(city: CityInfo): void {
+    this.selectedCity = city;
+    this.dropdownOpen = false;
+    this.onItemSelect(city);
+  }
+
+  clearSelection(): void {
+    this.selectedCity = undefined;
+    this.filteredCities = this.cities;
+    this.filterText = '';
+    this.dropdownOpen = !this.dropdownOpen;
+    this.selectedItem.selectedCity.next(this.selectedCity)
+  }
+
+  filterCities(): void {
+    this.filteredCities = this.cities.filter(city =>
+      city.name.toLowerCase().includes(this.filterText.toLowerCase())
+    );
+  }
+
+  onItemSelect(city: CityInfo): void {
+    this.selectedItem.selectedCity.next(city);
+  }
 }
