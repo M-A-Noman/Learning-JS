@@ -1,0 +1,24 @@
+nav{
+  margin: 0;
+}
+.navbar-bg{
+  min-height: 40vh;
+}
+
+.navbar-toggler {
+  display: block ;
+}  
+
+.navbar-collapse.collapse {
+  display: none !important; 
+}  
+
+.navbar-collapse.collapse.show {
+  display: block !important; 
+
+}  
+.developer{
+  color: white;
+  margin-top: 20vh;
+}
+

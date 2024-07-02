@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .hover {
+    @apply hover:scale-105 
+    cursor-pointer;
+  }
+  .btn-hover-header {
+    @apply /* duration-500  */
+        /* hover:mx-1 */
+       hover:text-blue-900
+       hover:bg-lime-400
+             
+  }
+}
