@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResultComponent } from './result.component';
+import { PaymentInstructionComponent } from './payment-instruction.component';
 import { RouterModule } from '@angular/router';
 
 const routes = [
-  {path:'',component:ResultComponent}
+  {path:'',component:PaymentInstructionComponent}
 ]
 
 @NgModule({
@@ -14,4 +14,4 @@ const routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class ResultRouteModule { }
+export class PaymentInstructionRouteModule { }
