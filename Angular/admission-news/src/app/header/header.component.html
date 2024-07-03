@@ -1,18 +1,30 @@
-<header class="bg-lime-500 text-white">
-<nav class="flex items-center justify-between w-92% mx-auto">
+<header class=" text-white h-screen">
+  <nav class="bg-lime-500 flex items-center justify-between w-92% mx-auto">
     <div>
-        <img class="w-24 h-20 hover duration-500" src="./assets/education-logo.png" alt="admission result logo">
+      <img
+        class="w-24 h-14 md:h-20 hover duration-500"
+        src="./assets/education-logo.png"
+        alt="admission result logo"
+      />
     </div>
-    <div class="mx-4">
-        <ul class="flex items-center gap-[4vw]">
-            <li class="hover btn-hover-header"><a >Home</a></li>
-            <li class="hover btn-hover-header"><a >Admission Circular</a></li>
-            <li class="hover btn-hover-header"><a >Admission Form</a></li>
-            <li class="hover btn-hover-header"><a >Payment Instruction</a></li>
-            <li class="hover btn-hover-header"><a >Admission Result</a></li>
-            <li class="hover btn-hover-header"><a >Results</a></li>
-        </ul>
+    <div
+      class="md:static absolute bg-lime-500 md:min-h-fit min-h-[40vh] left-0 
+     {{toggle?'top-12':'top-[-100%]'}}
+        w-full flex items-center px-5"
+    >
+      <ul
+        class="flex md:flex-row flex-col md:items-center md:w-auto md:gap-[4vw] gap-8"
+      >
+        <li class="hover btn-hover-header"><a>Home</a></li>
+        <li class="hover btn-hover-header"><a>Admission Circular</a></li>
+        <li class="hover btn-hover-header"><a>Admission Form</a></li>
+        <li class="hover btn-hover-header"><a>Payment Instruction</a></li>
+        <li class="hover btn-hover-header"><a>Admission Result</a></li>
+        <li class="hover btn-hover-header"><a>Results</a></li>
+      </ul>
     </div>
-
-</nav>
+    <div class="flex items-center gap-6 md:hidden">
+      <i (click)="onToggle()" class="fa-solid {{toggle?'fa-close' :'fa-bars'}} text-3xl cursor-pointer"></i>
+    </div>
+  </nav>
 </header>

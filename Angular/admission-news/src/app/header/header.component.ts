@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  toggle: boolean = false;
+  onToggle() {
+    this.toggle = !this.toggle;
+  }
 }

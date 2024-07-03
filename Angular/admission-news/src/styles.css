@@ -8,7 +8,7 @@
     cursor-pointer;
   }
   .btn-hover-header {
-    @apply /* duration-500  */
+    @apply duration-500 
         /* hover:mx-1 */
        hover:text-blue-900
        hover:bg-lime-400
