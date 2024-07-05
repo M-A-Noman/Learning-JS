@@ -1,0 +1,67 @@
+<form class="mx-3" [formGroup]="postForm" (ngSubmit)="onFormSubmit()">
+    <div>
+      <label for="title">Title </label>
+      <input
+        class="border-b-4 block"
+        type="text"
+        formControlName="title"
+        name="title"
+        id=""
+      />
+    </div>
+    <!-- <div>
+      <label for="lastUpdate">Last Update </label><br />
+      <input
+        class="border-b-4"
+        type="text"
+        formControlName="lastUpdate"
+        name="lastUpdate"
+        id=""
+      />
+    </div> -->
+    <!-- <div>
+      <label for="postedBy">posted By </label><br />
+      <input
+        class="border-b-4"
+        type="text"
+        formControlName="postedBy"
+        name="postedBy"
+        id=""
+      />
+    </div> -->
+    <div>
+      <label for="postDetails">post Details </label>
+      <textarea
+        class="border-b-4 block"
+        type="text"
+        rows="5"
+        cols="45"
+        formControlName="postDetails"
+        name="postDetails"
+        id=""
+      ></textarea>
+      <div>
+        <label for="thumnail">
+          Post Thumbnail URL
+        </label>
+        <input 
+        class="border-b-4 block" 
+        type="text" 
+        name="thumbnail" 
+        formControlName="thumbnail"
+        >
+      </div>
+      <div>
+        <label for="pdf">
+          Post pdf URL
+        </label>
+        <input 
+        class="border-b-4 block" 
+        type="text" 
+        name="pdf" 
+        formControlName="pdf"
+        >
+      </div>
+    </div>
+    <button class="bg-green-500 text-white p-2 rounded-md my-2 mx-28">Submit</button>
+  </form>

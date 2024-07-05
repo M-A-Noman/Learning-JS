@@ -1,43 +1,44 @@
-<form class="mx-3" [formGroup]="postForm" (ngSubmit)="onFormSubmit()">
-  <div>
-    <label for="title">Title </label><br />
-    <input
-      class="border-b-4"
-      type="text"
-      formControlName="title"
-      name="title"
-      id=""
-    />
-  </div>
-  <div>
-    <label for="lastUpdate">Last Update </label><br />
-    <input
-      class="border-b-4"
-      type="text"
-      formControlName="lastUpdate"
-      name="lastUpdate"
-      id=""
-    />
-  </div>
-  <div>
-    <label for="postedBy">posted By </label><br />
-    <input
-      class="border-b-4"
-      type="text"
-      formControlName="postedBy"
-      name="postedBy"
-      id=""
-    />
-  </div>
-  <div>
-    <label for="postDetails">post Details </label><br />
-    <input
-      class="border-b-4"
-      type="text"
-      formControlName="postDetails"
-      name="postDetails"
-      id=""
-    />
-  </div>
-  <button class="bg-green-500 text-white p-2 rounded-md my-2 mx-28">Submit</button>
-</form>
+<app-admin></app-admin>
+<div class="bg-black text-white w-90">
+  <span *ngFor="let post of posts">
+    <div class=" ">
+      <h1>{{ post.title }}</h1>
+      <h6>{{ post.lastUpdate }} {{ post.postedBy }}</h6>
+      <img
+        *ngIf="post.thumbnail"
+        src="{{ post.thumbnail ? post.thumbnail : '' }}"
+        alt=""
+        class="w-24 h-24"
+      />
+      <p>
+        {{ post.postDetails | slice : 0 : 99 }}
+        <span *ngIf="!readMore"
+          >...
+          <a
+            class="cursor-pointer underline text-blue-600"
+            (click)="onReadMore()"
+            >read more</a
+          ></span
+        >
+      </p>
+      <span *ngIf="readMore"
+        >{{ post.postDetails | slice : 99 }}
+        <!-- <iframe *ngIf="post.pdf" [src]="sanitizer.bypassSecurityTrustResourceUrl(post.pdf)" width="100%" height="600px"></iframe> -->
+        <div class="flex justify-center items-center h-fit">
+          <embed
+            *ngIf="post.pdf"
+            [src]="sanitizer.bypassSecurityTrustResourceUrl(post.pdf)"
+            type="application/pdf"
+            class="w-full max-w-4xl h-96 border-3"
+          />
+        </div>
+        <a
+          class="cursor-pointer underline text-blue-600"
+          (click)="onReadMore()"
+          >see less</a
+        ></span
+      >
+    </div>
+  </span>
+  <span *ngIf="!posts">No available posts</span>
+</div>

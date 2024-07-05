@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Post } from '../posts/post.model';
+import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,15 @@ export class DataService {
   getAllPosts() {
     return this.fireStore
       .collection('posts')
-      .snapshotChanges();
+      .snapshotChanges()
+      .pipe(
+        map(actions => actions
+          .map(a => {
+          const data = a.payload.doc.data() as Post;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
   }
   createPosts(post: Post) {
     return new Promise<any>((resolve, reject) => {

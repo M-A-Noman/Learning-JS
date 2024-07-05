@@ -21,6 +21,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {AngularFireModule } from '@angular/fire/compat'
 import { environment } from '../../environment/environment';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { environment } from '../../environment/environment';
     ResultModule,
     FooterModule,
     PostsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    // AdminModule
     
   ],
   providers: [

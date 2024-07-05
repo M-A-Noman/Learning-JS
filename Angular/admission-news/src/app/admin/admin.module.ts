@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AdminRouteModule } from './admin.route.module';
 import { RouterModule } from '@angular/router';
-
-import { HomeRouteModule } from './home.route.module';
-import { HomeComponent } from './home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdminModule } from '../admin/admin.module';
+import { AdminComponent } from './admin.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [AdminComponent],
   imports: [
     CommonModule,
     RouterModule,
-    HomeRouteModule,
     FormsModule,
     ReactiveFormsModule,
-    AdminModule
+
+    AdminRouteModule,
   ],
-  exports:[HomeComponent]
+  exports:[AdminComponent]
 })
-export class HomeModule { }
+export class AdminModule { }
