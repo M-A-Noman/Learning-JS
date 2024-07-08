@@ -1,0 +1,25 @@
+<div
+  class="bg-gray-200 w-[80rem] h-[30rem] text-blue-800 flex items-center justify-center m-auto mt-[15rem] p-4"
+>
+  <div  class="relative flex items-center -top-52 w-full gap-x-[19rem] ml-[26rem]">
+    <h1 class="text-center font-extrabold text-3xl " i18n="OuterCardHeader| Title of the outer card@@outerCardHeader" #header>
+      This is header of upper box
+    </h1>
+    <button class="cursor-pointer underline hover:scale-110 transform duration-300" i18n="ChangeLanguageButton| Change Language button@@changeLanguageButton" (click)="onChangeLanguage()">change language</button>
+  </div>
+  <div
+    class="absolute bg-gray-100 w-[20rem] h-[15rem] text-blue-600 flex items-center justify-center"
+  >
+    <div class="absolute ">
+      <h3
+        class="relative -top-10 text-center font-extrabold text-xl w-full m-auto"
+        i18n="InnerBoxHeader| Header of the inner box@@innerBoxHeader"
+      >
+        This is header of inner box
+      </h3>
+      <p class="relative"i18n="InnerBoxContent|Description of the inner box@@innerBoxDescription">hello This is the content for inner box</p>
+      <p i18n="InnerBoxDate|Date for innerBox@@innerBoxDate" >todays date is: {{date|date }}</p>
+      <p i18n="InnerBoxAmount|Amount for the inner box@@innerBoxAmount" >amount : {{amount| currency:"BDT"}} </p>
+    </div>
+  </div>
+</div>

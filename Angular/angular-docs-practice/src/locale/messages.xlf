@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="bn" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="outerCardHeader" datatype="html">
+        <source> This is header of upper box </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+        <note priority="1" from="description"> Title of the outer card</note>
+        <note priority="1" from="meaning">OuterCardHeader</note>
+      </trans-unit>
+      <trans-unit id="changeLanguageButton" datatype="html">
+        <source>change language</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">12,15</context>
+        </context-group>
+        <note priority="1" from="description"> Change Language button</note>
+        <note priority="1" from="meaning">ChangeLanguageButton</note>
+      </trans-unit>
+      <trans-unit id="innerBoxHeader" datatype="html">
+        <source> This is header of inner box </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+        <note priority="1" from="description"> Header of the inner box</note>
+        <note priority="1" from="meaning">InnerBoxHeader</note>
+      </trans-unit>
+      <trans-unit id="innerBoxDescription" datatype="html">
+        <source>hello This is the content for inner box</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <note priority="1" from="description">Description of the inner box</note>
+        <note priority="1" from="meaning">InnerBoxContent</note>
+      </trans-unit>
+      <trans-unit id="innerBoxDate" datatype="html">
+        <source>todays date is: <x id="INTERPOLATION" equiv-text="{{date|date}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+        <note priority="1" from="description">Date for innerBox</note>
+        <note priority="1" from="meaning">InnerBoxDate</note>
+      </trans-unit>
+      <trans-unit id="innerBoxAmount" datatype="html">
+        <source>amount : <x id="INTERPOLATION" equiv-text="{{amount| currency }}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <note priority="1" from="description">Amount for the inner box</note>
+        <note priority="1" from="meaning">InnerBoxAmount</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

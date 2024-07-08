@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-docs-practice": {
+    "internationalization": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -19,20 +19,11 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {
-          "bn": {
-            "translation": "src/locale/messages.bn.xlf"
-          }
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "localize":true,
-            "outputPath": "dist/angular-docs-practice",
+            "outputPath": "dist/internationalization",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -49,9 +40,6 @@
             "scripts": []
           },
           "configurations": {
-            "bn":{
-              "localize":["bn"]
-            },
             "production": {
               "budgets": [
                 {
@@ -78,14 +66,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "bn":{
-              "buildTarget": "angular-docs-practice:build:bn"
-            },
             "production": {
-              "buildTarget": "angular-docs-practice:build:production"
+              "buildTarget": "internationalization:build:production"
             },
             "development": {
-              "buildTarget": "angular-docs-practice:build:development"
+              "buildTarget": "internationalization:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-docs-practice:build"
+            "buildTarget": "internationalization:build"
           }
         },
         "test": {
