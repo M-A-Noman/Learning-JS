@@ -38,17 +38,7 @@
   </div>
    -->
 
-<div class="language-selector">
-  <select class="custom-select" (change)="changeLanguage($event)">
-    <option
-      *ngFor="let lang of languages"
-      [value]="lang"
-      [selected]="lang === translate.currentLang"
-    >
-      {{ lang | uppercase }}
-    </option>
-  </select>
-</div>
+
 <div class="container mx-auto py-12 px-6">
   <h2 class="text-3xl font-extrabold text-center mb-6">
     {{ "TITLE" | translate }}

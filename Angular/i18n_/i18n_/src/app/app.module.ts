@@ -3,39 +3,31 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FaqComponent } from './faq/faq.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { LanguageSelectorComponent } from './language-selector/language-selector.component';
-import { HeaderBoxComponent } from './header-box/header-box.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CustomTranslateHttpLoader } from './custom-translate-http-loader';
 
-
-
+// AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new CustomTranslateHttpLoader(http, 'https://api.github.com/repos/Riajul-Alam-BS23/i18n/');
 }
 
-
-// AoT requires an exported function for factories
-// for getting files with keys array 
-
 // export function HttpLoaderFactory(http: HttpClient) {
-  // let keys = [
-  //   '/faq.json',
-  //   '/headerBox.json'
-  // ]
-  // let data:any[]=[];
-  // for (let key of keys) {
-  //   let d = new TranslateHttpLoader(http, 'https://raw.githubusercontent.com/Riajul-Alam-BS23/i18n/main/', key);
-  //   data.push(d);
-  // }
+//   // let keys = [
+//   //   '/faq.json',
+//   //   '/headerBox.json'
+//   // ]
+//   // let data:any[]=[];
+//   // for (let key of keys) {
+//   //   let d = new TranslateHttpLoader(http, 'https://raw.githubusercontent.com/Riajul-Alam-BS23/i18n/main/', key);
+//   //   data.push(d);
+//   // }
   
-  // console.log(data);
-  // console.log(data);
-  // // const data = new TranslateHttpLoader(http, 'https://raw.githubusercontent.com/Riajul-Alam-BS23/i18n/main/', '/faq.json');
-  // // console.log( (data));
-  // return data;
+//   // console.log(data);
+//   // console.log(data);
+//   // // const data = new TranslateHttpLoader(http, 'https://raw.githubusercontent.com/Riajul-Alam-BS23/i18n/main/', '/faq.json');
+//   // // console.log( (data));
+//   // return data;
 
   
 //   let data;
@@ -46,14 +38,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 //   console.log(data)
 //   return data;
 // }
+
 @NgModule({
   declarations: [
-    AppComponent,
-    FaqComponent,
-    LanguageSelectorComponent,
-    HeaderBoxComponent
-    
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
