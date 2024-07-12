@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,11 +9,21 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { HeaderBoxComponent } from './header-box/header-box.component';
 import { CustomTranslateHttpLoader } from './custom-translate-http-loader';
+import { HeaderComponent } from './header/header.component';
+import { ContactComponent } from './contact/contact.component';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new CustomTranslateHttpLoader(http, 'https://api.github.com/repos/Riajul-Alam-BS23/i18n/');
+export function HttpLoaderFactory(http: HttpClient,
+  // translateService: CustomTranslateService
+
+) {
+  
+  // new TranslateHttpLoader(http, 'https://api.github.com/repos/Noman-1533/i18n/')
+  return new CustomTranslateHttpLoader(http, 'https://api.github.com/repos/Noman-1533/i18n/');
 }
 
 
@@ -51,12 +61,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     FaqComponent,
     LanguageSelectorComponent,
-    HeaderBoxComponent
+    HeaderBoxComponent,
+    HeaderComponent,
+    ContactComponent
     
 
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -67,7 +80,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

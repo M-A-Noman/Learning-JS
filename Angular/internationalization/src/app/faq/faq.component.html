@@ -41,7 +41,7 @@
 
 <div class="container mx-auto py-12 px-6">
   <h2 class="text-3xl font-extrabold text-center mb-6">
-    {{ "TITLE" | translate }}
+    {{ title||'TITLE' | translate }}
   </h2>
   <div class="bg-white shadow-md rounded-lg overflow-hidden">
     <div *ngFor="let faq of 'FAQS'|translate; let i = index" class="border-b">
