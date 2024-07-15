@@ -1,34 +1,3 @@
-// import { HttpClient } from "@angular/common/http";
-// import { inject } from "@angular/core";
-// import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
-// import { TranslateService } from "@ngx-translate/core";
-// import { map } from "rxjs";
-
-// export const faqsResolver: ResolveFn<any> = (
-//     route: ActivatedRouteSnapshot,
-//     state:RouterStateSnapshot
-// ) => {
-//     const originalTranslateService = inject(TranslateService);
-//     const lang = originalTranslateService.currentLang;
-//     console.log(lang);
-//     const baseUrl = `https://api.github.com/repos/Noman-1533/i18n/${lang}/${'faq.json'}`;
-//     console.log(baseUrl)
-//     const http = inject(HttpClient);
-//     http.get(baseUrl).pipe(
-//         map((response) => {
-//             console.log('for response',response)
-           
-         
-//             return response;
-//         })
-//     )
-
-
-
-// }
-
-
-
 
 import { Injectable, inject } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, ResolveFn } from '@angular/router';

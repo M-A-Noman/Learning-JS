@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 
@@ -63,7 +64,8 @@ export function HttpLoaderFactory(http: HttpClient,
     LanguageSelectorComponent,
     HeaderBoxComponent,
     HeaderComponent,
-    ContactComponent
+    ContactComponent,
+    SpinnerComponent
     
 
   ],

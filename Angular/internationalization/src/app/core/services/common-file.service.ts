@@ -12,10 +12,10 @@ export class commonFileService{
   getCommonFiles(baseUrl: string, lang: string): Observable<any> {
     
     
-    const token = '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
+    // const token = '';
+    // const headers = new HttpHeaders({
+    //   'Authorization': `Bearer ${token}`
+    // });
 
 
     return this.http.get<any[]>(`${baseUrl}contents/${lang}`, { headers }).pipe(
