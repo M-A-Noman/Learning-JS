@@ -1,0 +1,16 @@
+<!-- <mat-progress-spinner [value]="value"> </mat-progress-spinner> -->
+
+<div class="progress-container">
+
+  <mat-progress-spinner
+    [value]="value"
+    [color]="color"
+    [strokeWidth]="8"
+    mode="determinate">
+
+  </mat-progress-spinner>
+
+
+
+  <div class="progress-text">{{ value }}{{value!=='N/A'&&value.length!==0?'%':''}}</div>
+</div>

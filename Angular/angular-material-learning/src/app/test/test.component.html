@@ -1,0 +1,32 @@
+<!-- <mat-slide-toggle color="primary">Toggle me!</mat-slide-toggle>
+  -->
+<div>
+  <button mat-fab extended color="primary">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+</div>
+<br /><mat-divider></mat-divider><br />
+
+<div>
+  <mat-card class="card">
+    <mat-card-header> </mat-card-header>
+    <img
+      src="{{ imagePath }}"
+      (click)="onClickCard('movieIDFormImage')"
+      class="cardAction"
+    />
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+    <div class="card-footer">
+      <mat-card-title
+        (click)="onClickCard('movieIDFormTitle')"
+        class="cardAction"
+      >
+        {{ cardTitle }}
+      </mat-card-title>
+      <mat-card-subtitle>{{ cardSubtitle }}</mat-card-subtitle>
+    </div>
+  </mat-card>
+</div>
