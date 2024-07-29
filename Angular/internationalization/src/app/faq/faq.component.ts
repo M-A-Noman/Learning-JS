@@ -20,39 +20,12 @@ export class FaqComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // console.log('form faq',data);
-    // this.faqs = this.translate.instant('FAQS');
-    // this.title = this.translate.instant('TITLE');
-    // this.translate.onLangChange.subscribe(() => {
-    //   // if (!this.translate.getLangs().find(this.translate.currentLang.toString))
-    //   {
-    //     this.onDemandFile.getFileOnDemand('faq.json').subscribe((newFaqs) => {
-    //       this.translate.setTranslation(this.translate.currentLang || 'en', newFaqs, true);
-    //     })
-    //   }
-    // })
     
-    // this.loadFaqs();
-    // console.log(this.translate.currentLang);
-    // let currentRoute = this.route.snapshot['_routerState'].url;
-    // let data = this.route.data;
     this.dataChangesSubscription = this.onDemandFile.onDataChanges.subscribe((res) => {
-      // console.log(res);
       this.dataLoading = res;
     })
-    
 
   }
-
-  
-
-  loadFaqs() {
-    // this.translate.get('FAQS').subscribe((faqs: any[]) => {
-    //   this.faqs = faqs.map((faq) => ({ ...faq, isOpen: false }));
-    // });
-  }
-
-  
 
   toggleFAQ(index: number) {
     let key = "Q" + index;
@@ -64,7 +37,6 @@ export class FaqComponent implements OnInit, OnDestroy {
       const value = this.isOpen.get(key);
       this.isOpen.set(key, !value);
     }
-    // this.faqs[index].isOpen = !this.faqs[index].isOpen;
   }
 
   ngOnDestroy(): void {

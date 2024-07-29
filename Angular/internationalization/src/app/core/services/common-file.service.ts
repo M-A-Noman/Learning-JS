@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, map, switchMap, forkJoin } from "rxjs";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn:'root'
@@ -12,10 +13,10 @@ export class commonFileService{
   getCommonFiles(baseUrl: string, lang: string): Observable<any> {
     
     
-    // const token = '';
-    // const headers = new HttpHeaders({
-    //   'Authorization': `Bearer ${token}`
-    // });
+    const token = environment.githubToken;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
 
 
     return this.http.get<any[]>(`${baseUrl}contents/${lang}`, { headers }).pipe(
