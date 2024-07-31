@@ -1,0 +1,46 @@
+<!-- <div class="header-bg">
+  <mat-grid-list cols="3" rowHeight="10:1">
+    <mat-grid-tile>
+      <div class="logo">hello</div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="menu-bar">
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="other-menu">me</div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div> -->
+
+<div class="header-bg">
+    <mat-grid-list cols="3" rowHeight="10:1">
+      <mat-grid-tile>
+        <div class="logo-container">
+          <div class="logo">hello</div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="menu-container">
+          <div class="menu-bar">
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="other-menu-container">
+          <div class="other-menu">me</div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
