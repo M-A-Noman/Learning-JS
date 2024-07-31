@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -7,9 +7,13 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TestComponent } from './test/test.component';
 import { MaterialModule } from './material.module';
-import { RattingComponent } from './ratting/ratting.component';
+import { RattingComponent } from './shared/ratting/ratting.component';
 import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { PostModule } from './post/post.module';
+import { SharedModule } from './shared/shared.module';
 // import {ThemeModule} from '~@angular/material/theming'
 
 
@@ -17,7 +21,6 @@ import { StoreModule } from '@ngrx/store';
   declarations: [
     AppComponent,
     TestComponent,
-    RattingComponent,
     HomeComponent
   ],
   imports: [
@@ -25,9 +28,16 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     BrowserAnimationsModule,
 
+    PostModule,
+
     MaterialModule,
 
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(),autoPause:true}),
+
+    EffectsModule.forRoot([]),
+      SharedModule
 
   ],
   providers: [

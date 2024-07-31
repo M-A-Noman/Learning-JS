@@ -3,12 +3,13 @@
   display: inline-block;
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 
   mat-progress-spinner {
     width: 100% !important;
     height: 100% !important;
-    background-color: rgb(50, 46, 46);
-    border-radius: 50%;
+    // background-color: rgb(50, 45, 45);
+    // border-radius: 50%;
 
   }
   .mat-spinner::ng-deep circle {

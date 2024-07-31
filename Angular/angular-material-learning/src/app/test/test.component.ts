@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 
 })
 export class TestComponent {
-  
+
  @Input('name') cardTitle:string='Card Title';
  @Input('image') imagePath:string='Image path for the card image';
  @Input('subtitle') cardSubtitle:string='Card Subtitle';

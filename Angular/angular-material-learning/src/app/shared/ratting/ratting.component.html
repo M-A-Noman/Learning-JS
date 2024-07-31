@@ -1,0 +1,17 @@
+<!-- <mat-progress-spinner [value]="value"> </mat-progress-spinner> -->
+
+<div class="progress-container" [ngStyle]="{backgroundColor:backgroundColor}">
+
+  <mat-progress-spinner
+    [value]="value"
+    [color]="color"
+    [mode]="mode"
+    [strokeWidth]="8"
+    >
+
+  </mat-progress-spinner>
+
+
+
+  <div class="progress-text">{{value.length!==0? value:'' }}{{value!=='N/A'&&value.length!==0?'%':''}}</div>
+</div>

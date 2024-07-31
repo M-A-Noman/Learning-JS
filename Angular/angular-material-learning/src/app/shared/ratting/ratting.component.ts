@@ -8,5 +8,7 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class RattingComponent {
   @Input('ratting') value: string = 'N/A';
+  @Input('mode')mode:'determinate'|'indeterminate'='determinate'
+  @Input('bg-color') backgroundColor:string='rgb(50, 45, 45)';
   color:ThemePalette='warn'
 }

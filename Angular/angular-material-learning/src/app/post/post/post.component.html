@@ -1,0 +1,7 @@
+<div class="content">
+  <div *ngIf="isLoading$ | async">
+    <app-ratting [mode]="'indeterminate'" [ratting]="''" [bg-color]="''"></app-ratting>
+  </div>
+  <div *ngIf="error$ | async as error">{{ error }}</div>
+  <div *ngFor="let item of posts$ | async">{{ item.title }}</div>
+</div>
