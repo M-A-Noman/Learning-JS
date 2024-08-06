@@ -4,6 +4,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { HeaderComponent } from './component/header/header.component';
 import { LayoutComponent } from './layout.component';
 import { SharedModule } from '../../shared/shared.module';
+import { LanguageSelectorComponent } from './component/language-selector/language-selector.component';
        
 
 
@@ -11,6 +12,7 @@ import { SharedModule } from '../../shared/shared.module';
   declarations: [
     HeaderComponent,
     LayoutComponent,
+    LanguageSelectorComponent,
 
   ],
   imports: [

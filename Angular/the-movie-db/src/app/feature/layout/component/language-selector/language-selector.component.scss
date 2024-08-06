@@ -1,0 +1,16 @@
+button{
+    cursor: pointer;
+      margin: 3px;
+      background: transparent;
+      color: white;
+}
+.languageButton {
+    border-color: white;
+    box-shadow: none;
+    height: 1.75rem;
+    width: 2rem;
+    &:hover {
+      background: white !important;
+      color: black !important;
+    }
+  }

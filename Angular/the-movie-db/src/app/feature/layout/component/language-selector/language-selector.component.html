@@ -1,0 +1,21 @@
+<button
+  class="languageButton"
+  #languageSelectorTrigger="matMenuTrigger"
+  [matMenuTriggerFor]="languageSelectorTriggerKey"
+  (click)="menuClosed()"
+>
+  EN
+</button>
+<mat-menu
+  #languageSelectorTriggerKey="matMenu"
+  [hasBackdrop]="true"
+  [overlapTrigger]="false"
+  (menuClosed)="menuClosed()"
+>
+  <mat-form-field >
+    <mat-label>Language</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let language of languages" [value]="language.value">{{ language.viewValue }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-menu>

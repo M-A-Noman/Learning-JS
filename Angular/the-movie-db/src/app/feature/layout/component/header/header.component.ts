@@ -22,18 +22,20 @@ export class HeaderComponent {
       menuItems:['Discussion', 'Leaderboard', 'Support', 'API']
     },
   ]
+  
    timedOutCloser;
    targetMenuTrigger;
   mouseEnter(trigger) {
-    if (this.timedOutCloser) {
+    if (this.timedOutCloser)
+    {
       clearTimeout(this.timedOutCloser);
     }
     trigger.openMenu();
   }
 
   mouseLeave(trigger) {
-    // this.timedOutCloser = setTimeout(() => {
+    this.timedOutCloser = setTimeout(() => {
       trigger.closeMenu();
-    // }, 50);
+    }, 50);
   }
 }

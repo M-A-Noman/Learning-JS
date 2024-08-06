@@ -19,28 +19,33 @@
 </div> -->
 
 <div class="header-bg">
-  <mat-grid-list cols="3" rowHeight="10:1">
+  <mat-grid-list cols="6" rowHeight="10:2">
     <mat-grid-tile>
       <div class="logo-container">
-        <div class="logo">hello</div>
+        <div class="logo">
+          <img
+            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+            alt=""
+          />
+        </div>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile colspan="3">
       <div class="menu-container">
         <div class="menu-bar">
-          <!-- <ng-container *ngFor="let button of navButtons; let i = index">
+          <ng-container *ngFor="let button of navButtons; let i = index">
             <span class="nav-button-wrapper"> </span>
             <button
               mat-button
               class="nav-link"
               #menuTrigger="matMenuTrigger"
               [matMenuTriggerFor]="triggerKey"
-              (mouseenter)="targetMenuTrigger = menuTrigger; mouseEnter(menuTrigger)"
-              (mouseleave)="mouseLeave(menuTrigger)"
             >
+              <!-- (mouseenter)="mouseEnter(menuTrigger)"
+              (mouseleave)="mouseLeave(menuTrigger)"  -->
               <span class="button-color">{{ button.title }}</span>
             </button>
-        
+
             <mat-menu
               #triggerKey="matMenu"
               [hasBackdrop]="false"
@@ -51,12 +56,13 @@
                 (mouseenter)="mouseEnter(targetMenuTrigger)"
                 (mouseleave)="mouseLeave(targetMenuTrigger)"
               >
-                <button mat-menu-item *ngFor="let item of button.menuItems">{{ item }}</button>
+                <button mat-menu-item *ngFor="let item of button.menuItems">
+                  {{ item }}
+                </button>
               </div>
             </mat-menu>
-         
-          </ng-container> -->
-          <button mat-button [matMenuTriggerFor]="locationMenu"
+          </ng-container>
+          <!-- <button mat-button [matMenuTriggerFor]="locationMenu"
           #locationMenuTrigger="matMenuTrigger" 
           (mouseover)="locationMenuTrigger.openMenu()">Below</button>
           <mat-menu (mouseleave)="locationMenuTrigger.closeMenu()" #locationMenu="matMenu" class="location-menu" yPosition="below"  >
@@ -64,15 +70,20 @@
             <button mat-menu-item>Item 2</button>
             <span class="locations" >
             </span>
-          </mat-menu>
-          
+          </mat-menu> -->
         </div>
-        
       </div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile colspan="2">
       <div class="other-menu-container">
-        <div class="other-menu">me</div>
+        <div class="other-menu">
+          <button class="btn"><mat-icon>add</mat-icon></button>
+         
+            <app-language-selector></app-language-selector>
+          <button mat-button>Login</button>
+          <button mat-button>Join TMDB</button>
+          <button class="btn searchButton" ><mat-icon>search</mat-icon></button>
+        </div>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
