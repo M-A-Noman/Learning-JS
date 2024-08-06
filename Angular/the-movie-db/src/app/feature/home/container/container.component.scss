@@ -1,0 +1,40 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  .container-header{
+    display: flex;
+    gap: 1.2rem;
+    .buttons{
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem 0 1rem;
+        height: 2rem;
+        border: 1px solid black;
+        border-radius: 30px;
+        gap: 1rem;
+    }
+    .selected{
+        transition: all .5s ease-in-out;
+        position: absolute;
+        background-color:rgb(3, 37, 65);
+        border-radius: 30px;
+        height: 2rem;
+        width: 50%;
+        top: 0;
+    }
+    .p-left{
+        left: 0;
+    }
+    .p-right{
+        left:50%;
+    }
+    .textColor{
+        color:white
+    }
+    
+  }
+  
+}

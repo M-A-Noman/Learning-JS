@@ -40,9 +40,9 @@
               class="nav-link"
               #menuTrigger="matMenuTrigger"
               [matMenuTriggerFor]="triggerKey"
+              (mouseenter)="mouseEnter(menuTrigger,i)"
+              (mouseleave)="mouseLeave(menuTrigger,i)"
             >
-              <!-- (mouseenter)="mouseEnter(menuTrigger)"
-              (mouseleave)="mouseLeave(menuTrigger)"  -->
               <span class="button-color">{{ button.title }}</span>
             </button>
 
@@ -53,8 +53,8 @@
               [id]="'menu' + i"
             >
               <div
-                (mouseenter)="mouseEnter(targetMenuTrigger)"
-                (mouseleave)="mouseLeave(targetMenuTrigger)"
+                (mouseenter)="mouseEnter(targetMenuTrigger,i)"
+                (mouseleave)="mouseLeave(targetMenuTrigger,i)"
               >
                 <button mat-menu-item *ngFor="let item of button.menuItems">
                   {{ item }}
