@@ -53,9 +53,9 @@
               [id]="'menu' + i"
             >
               <div
-                (mouseenter)="mouseEnter(targetMenuTrigger,i)"
-                (mouseleave)="mouseLeave(targetMenuTrigger,i)"
               >
+              <!-- (mouseenter)="mouseEnter(targetMenuTrigger,i)"
+              (mouseleave)="mouseLeave(targetMenuTrigger,i)" -->
                 <button mat-menu-item *ngFor="let item of button.menuItems">
                   {{ item }}
                 </button>

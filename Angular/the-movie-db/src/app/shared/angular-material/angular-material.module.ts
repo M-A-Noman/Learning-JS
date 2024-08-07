@@ -1,3 +1,4 @@
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -6,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     
@@ -18,6 +20,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
   ],
   exports:[
     MatGridListModule,
@@ -27,6 +31,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class AngularMaterialModule { }

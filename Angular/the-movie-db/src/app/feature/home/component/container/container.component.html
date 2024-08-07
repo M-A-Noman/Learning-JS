@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="container-header">
+    <div class="heading">
+      <h1>{{ containerHeading }}</h1>
+    </div>
+    <div class="buttons">
+      <button
+        mat-button
+        (click)="toggleContainerButton()"
+        [ngClass]="isDefaultSelected ? 'textColor' : ''"
+      >
+        {{ containerDefaultButton }}
+      </button>
+      <button
+        mat-button
+        (click)="toggleContainerButton()"
+        [ngClass]="!isDefaultSelected ? 'textColor' : ''"
+      >
+        {{ containerSecondaryButton }}
+      </button>
+      <div
+        class="selected"
+        [ngClass]="isDefaultSelected ? 'p-left' : 'p-right'"
+      ></div>
+    </div>
+  </div>
+  <div *ngIf="loading$ | async">
+    <app-ratting [mode]="'indeterminate'" [ratting]="''"></app-ratting>
+  </div>
+  <div *ngIf="!(loading$ | async)">
+    <div class="content">
+      <app-card [title]="'The Movie'">
+        <app-ratting [ratting]="'69'"></app-ratting>
+      </app-card>
+    </div>
+  </div>
+</div>
