@@ -1,33 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { HomeFacadeService } from '../../home-facade.service';
+
+import { PageSingleCardViewModel } from '../../model/cardModel';
 import { Observable } from 'rxjs';
+import { HomeFacadeService } from '../../home-facade.service';
 
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
 })
-export class ContainerComponent implements OnInit {
-  @Input('type') containerType: string = '';
-  @Input('heading') containerHeading: string = 'Trending';
-  @Input('defaultButton') containerDefaultButton: string = 'Today';
-  @Input('secondaryButton') containerSecondaryButton: string = 'This week';
+export class ContainerComponent  {
+  @Input('type')containerType:string;
+  @Input('content') containerContent$:Observable<PageSingleCardViewModel[]>;
+  @Input() loading$:Observable<any>;
+  @Input('heading') containerHeading: string = '';
+  @Input('defaultButton') containerDefaultButton: string = '';
+  @Input('secondaryButton') containerSecondaryButton: string = '';
   isDefaultSelected: boolean = true;
-
-  trendingData$: Observable<any>;
-  loading$: Observable<boolean>;
-  error$: Observable<any>;
-
-  constructor(private facadeService: HomeFacadeService) {}
-  ngOnInit() {
-    this.trendingData$ = this.facadeService.trendingData$;
-    this.loading$ = this.facadeService.loading$;
-    this.error$ = this.facadeService.error$;
-    this.facadeService.loadData();
-  }
-
+  constructor(private homeFacade:HomeFacadeService){}
+ 
   toggleContainerButton() {
     this.isDefaultSelected = !this.isDefaultSelected;
+    this.homeFacade.switchChange(this.containerType,this.isDefaultSelected?this.containerDefaultButton:this.containerSecondaryButton)
   }
 }

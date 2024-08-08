@@ -12,6 +12,7 @@
         {{ containerDefaultButton }}
       </button>
       <button
+      *ngIf="containerSecondaryButton.length>0"
         mat-button
         (click)="toggleContainerButton()"
         [ngClass]="!isDefaultSelected ? 'textColor' : ''"
@@ -27,10 +28,10 @@
   <div *ngIf="loading$ | async">
     <app-ratting [mode]="'indeterminate'" [ratting]="''"></app-ratting>
   </div>
-  <div *ngIf="!(loading$ | async)">
-    <div class="content">
-      <app-card [title]="'The Movie'">
-        <app-ratting [ratting]="'69'"></app-ratting>
+  <div class="content" *ngIf="!(loading$ | async)">
+    <div  *ngFor="let singleCard of containerContent$|async">
+      <app-card  [name]="singleCard.cardTitle" [subtitle]="singleCard.cardSubtitle" [image]="singleCard.cardImage">
+        <app-ratting [ratting]="singleCard.cardRatting.toString()"></app-ratting>
       </app-card>
     </div>
   </div>

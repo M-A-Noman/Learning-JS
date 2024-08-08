@@ -1,2 +1,28 @@
 <app-static-search></app-static-search>
-<app-container [type]="'trending'"></app-container>
+
+<app-container
+[type]="'trending'"
+  [heading]="'Trending'"
+  [defaultButton]="'Today'"
+  [secondaryButton]="'This Week'"
+  [loading$]="loading$"
+  [content]="trendingData$"
+></app-container>
+
+<app-container
+[type]="'trailer'"
+  [heading]="'Trailer'"
+  [defaultButton]="'Popular'"
+  [secondaryButton]="'In Theaters'"
+  [loading$]="loading$"
+  [content]="trendingData$"
+></app-container>
+
+<app-container
+[type]="'popular'"
+  [heading]="'What\'s Popular'"
+  [defaultButton]="'Popular'"
+  [secondaryButton]="'In Theaters'"
+  [loading$]="loading$"
+  [content]="trendingData$"
+></app-container>
