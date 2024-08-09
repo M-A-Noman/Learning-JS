@@ -10,8 +10,11 @@ import { ContainerComponent } from './component/container/container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { TrendingEffects } from './state/effects/trending.effect';
 import { trendingReducer } from './state/reducers/trending.reducer';
+import { Effect } from './state/effects/home.effect';
+import { homeReducer } from './state/reducers/home.reducer';
+import { TrendingEffects } from './state/effects/trending.effect';
+import { PopularEffects } from './state/effects/popular.effect';
 
 
 
@@ -28,8 +31,11 @@ import { trendingReducer } from './state/reducers/trending.reducer';
     SharedModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forFeature('trending', trendingReducer),
-    EffectsModule.forFeature([TrendingEffects])
+    StoreModule.forFeature('Home', homeReducer),
+    EffectsModule.forFeature([
+      TrendingEffects,
+      PopularEffects
+    ])
   ],
   exports: [HomeComponent,StaticSearchComponent,ContainerComponent]
 })

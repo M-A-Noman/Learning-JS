@@ -5,7 +5,7 @@
   [heading]="'Trending'"
   [defaultButton]="'Today'"
   [secondaryButton]="'This Week'"
-  [loading$]="loading$"
+  [loading$]="trendingLoading$"
   [content]="trendingData$"
 ></app-container>
 
@@ -14,15 +14,15 @@
   [heading]="'Trailer'"
   [defaultButton]="'Popular'"
   [secondaryButton]="'In Theaters'"
-  [loading$]="loading$"
+  [loading$]="trailerLoading$"
   [content]="trendingData$"
 ></app-container>
 
 <app-container
 [type]="'popular'"
   [heading]="'What\'s Popular'"
-  [defaultButton]="'Popular'"
-  [secondaryButton]="'In Theaters'"
-  [loading$]="loading$"
+  [defaultButton]="'Movie'"
+  [secondaryButton]="'TV Series'"
+  [loading$]="popularLoading$"
   [content]="trendingData$"
 ></app-container>

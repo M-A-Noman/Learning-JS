@@ -15,32 +15,24 @@ import { AuthInterceptor } from './core/interceptors/auth.inctercptor';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CoreModule } from './core/core.module';
+import { CoreRoutingModule } from './core/core.routing.module';
+import { FeatureModule } from './feature/feature.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    LayoutComponent,
-    LanguageSelectorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MovieModule,
-    HomeModule,
-    SharedModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    CoreModule,
+    FeatureModule,
   ],
-  providers: [
-    provideAnimationsAsync(),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

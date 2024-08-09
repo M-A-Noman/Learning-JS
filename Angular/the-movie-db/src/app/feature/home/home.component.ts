@@ -11,29 +11,34 @@ import { HomeFacadeService } from './home-facade.service';
 })
 export class HomeComponent implements OnInit {
   trendingData$: Observable<any>;
-  loading$: Observable<boolean>;
-  error$: Observable<any>;
+  trailerData$: Observable<any>;
+  popularData$: Observable<any>;
+
+  trendingLoading$: Observable<boolean>;
+  trailerLoading$: Observable<boolean>;
+  popularLoading$: Observable<boolean>;
+
+  trendingError$: Observable<any>;
+  trailerError$: Observable<any>;
+  popularError$: Observable<any>;
 
   constructor(private facadeService: HomeFacadeService) {}
 
   ngOnInit() {
-    this.loading$ = this.facadeService.loading$;
-    this.error$ = this.facadeService.error$;
+    this.trendingLoading$ = this.facadeService.trendingLoading$;
+    this.trendingError$ = this.facadeService.trendingError$;
     this.facadeService.loadData();
-    // this.trendingData$.subscribe(
-    //   (res)=>{
-    //     if(res)
-    //     console.log(res);
-    //   }
-    // )
-    this.loading$.subscribe((res) => {
+    
+    this.popularLoading$=this.facadeService.popularLoading$;
+    this.popularError$=this.facadeService.popularError$;
+    this.trendingLoading$.subscribe((res) => {
       if (res == false)
-        this.trendingData$ = this.facadeService.getSingleCardViewData();
-      // this.trendingData$.subscribe(
-      //   (res)=>{
-      //     console.log(res);
-      //   }
-      // )
+        this.trendingData$ = this.facadeService.getSingleCardViewData(this.facadeService.trendingData$);
     });
+    this.popularLoading$.subscribe((res)=>{
+      if(res===false){
+        this.popularData$=this.facadeService.getSingleCardViewData(this.facadeService.popularData$);
+      }
+    })
   }
 }
