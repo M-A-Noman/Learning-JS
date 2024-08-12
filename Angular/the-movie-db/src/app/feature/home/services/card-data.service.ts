@@ -16,6 +16,6 @@ export class CardDataService {
   }
   
   getPopular(type:string){
-    return this.http.get<PageCardData>(`${environment.BASE_URL}/${type}/popular/language=en-US`);
+    return this.http.get<PageCardData>(`${environment.BASE_URL}/${type}/popular?language=en-US`);
   }
 }

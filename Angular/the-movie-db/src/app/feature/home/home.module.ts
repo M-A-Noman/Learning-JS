@@ -32,10 +32,7 @@ import { PopularEffects } from './state/effects/popular.effect';
     FormsModule,
     HttpClientModule,
     StoreModule.forFeature('Home', homeReducer),
-    EffectsModule.forFeature([
-      TrendingEffects,
-      PopularEffects
-    ])
+    EffectsModule.forFeature(Effect)
   ],
   exports: [HomeComponent,StaticSearchComponent,ContainerComponent]
 })

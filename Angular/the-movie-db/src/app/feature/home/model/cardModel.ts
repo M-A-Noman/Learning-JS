@@ -31,5 +31,6 @@ export interface PageSingleCardViewModel{
     cardSubtitle:string,
     cardRatting:number,
     cardImage:string,
+    cardType:string,
 
 }

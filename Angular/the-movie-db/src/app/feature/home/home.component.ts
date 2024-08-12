@@ -25,9 +25,11 @@ export class HomeComponent implements OnInit {
   constructor(private facadeService: HomeFacadeService) {}
 
   ngOnInit() {
+    this.facadeService.loadData();
+    this.facadeService.selectTrending();
+    this.facadeService.selectPopular();
     this.trendingLoading$ = this.facadeService.trendingLoading$;
     this.trendingError$ = this.facadeService.trendingError$;
-    this.facadeService.loadData();
     
     this.popularLoading$=this.facadeService.popularLoading$;
     this.popularError$=this.facadeService.popularError$;
@@ -38,6 +40,10 @@ export class HomeComponent implements OnInit {
     this.popularLoading$.subscribe((res)=>{
       if(res===false){
         this.popularData$=this.facadeService.getSingleCardViewData(this.facadeService.popularData$);
+        // console.log('from popular')
+        // this.popularData$.subscribe((res)=>{
+        //   console.log(res)
+        // })
       }
     })
   }

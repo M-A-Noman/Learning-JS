@@ -28,29 +28,29 @@ export class HomeFacadeService {
   constructor(
     private store: Store<HomeModuleState>,
     private cardDataService: CardDataService
-  ) {
-    // TRENDING DATA
-      this.trendingData$ = this.store.pipe(
-        select(TrendingSelectors.selectTrendingData)
-      );
-      this.trendingLoading$ = this.store.pipe(
-        select(TrendingSelectors.selectTrendingLoading)
-      );
-      this.trendingError$ = this.store.pipe(
-        select(TrendingSelectors.selectTrendingError)
-      );
+  ) { }
+  selectTrending() {
+    this.trendingData$ = this.store.pipe(
+      select(TrendingSelectors.selectTrendingData)
+    );
+    this.trendingLoading$ = this.store.pipe(
+      select(TrendingSelectors.selectTrendingLoading)
+    );
+    this.trendingError$ = this.store.pipe(
+      select(TrendingSelectors.selectTrendingError)
+    );
+  }
 
-      // POPULAR DATA
-      this.popularData$=this.store.pipe(
-        select(PopularSelectors.selectPopularData)
-      );
-      this.popularLoading$=this.store.pipe(
-        select(PopularSelectors.selectPopularLoading)
-      );
-      this.popularError$=this.store.pipe(
-        select(PopularSelectors.selectPopularError)
-      );
-
+  selectPopular() {
+    this.popularData$ = this.store.pipe(
+      select(PopularSelectors.selectPopularData)
+    );
+    this.popularLoading$ = this.store.pipe(
+      select(PopularSelectors.selectPopularLoading)
+    );
+    this.popularError$ = this.store.pipe(
+      select(PopularSelectors.selectPopularError)
+    );
   }
   loadData() {
     this.cardDataService.trendingButtonSwitch.subscribe((res) => {
@@ -69,11 +69,11 @@ export class HomeFacadeService {
         } else {
           this.cardDataService.trendingButtonSwitch.next('week');
         }
-        console.log(containerType);
+        // console.log(containerType);
         break;
       }
       case 'popular': {
-        console.log(containerType)
+        // console.log(containerType)
         if (currentMode === 'Movie') {
           this.cardDataService.popularButtonSwitch.next('movie');
         } else {
@@ -84,22 +84,26 @@ export class HomeFacadeService {
     }
   }
 
-  getSingleCardViewData( data$:Observable<PageCardData>) {
+  getSingleCardViewData(data$: Observable<PageCardData>) {
     let singleCardViewData: PageSingleCardViewModel[];
     data$.subscribe((res) => {
       let results = res.results;
-      console.log(res);
+      // let tv=results.map((data)=>data.first_air_date);
+      // if(tv)console.log(tv)
+      // console.log(res);
       singleCardViewData = results.map((data) => ({
         id: data.id,
         cardTitle: data.original_title || data.name,
         cardSubtitle: data.release_date || data.first_air_date,
         cardRatting: parseFloat(data.vote_average.toFixed(1)) * 10,
+        cardType: data.media_type,
         cardImage:
           environment.IMAGE_BASE_URL +
           environment.IMAGE_SIZES.w300 +
           data.poster_path,
       }));
     });
+
     return of(singleCardViewData);
   }
 }
