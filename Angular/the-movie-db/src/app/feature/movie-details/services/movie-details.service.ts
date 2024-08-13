@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { CastDetails, MovieDetails, TVDetails } from '../model/details.model';
 import { environment } from '../../../../environments/environment';
 
@@ -16,6 +16,8 @@ export class MovieDetailsService {
   getDetails(type: string, id: number) {
     return this.http.get<MovieDetails | CastDetails | TVDetails>(
       `${environment.BASE_URL}/${type}/${id}?language=en-US`
+    ).pipe(
+      tap((data)=>{console.log('API data',data,'\ntype of data', typeof(data))})
     );
   }
 }

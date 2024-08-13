@@ -1,8 +1,9 @@
 import { CastDetails, MovieDetails, TVDetails } from "./details.model";
 
 export interface pageDetailsState{
-    loading:boolean,
     data:MovieDetails|TVDetails|CastDetails,
+    // data:any,
+    loading:boolean,
     error:any
 }
 export interface detailsModuleState{

@@ -1,12 +1,12 @@
 export interface genre {
-  id: number;
-  name: string;
+  id: number,
+  name: string,
 }
 export interface productionCompany {
-  id: number;
-  logo_path: string;
-  name: string;
-  original_country: string;
+  id: number,
+  logo_path: string,
+  name: string,
+  original_country: string,
 }
 
 export interface createdBy{
@@ -17,32 +17,15 @@ export interface createdBy{
     profile_path?:string,
 }
 export interface productionCountry {
-  iso_3166_1: string;
-  name: string;
+  iso_3166_1: string,
+  name: string,
 }
 export interface spokenLanguage {
-  english_name: string;
-  iso_639_1: string;
-  name: string;
+  english_name: string,
+  iso_639_1: string,
+  name: string,
 }
-export interface CommonDetails {
-  adult?: boolean;
-  backdrop_path?: string;
-  genres?: genre[];
-  homepage?: string;
-  id?: number;
-  original_language?: string;
-  overview?: string;
-  popularity?: number;
-  poster_path?: string;
-  production_companies?: productionCompany[];
-  production_countries?: productionCountry[];
-  spoken_languages?: spokenLanguage[];
-  status?: string;
-  tagline?: string;
-  vote_average?: number;
-  vote_count?: number;
-}
+
 export interface episode{
     id?:number,
     name?:string,
@@ -73,18 +56,37 @@ export interface season{
     season_number:number,
     vote_average:number,
 }
+export interface CommonDetails {
+  adult?: boolean,
+  backdrop_path?: string,
+  genres?: genre[],
+  homepage?: string,
+  id?: number,
+  original_country?:string[],
+  original_language?: string,
+  overview?: string,
+  popularity?: number,
+  poster_path?: string,
+  production_companies?: productionCompany[],
+  production_countries?: productionCountry[],
+  spoken_languages?: spokenLanguage[],
+  status?: string,
+  tagline?: string,
+  vote_average?: number,
+  vote_count?: number,
 
+}
 export interface MovieDetails {
-  common_details?: CommonDetails;
-  belongs_to_collection?: boolean | null;
-  budget?: number;
-  imdb_id?: string;
-  original_title?: string;
-  release_date?: string;
-  revenue?: number;
-  runtime?: number;
-  title?: string;
-  video?: boolean;
+  common_details?: CommonDetails,
+  belongs_to_collection?: boolean ,
+  budget?: number,
+  imdb_id?: string,
+  original_title?: string,
+  release_date?: string,
+  revenue?: number,
+  runtime?: number,
+  title?: string,
+  video?: boolean,
 }
 export interface TVDetails{
     common_details?:CommonDetails,
@@ -103,21 +105,20 @@ export interface TVDetails{
     seasons?:season[],
     type?:string,
 
-
 }
 export interface CastDetails {
-  adult?: boolean;
-  also_known_as?: string[];
-  biography?: string;
-  birthday?: string;
-  deathday?: string | null;
+  adult?: boolean,
+  also_known_as?: string[],
+  biography?: string,
+  birthday?: string,
+  deathday?: string | null,
   gender?: number;
-  homepage?: string | null;
-  id?: number;
-  imdb_id?: string;
-  known_for_department?: string;
-  name?: string;
-  place_of_birth?: string;
-  popularity?: number;
-  profile_path?: string;
+  homepage?: string | null,
+  id?: number,
+  imdb_id?: string,
+  known_for_department?: string,
+  name?: string,
+  place_of_birth?: string,
+  popularity?: number,
+  profile_path?: string,
 }

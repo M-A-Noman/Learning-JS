@@ -10,6 +10,6 @@ export const initialTVDetailsState:pageDetailsState={
 export const tvDetailsReducers=createReducer(
     initialTVDetailsState,
     on(TVDetailsAction.loadTVDetails,state=>({...state,loading:true})),
-    on(TVDetailsAction.loadTVDetailsSuccess,state=>({...state,loading:false})),
-    on(TVDetailsAction.loadTVDetailsFailure,state=>({...state,loading:false}))
+    on(TVDetailsAction.loadTVDetailsSuccess,(state,{data})=>({...state,data,loading:false})),
+    on(TVDetailsAction.loadTVDetailsFailure,(state,{error})=>({...state,error,loading:false}))
 );

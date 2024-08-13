@@ -73,14 +73,17 @@ export class MovieDetailsFacadeService {
     switch (type) {
       case 'movie': {
         this.store.dispatch(MovieAction.loadMovieDetails({ data: ActionData }));
+        console.log('Movie details dispatch')
         break;
       }
       case 'tv': {
         this.store.dispatch(TVAction.loadTVDetails({ data: ActionData }));
+        console.log('TV details dispatch')
         break;
       }
       case 'cast': {
         this.store.dispatch(CastAction.loadCastDetails({ data: ActionData }));
+        console.log('Cast details dispatch')
       }
     }
   }

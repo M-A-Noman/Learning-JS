@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { detailsModuleState } from "../../model/details-state.mode";
+import { detailsModuleState, pageDetailsState } from "../../model/details-state.mode";
 
 export const selectDetailsState=createFeatureSelector<detailsModuleState>('details');
 export const selectMovieDetailsState=createSelector(
@@ -9,7 +9,7 @@ export const selectMovieDetailsState=createSelector(
 
 export const selectMovieDetailsData=createSelector(
     selectMovieDetailsState,
-    (state)=>state.data
+    (state:pageDetailsState)=>state.data
 );
 
 export const selectMovieDetailsLoading=createSelector(

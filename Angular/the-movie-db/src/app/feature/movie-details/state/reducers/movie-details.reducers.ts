@@ -10,6 +10,6 @@ export const initialMovieDetailsState:pageDetailsState={
 export const movieDetailsReducers=createReducer(
     initialMovieDetailsState,
     on(MovieDetailsAction.loadMovieDetails,state=>({...state,loading:true})),
-    on(MovieDetailsAction.loadMovieDetailsSuccess,state=>({...state,loading:false})),
-    on(MovieDetailsAction.loadMovieDetailsFailure,state=>({...state,loading:false}))
+    on(MovieDetailsAction.loadMovieDetailsSuccess,(state,{data})=>({...state,data,loading:false})),
+    on(MovieDetailsAction.loadMovieDetailsFailure,(state,{error})=>({...state,error,loading:false}))
 );

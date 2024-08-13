@@ -10,6 +10,6 @@ export const initialCastDetailsState:pageDetailsState={
 export const castDetailsReducers=createReducer(
     initialCastDetailsState,
     on(CastDetailsAction.loadCastDetails,state=>({...state,loading:true})),
-    on(CastDetailsAction.loadCastDetailsSuccess,state=>({...state,loading:false})),
-    on(CastDetailsAction.loadCastDetailsFailure,state=>({...state,loading:false}))
+    on(CastDetailsAction.loadCastDetailsSuccess,(state,{data})=>({...state,data,loading:false})),
+    on(CastDetailsAction.loadCastDetailsFailure,(state,{error})=>({...state,error,loading:false}))
 );

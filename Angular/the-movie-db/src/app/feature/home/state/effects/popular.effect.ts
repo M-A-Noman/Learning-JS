@@ -29,7 +29,7 @@
 
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as PopularActions from '../actions/popular.action';
 import { CardDataService } from '../../services/card-data.service';
@@ -43,6 +43,9 @@ export class PopularEffects {
       ofType(PopularActions.loadPopular),
       mergeMap((action) =>
         this.cardDataService.getPopular(action.data).pipe(
+          tap(
+            ()=>{console.log('call from popular effect')}
+          ),
           map((data) => PopularActions.loadPopularSuccess({ data })),
           catchError((error) => of(PopularActions.loadPopularFailure({ error })))
         )

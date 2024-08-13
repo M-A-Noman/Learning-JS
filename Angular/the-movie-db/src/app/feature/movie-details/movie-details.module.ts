@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { detailsReducer } from './state/reducers/index.reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { detailsEffect } from './state/effects/index.effects';
 
 
 
@@ -19,7 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
     SharedModule,
     HttpClientModule,
     StoreModule.forFeature('details',detailsReducer),
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature(detailsEffect),
     MovieDetailsRoutingModule
   ]
 })
