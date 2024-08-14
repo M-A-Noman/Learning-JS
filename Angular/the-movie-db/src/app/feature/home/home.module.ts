@@ -4,9 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home.routing.module';
 import { SharedModule } from '../../shared/shared.module';
-import { StaticSearchComponent } from './component/static-search/static-search.component';
+import { StaticSearchComponent } from './components/static-search/static-search.component';
 import { HomeComponent } from './home.component';
-import { ContainerComponent } from './component/container/container.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -15,6 +14,7 @@ import { Effect } from './state/effects/home.effect';
 import { homeReducer } from './state/reducers/home.reducer';
 import { TrendingEffects } from './state/effects/trending.effect';
 import { PopularEffects } from './state/effects/popular.effect';
+import { HomePageContainerComponent } from './components/home-page-container/home-page-container.component';
 
 
 
@@ -22,7 +22,7 @@ import { PopularEffects } from './state/effects/popular.effect';
   declarations: [
     StaticSearchComponent,
     HomeComponent,
-    ContainerComponent,
+    HomePageContainerComponent,
    
   ],
   imports: [
@@ -34,6 +34,6 @@ import { PopularEffects } from './state/effects/popular.effect';
     StoreModule.forFeature('Home', homeReducer),
     EffectsModule.forFeature(Effect)
   ],
-  exports: [HomeComponent,StaticSearchComponent,ContainerComponent]
+  exports: [HomeComponent,StaticSearchComponent]
 })
 export class HomeModule { }

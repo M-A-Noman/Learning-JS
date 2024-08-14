@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path:':type/details/:id',
-    loadChildren: ()=> import('./feature/movie-details/movie-details.module').then((m)=>m.MovieDetailsModule)
+    loadChildren: ()=> import('./feature/details/details.module').then((m)=>m.DetailsModule)
   }
 ];
 

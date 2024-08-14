@@ -26,7 +26,6 @@
 //   );
 // }
 
-
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
@@ -36,18 +35,25 @@ import { CardDataService } from '../../services/card-data.service';
 
 @Injectable()
 export class PopularEffects {
-  constructor(private actions$: Actions, private cardDataService: CardDataService) {}
+  constructor(
+    private actions$: Actions,
+    private cardDataService: CardDataService
+  ) {}
 
   loadPopular$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PopularActions.loadPopular),
       mergeMap((action) =>
         this.cardDataService.getPopular(action.data).pipe(
-          tap(
-            ()=>{console.log('call from popular effect')}
-          ),
-          map((data) => PopularActions.loadPopularSuccess({ data })),
-          catchError((error) => of(PopularActions.loadPopularFailure({ error })))
+          map((data) => {
+            data.results.forEach((res, index) => {
+              data.results[index] = { ...res, media_type: action.data };
+            });
+            return PopularActions.loadPopularSuccess({ data });
+          }),
+          catchError((error) =>
+            of(PopularActions.loadPopularFailure({ error }))
+          )
         )
       )
     )

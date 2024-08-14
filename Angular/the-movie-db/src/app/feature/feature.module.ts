@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FeatureRoutingModule } from './feature.routing.module';
 import { HomeModule } from './home/home.module';
 import { MovieModule } from './movie/movie.module';
-import { MovieDetailsModule } from './movie-details/movie-details.module';
+import { DetailsModule } from './details/details.module';
 
 @NgModule({
   declarations: [],
@@ -12,7 +12,7 @@ import { MovieDetailsModule } from './movie-details/movie-details.module';
     FeatureRoutingModule,
     HomeModule,
     MovieModule,
-    MovieDetailsModule,
+    DetailsModule,
   ],
   exports: [HomeModule, MovieModule],
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardDataService } from './services/card-data.service';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HomeFacadeService } from './home-facade.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     });
     this.popularLoading$.subscribe((res)=>{
       if(res===false){
-        this.popularData$=this.facadeService.getSingleCardViewData(this.facadeService.popularData$);
+        this.popularData$=this.facadeService.getSingleCardViewData(this.facadeService.popularData$)
         // console.log('from popular')
         // this.popularData$.subscribe((res)=>{
         //   console.log(res)

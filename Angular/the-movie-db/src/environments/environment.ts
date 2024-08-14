@@ -11,12 +11,12 @@ export const environment = {
     original: 'original',
   },
   POSTER_SIZES:{
-    92:"w92",
-    154:"w154",
-    185:"w185",
-    342:"w342",
-    500:"w500",
-    780:"w780",
+    w92:"w92",
+    w154:"w154",
+    w185:"w185",
+    w342:"w342",
+    w500:"w500",
+    w780:"w780",
     original:"original"
   }
 };
