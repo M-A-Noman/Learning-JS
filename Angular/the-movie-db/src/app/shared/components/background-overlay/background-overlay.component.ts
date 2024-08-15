@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BackgroundOverlayComponent implements OnInit {
   images = [
-    { src: '', alt: 'Background Image', overlayColor: '' },
+    { src: '', alt: 'Background Image', overlayColor: 'rgba(0, 0, 0, .5)' },
     // Add more images as needed
   ];
   @Input('src') imageSource:string='';
@@ -50,6 +50,8 @@ export class BackgroundOverlayComponent implements OnInit {
   }
 
   private getOverlayColor([r, g, b]: [number, number, number]): string {
-    return `rgba(${255 - r}, ${255 - g}, ${255 - b}, 0.5)`;
+    return `rgba(${255 - r}, ${255 - g}, ${255 - b}, .7)`;
+    // return `rgba(${255 - r}, ${255 - g}, ${255 - b}, .7)`;
+    // return `rgba(0, 0, 0, .5)`;
   }
 }

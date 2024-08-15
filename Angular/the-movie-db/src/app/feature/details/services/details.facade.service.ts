@@ -1,6 +1,6 @@
 import { select, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { DetailsService } from './details.service';
 import { CastDetails, MovieDetails, TVDetails } from '../models/details.model';
@@ -13,6 +13,7 @@ import * as TVSelector from '../state/selectors/tv-details.selectors';
 import * as MovieAction from '../state/actions/movie-details.actions';
 import * as CastAction from '../state/actions/cast-details.actions';
 import * as TVAction from '../state/actions/tv-details.actions';
+import { MovieDescriptionModel } from '../models/movie-tv-details.model';
 
 @Injectable({
   providedIn: 'root',
@@ -67,23 +68,21 @@ export class DetailsFacadeService {
       select(TVSelector.selectTVDetailsError)
     );
   }
-  
+
   loadData(type: string, id: number) {
     let ActionData = { type: type, id: id };
     switch (type) {
       case 'movie': {
         this.store.dispatch(MovieAction.loadMovieDetails({ data: ActionData }));
-        console.log('Movie details dispatch')
         break;
       }
       case 'tv': {
         this.store.dispatch(TVAction.loadTVDetails({ data: ActionData }));
-        console.log('TV details dispatch')
         break;
       }
       case 'cast': {
         this.store.dispatch(CastAction.loadCastDetails({ data: ActionData }));
-        console.log('Cast details dispatch')
+        break;
       }
     }
   }
@@ -95,15 +94,14 @@ export class DetailsFacadeService {
     return this.detailsService.getDetails(type, id);
   }
 
-  getDescription(type:string,data$:Observable<MovieDetails>){
-    let description;
-    switch (type){
-      case 'movie':{
-        description= this.detailsService.getShortDescription(data$)
+  getDescription(type: string) {
+    let description:MovieDescriptionModel;
+    switch (type) {
+      case 'movie': {
+        description = (this.detailsService.getShortDescription(this.movieDetailsData$));
       }
     }
-    // console.log('from facade',description)
+    console.log('from facade',description)
     return description;
   }
 }
-

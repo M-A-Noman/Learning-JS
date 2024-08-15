@@ -9,6 +9,7 @@ body {
   .image-container {
     display: flex;
     flex-wrap: wrap;
+    
     gap: 10px;
   }
   
@@ -18,8 +19,8 @@ body {
   
   .image {
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: 100vw;
+    height: 60vh;
   }
   
   .overlay {
@@ -29,6 +30,10 @@ body {
     right: 0;
     bottom: 0;
     transition: opacity 0.3s;
-    opacity: 1; /* Adjust this as needed */
+    opacity: .8; /* Adjust this as needed */
+  }
+  .details-content{
+    // display: flex;
+    position: absolute;
   }
   

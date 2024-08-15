@@ -19,7 +19,7 @@
 </div> -->
 
 <div class="header-bg">
-  <mat-grid-list cols="6" rowHeight="10:2">
+  <mat-grid-list cols="6" rowHeight="70px">
     <mat-grid-tile>
       <div class="logo-container">
         <div class="logo">
@@ -40,9 +40,9 @@
               class="nav-link"
               #menuTrigger="matMenuTrigger"
               [matMenuTriggerFor]="triggerKey"
-              (mouseenter)="mouseEnter(menuTrigger,i)"
-              (mouseleave)="mouseLeave(menuTrigger,i)"
-            >
+              >
+              <!-- (mouseenter)="mouseEnter(menuTrigger,i)"
+              (mouseleave)="mouseLeave(menuTrigger,i)" -->
               <span class="button-color">{{ button.title }}</span>
             </button>
 

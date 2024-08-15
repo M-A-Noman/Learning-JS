@@ -14,9 +14,6 @@ export class castDetailsEffects {
       ofType(CastAction.loadCastDetails),
       mergeMap((action) =>
         this.detailsFacade.getDetails(action.data.type, action.data.id).pipe(
-          tap(() => {
-            console.log('call from cast effect');
-          }),
           map((data) => CastAction.loadCastDetailsSuccess({ data })),
           catchError((error) =>
             of(CastAction.loadCastDetailsFailure({ error }))

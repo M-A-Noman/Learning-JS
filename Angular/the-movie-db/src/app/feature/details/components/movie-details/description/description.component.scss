@@ -1,0 +1,57 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .image-container {
+        // margin-top: 5vh;
+        margin-left: 15vw;
+        display: flex;
+
+        img {
+            height: 50vh;
+            width: 15vw;
+            border-radius: 10px;
+        }
+    }
+
+
+    .certificate-button {
+        color: rgb(211, 206, 206);
+        background: transparent;
+        border: 1px solid rgb(182, 177, 177);
+        padding: 2px;
+
+    }
+
+    .dot {
+
+        background-color: rgb(243, 235, 235);
+        display: inline-flex;
+        position: relative;
+        margin-bottom: 4px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+    }
+
+
+
+    .text-color {
+        color: white;
+    }
+
+    background-color: rgba(0, 0, 0, .5) !important;
+    width: 100vw;
+    height: 60vh;
+}
+
+mat-card {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: white;
+   
+    width: 100vw;
+    height: 60vh;
+}

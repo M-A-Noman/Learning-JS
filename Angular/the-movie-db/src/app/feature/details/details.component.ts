@@ -13,12 +13,5 @@ export class DetailsComponent implements OnInit{
   constructor(private detailsFacade:DetailsFacadeService,private store:Store){}
   ngOnInit(): void {
       this.detailsFacade.selectMovieDetails();
-      // this.detailsFacade.movieDetailsData$.subscribe((res)=>{console.log('from',res)});
-      // this.store.pipe(select(MovieSelector.selectMovieDetailsData)).subscribe((res)=>{
-      //   // console.log('from details',res)
-      //   this.movie$=res;
-      // })
-      // this.movie$=this.store.select(MovieSelector.selectMovieDetailsData);
-      // console.log("My Movie ==> ",this.movie$)
   }
 }

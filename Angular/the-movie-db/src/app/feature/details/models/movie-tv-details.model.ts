@@ -9,4 +9,5 @@ export interface MovieDescriptionModel {
   tagline: string;
   overview: string;
   background_image: string;
+  poster_image:string
 }

@@ -1,0 +1,39 @@
+<!-- <div class="extra-overlay">
+<app-image-overlay [src]="detailsData.background_image" >
+  <div class="container">
+    <div class="image-container">
+      <img [src]="detailsData.poster_image" alt="" style="opacity: 1" />
+    </div>
+    <div class="content-container">
+      <mat-card  >
+        <mat-card-header>
+          <mat-card-title>{{ detailsData.title }}</mat-card-title>
+          <mat-card-subtitle class="text-color"> <span class="certificate-button">PG-13</span> {{detailsData.release_date}}(US) <span class="dot"></span> {{getGenresName()}} <span class="dot"></span> {{detailsData.runtime}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+</app-image-overlay>
+</div> -->
+<div class="extra-overlay">
+  <app-image-overlay [src]="detailsData.background_image">
+      <mat-card>
+        <div class="container">
+          <div class="image-container">
+            <img [src]="detailsData.poster_image" alt="" />
+          </div>
+          <div class="content-container">
+            <mat-card-header>
+              <mat-card-title>{{ detailsData.title }}</mat-card-title>
+              <mat-card-subtitle class="text-color">
+                <span class="certificate-button">PG-13</span>
+                {{ detailsData.release_date }}(US) <span class="dot"></span>
+                {{ getGenresName() }} <span class="dot"></span>
+                {{ detailsData.runtime }}</mat-card-subtitle
+              >
+            </mat-card-header>
+          </div>
+        </div>
+      </mat-card>
+  </app-image-overlay>
+</div>

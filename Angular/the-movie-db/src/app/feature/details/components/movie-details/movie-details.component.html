@@ -1,6 +1,7 @@
 <app-description
-[data]="detailsData$"
+*ngIf="!(detailsLoading$|async)"
+[data]="detailsData"
 [error]="detailsError$"
-[loading]="detailsError$"
+[loading]="detailsLoading$"
 [type]="detailsType"
 ></app-description>

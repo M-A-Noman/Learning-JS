@@ -17,16 +17,15 @@ export class DetailsService {
   getDetails(type: string, id: number) {
     return this.http.get<MovieDetails | CastDetails | TVDetails>(
       `${environment.BASE_URL}/${type}/${id}?language=en-US`
-    ).pipe(
-      tap((data)=>{console.log('API data',data,'\ntype of data', typeof(data))})
-    );
+    )
   }
   convertMinuteToHour(time:number):string{
     let hour:number=0;
     let minute:number=0;
-    hour=time/60;
+    hour=parseInt((time/60).toString());
     minute=time%60;
-    let stringTime:string=hour>0?hour.toString()+'h':''+minute.toString()+'m';
+    // console.log('hour=> ',hour.toString(),'minute => ',minute.toString())
+    let stringTime:string=hour>0?hour.toString()+'h '+minute.toString()+'m':''+minute.toString()+'m';
     return stringTime;
 
   }
@@ -34,12 +33,13 @@ export class DetailsService {
     let shortDescription:MovieDescriptionModel;
     // console.log(data$);
     data$.subscribe((res)=>{
-      // console.log('from details service',res)
+      console.log('from details service',res)
       // let commonDetails:CommonDetails=res.common_details
       // console.log('common details',commonDetails);
       shortDescription=
       {
-        background_image:environment.IMAGE_BASE_URL+environment.POSTER_SIZES.w780+res.poster_path,
+        background_image:environment.IMAGE_BASE_URL+environment.IMAGE_SIZES.w1280+res.backdrop_path,
+        poster_image:environment.IMAGE_BASE_URL+environment.IMAGE_SIZES.w1280+res.poster_path,
         title:res.title,
         release_date:res.release_date,
         genres:res.genres,
@@ -50,7 +50,7 @@ export class DetailsService {
       }
 
     })
-    console.log('from the service', shortDescription)
+    // console.log(res);
     return shortDescription;
   }
 }
