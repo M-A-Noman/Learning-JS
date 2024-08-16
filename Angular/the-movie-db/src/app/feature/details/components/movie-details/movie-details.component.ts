@@ -21,13 +21,27 @@ export class MovieDetailsComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.detailsType = this.activeRoute.snapshot.params['type'];
-    this.facade.selectMovieDetails();
-    this.detailsLoading$ = this.facade.movieDetailsLoading$;
-    this.detailsError$ = this.facade.movieDetailsError$;
-    this.facade.movieDetailsLoading$.subscribe((res) => {
-      if (res === false) {
-        this.detailsData = this.facade.getDescription(this.detailsType);
-      }
-    });
+    console.log(this.detailsType);
+    if (this.detailsType == 'movie') {
+      this.facade.selectMovieDetails();
+      this.detailsLoading$ = this.facade.movieDetailsLoading$;
+      this.detailsError$ = this.facade.movieDetailsError$;
+    } else {
+      // console.log(object)
+      this.facade.selectTVDetails();
+      this.detailsLoading$ = this.facade.tvDetailsLoading$;
+      this.detailsError$ = this.facade.tvDetailsError$;
+    }
+    // this.detailsLoading$ = this.facade.movieDetailsLoading$;
+    // this.detailsError$ = this.facade.movieDetailsError$;
+    if (this.detailsLoading$ != null) {
+      console.log('from details')
+      this.detailsLoading$.subscribe((res) => {
+        if (res === false) {
+          this.detailsData = this.facade.getDescription(this.detailsType);
+          console.log('details data', this.detailsData);
+        }
+      });
+    }
   }
 }

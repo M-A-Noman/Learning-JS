@@ -14,6 +14,7 @@ export class movieDetailsEffects {
       ofType(MovieAction.loadMovieDetails),
       mergeMap((action) =>
         this.detailsFacade.getDetails(action.data.type, action.data.id).pipe(
+          tap(()=>console.log('movie effect called')),
           map((data) => MovieAction.loadMovieDetailsSuccess({ data })),
           catchError((error) =>
             of(MovieAction.loadMovieDetailsFailure({ error }))

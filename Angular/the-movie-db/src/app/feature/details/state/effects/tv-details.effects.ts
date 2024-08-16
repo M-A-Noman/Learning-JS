@@ -9,6 +9,9 @@ export class tvDetailsEffects{
     loadTVDetails$=createEffect(()=>this.Action$.pipe(
         ofType(TVAction.loadTVDetails),
         mergeMap((action)=>this.detailsFacade.getDetails(action.data.type,action.data.id).pipe(
+            tap((res)=>{
+                console.log('tv effect called')
+            }),
             map((data)=>TVAction.loadTVDetailsSuccess({data})),
             catchError((error)=>of(TVAction.loadTVDetailsFailure({error})))
         ))

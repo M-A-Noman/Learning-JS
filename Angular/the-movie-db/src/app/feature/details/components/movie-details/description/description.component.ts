@@ -4,6 +4,8 @@ import { DetailsFacadeService } from '../../../services/details.facade.service';
 import { Observable } from 'rxjs';
 import { MovieDetails } from '../../../models/details.model';
 import { MovieDescriptionModel } from '../../../models/movie-tv-details.model';
+import { faFaceGrinBeamSweat, faFaceGrinHearts, faFaceSmile } from '@fortawesome/free-solid-svg-icons';
+import { faList,faHeart,faBookmark,faPlay   } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-description',
@@ -16,6 +18,23 @@ export class DescriptionComponent implements OnInit{
   @Input('loading')detailsLoading$:Observable<boolean>;
   @Input('type')detailsType:string;
   descriptionData:MovieDescriptionModel;
+  emoji= {
+    faceSmile:faFaceSmile,
+    grinHeart:faFaceGrinHearts,
+    faceGrinBeamSweat : faFaceGrinBeamSweat,
+    list:faList,
+    heart:faHeart,
+    bookMark:faBookmark,
+    play:faPlay,
+
+  }
+
+  creators=[
+    {name:'Person1',role:'Director'},
+    {name:'Person2', role:'ScreenPlay'},
+    {name:'Persone3', role:'Story'},
+
+  ]
   constructor(private facade:DetailsFacadeService){}
 
   ngOnInit(): void {
@@ -29,6 +48,10 @@ export class DescriptionComponent implements OnInit{
       i<genres.length-1?genreView+=',':'';
     }
     return genreView;
+  }
+  isCommaBeThere(index:number){
+    if(index<this.detailsData.genres.length-1)return ','
+    return ''
   }
   
 }

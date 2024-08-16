@@ -1,8 +1,8 @@
 .progress-container {
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  // width: 40px;
+  // height: 40px;
   border-radius: 50%;
 
   mat-progress-spinner {
@@ -26,43 +26,4 @@
     color: #f4ecec;
   }
 }
-
-
-// $spinner-size: 100px;
-// $background-color: #e0e0e0; // Color for the empty portion
-// $progress-color: #0a0a0b; // Color for the filled portion
-
-// .progress-container {
-//   position: relative;
-//   display: inline-block;
-//   width: $spinner-size;
-//   height: $spinner-size;
-
-//   mat-progress-spinner {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//   }
-
-//   .background-spinner .mat-progress-spinner-circle {
-//     stroke: $background-color;
-//   }
-
-//   .foreground-spinner .mat-progress-spinner-circle {
-//     stroke: $progress-color;
-//   }
-
-//   .progress-text {
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     font-size: 1.2em;
-//     font-weight: bold;
-//     color: #333;
-//   }
-// }
-
 

@@ -7,6 +7,8 @@ import { BackgroundOverlayComponent } from './components/background-overlay/back
 import { ContainerComponent } from './components/container/container.component';
 import { SwitchableButtonComponent } from './components/switchable-button/switchable-button.component';
 import { MultiCardComponent } from './components/multi-card/multi-card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -16,8 +18,10 @@ import { MultiCardComponent } from './components/multi-card/multi-card.component
     ContainerComponent,
     SwitchableButtonComponent,
     MultiCardComponent,
+   
   ],
-  imports: [CommonModule, AngularMaterialModule],
+  imports: [CommonModule, AngularMaterialModule, FontAwesomeModule,
+],
   exports: [
     CardComponent,
     RattingComponent,
@@ -25,7 +29,9 @@ import { MultiCardComponent } from './components/multi-card/multi-card.component
     ContainerComponent,
     SwitchableButtonComponent,
     MultiCardComponent,
-    AngularMaterialModule,
+    AngularMaterialModule, 
+    FontAwesomeModule,
+
   ],
 })
 export class SharedModule {}

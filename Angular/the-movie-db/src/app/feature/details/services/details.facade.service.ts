@@ -95,10 +95,16 @@ export class DetailsFacadeService {
   }
 
   getDescription(type: string) {
-    let description:MovieDescriptionModel;
+    let description: MovieDescriptionModel;
     switch (type) {
       case 'movie': {
         description = (this.detailsService.getShortDescription(this.movieDetailsData$));
+        break;
+      }
+      case 'tv':{
+        
+        description = (this.detailsService.getShortDescription(this.tvDetailsData$));
+        break;
       }
     }
     console.log('from facade',description)
