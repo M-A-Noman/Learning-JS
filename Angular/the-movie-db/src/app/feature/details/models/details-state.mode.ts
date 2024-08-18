@@ -6,8 +6,14 @@ export interface pageDetailsState{
     loading:boolean,
     error:any
 }
+export interface recommendationState{
+    data: MovieDetails[] | TVDetails[],
+    loading: boolean,
+    error:any    
+}
 export interface detailsModuleState{
     castDetails:pageDetailsState,
     movieDetails:pageDetailsState,
-    tvDetails:pageDetailsState
+    tvDetails: pageDetailsState,
+    recommendation:recommendationState,
 }

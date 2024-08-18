@@ -9,11 +9,13 @@ import { detailsModuleState } from '../models/details-state.mode';
 import * as MovieSelector from '../state/selectors/movie-details.selectors';
 import * as CastSelector from '../state/selectors/cast-details.selectors';
 import * as TVSelector from '../state/selectors/tv-details.selectors';
+import * as RecommendationSelector from '../state/selectors/recommendation.selector';
 
 import * as MovieAction from '../state/actions/movie-details.actions';
 import * as CastAction from '../state/actions/cast-details.actions';
 import * as TVAction from '../state/actions/tv-details.actions';
-import { MovieDescriptionModel } from '../models/movie-tv-details.model';
+import * as RecommendationAction from '../state/actions/recommendation.action'
+import { detailsPropsType, MovieDescriptionModel } from '../models/movie-tv-details.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,19 +24,23 @@ export class DetailsFacadeService {
   movieDetailsData$: Observable<MovieDetails>;
   castDetailsData$: Observable<CastDetails>;
   tvDetailsData$: Observable<TVDetails>;
+  recommendationData$: Observable<any>;
 
   movieDetailsLoading$: Observable<boolean>;
   castDetailsLoading$: Observable<boolean>;
   tvDetailsLoading$: Observable<boolean>;
+  recommendationLoading$: Observable<boolean>;
 
   movieDetailsError$: Observable<any>;
   castDetailsError$: Observable<any>;
   tvDetailsError$: Observable<any>;
+  recommendationError$: Observable<any>;
+
 
   constructor(
     private detailsService: DetailsService,
     private store: Store<detailsModuleState>
-  ) {}
+  ) { }
   selectMovieDetails() {
     this.movieDetailsLoading$ = this.store.pipe(
       select(MovieSelector.selectMovieDetailsLoading)
@@ -68,25 +74,42 @@ export class DetailsFacadeService {
       select(TVSelector.selectTVDetailsError)
     );
   }
+  selectRecommendation() {
+    this.recommendationLoading$ = this.store.pipe(
+      select(RecommendationSelector.selectRecommendationStateLoading)
+    );
+    this.recommendationData$ = this.store.pipe(
+      select(RecommendationSelector.selectRecommendationStateData)
+    );
+    this.recommendationError$ = this.store.pipe(
+      select(RecommendationSelector.selectRecommendationStateError)
+    );
+  }
+  
 
-  loadData(type: string, id: number) {
-    let ActionData = { type: type, id: id };
-    switch (type) {
-      case 'movie': {
-        this.store.dispatch(MovieAction.loadMovieDetails({ data: ActionData }));
-        break;
-      }
-      case 'tv': {
-        this.store.dispatch(TVAction.loadTVDetails({ data: ActionData }));
-        break;
-      }
-      case 'cast': {
-        this.store.dispatch(CastAction.loadCastDetails({ data: ActionData }));
-        break;
+  loadData(type: string, id: number, recommendation: boolean = false) {
+    let ActionData: detailsPropsType = { type: type, id: id };
+    if (recommendation) {
+      this.store.dispatch(RecommendationAction.loadRecommendation({ data: ActionData }));
+    }
+    {
+      switch (type) {
+        case 'movie': {
+          this.store.dispatch(MovieAction.loadMovieDetails({ data: ActionData }));
+          break;
+        }
+        case 'tv': {
+          this.store.dispatch(TVAction.loadTVDetails({ data: ActionData }));
+          break;
+        }
+        case 'cast': {
+          this.store.dispatch(CastAction.loadCastDetails({ data: ActionData }));
+          break;
+        }
       }
     }
   }
-
+  
   getDetails(
     type: string,
     id: number
@@ -94,6 +117,9 @@ export class DetailsFacadeService {
     return this.detailsService.getDetails(type, id);
   }
 
+  getRecommendation(type: string, id: number): Observable<MovieDetails[]|TVDetails[]> {
+    return this.detailsService.getRecommendation(type, id);
+  }
   getDescription(type: string) {
     let description: MovieDescriptionModel;
     switch (type) {
@@ -110,4 +136,10 @@ export class DetailsFacadeService {
     console.log('from facade',description)
     return description;
   }
+  getRecommendationViewData() {
+    this.recommendationData$.subscribe((res) => {
+      this.detailsService.getRecommendationViewData(res.result)
+    })
+  }
+  
 }

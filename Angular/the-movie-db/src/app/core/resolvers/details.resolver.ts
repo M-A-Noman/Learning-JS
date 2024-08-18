@@ -8,7 +8,7 @@ export const DetailsResolver: ResolveFn<any>=(route:ActivatedRouteSnapshot,state
     let id:number=parseInt(route.paramMap.get('id'));
     // console.log('type => ',type,'id => ',id);
     const detailsFacade=inject(DetailsFacadeService);
-    detailsFacade.loadData(type,id);        
+    detailsFacade.loadData(type,id,true);        
     // detailsFacade.selectMovieDetails();
     // detailsFacade.movieDetailsData$.subscribe((res)=>console.log('from resolver',res));
 

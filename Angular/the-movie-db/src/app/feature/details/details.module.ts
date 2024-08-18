@@ -12,7 +12,7 @@ import { CastDetailsComponent } from './components/cast-details/cast-details.com
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { SeasonDetailsComponent } from './components/season-details/season-details.component';
 import { DescriptionComponent } from './components/movie-details/description/description.component';
-import { RecommandationComponent } from './components/movie-details/recommandation/recommandation.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 
 
@@ -23,7 +23,7 @@ import { RecommandationComponent } from './components/movie-details/recommandati
     MovieDetailsComponent,
     SeasonDetailsComponent,
     DescriptionComponent,
-    RecommandationComponent
+    RecommendationComponent
   ],
   imports: [
     CommonModule,

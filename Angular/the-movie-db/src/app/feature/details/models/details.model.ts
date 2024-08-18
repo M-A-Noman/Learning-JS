@@ -129,7 +129,6 @@ export interface TVDetails {
   tagline?: string;
   vote_average?: number;
   vote_count?: number;
-  
   created_by?: createdBy[];
   episode_run_time?: number[];
   first_air_date?: string;

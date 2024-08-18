@@ -23,6 +23,11 @@ export class DetailsService {
       `${environment.BASE_URL}/${type}/${id}?language=en-US`
     );
   }
+  getRecommendation(type: string, id: number) {
+    return this.http.get<MovieDetails[] | TVDetails[]>(
+      `${environment.BASE_URL}/${type}/${id}/recommendations?language=en-US&page=1`
+    );
+  }
   convertMinuteToHour(time: number): string {
     let hour: number = 0;
     let minute: number = 0;
@@ -53,6 +58,7 @@ export class DetailsService {
             environment.IMAGE_BASE_URL +
             environment.IMAGE_SIZES.w1280 +
             res.poster_path,
+          id:res.id,
           title:  res.original_name||res.title,
           release_date:res.first_air_date || res.release_date,
           genres: res.genres,
@@ -66,5 +72,8 @@ export class DetailsService {
     });
    
     return (shortDescription);
+  }
+  getRecommendationViewData(data:MovieDetails[]|TVDetails[]) {
+    console.log('recommendation data from details service', data);
   }
 }
