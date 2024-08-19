@@ -1,1 +1,9 @@
-<p>recommendation works!</p>
+<app-container
+[heading]="containerName"
+>
+<app-multi-card [content]="recommendationData$"
+[loading$]="recommendationLoading$"
+containerContent
+>
+</app-multi-card>
+</app-container>

@@ -16,6 +16,8 @@ import * as CastAction from '../state/actions/cast-details.actions';
 import * as TVAction from '../state/actions/tv-details.actions';
 import * as RecommendationAction from '../state/actions/recommendation.action'
 import { detailsPropsType, MovieDescriptionModel } from '../models/movie-tv-details.model';
+import { PageSingleCardModel, PageSingleCardViewModel } from '../../home/model/cardModel';
+import { SharedFacadeService } from '../../../shared/services/shared.facade.service';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +41,8 @@ export class DetailsFacadeService {
 
   constructor(
     private detailsService: DetailsService,
-    private store: Store<detailsModuleState>
+    private store: Store<detailsModuleState>,
+    private sharedFacadeService:SharedFacadeService,
   ) { }
   selectMovieDetails() {
     this.movieDetailsLoading$ = this.store.pipe(
@@ -133,13 +136,13 @@ export class DetailsFacadeService {
         break;
       }
     }
-    console.log('from facade',description)
+    // console.log('from facade',description)
     return description;
   }
-  getRecommendationViewData() {
-    this.recommendationData$.subscribe((res) => {
-      this.detailsService.getRecommendationViewData(res.result)
-    })
+  getRecommendationViewData(data:PageSingleCardModel[]) {
+    let recommendationViewData:PageSingleCardViewModel[];
+    recommendationViewData=this.sharedFacadeService.getSinglePageCardViewData(data);
+    return recommendationViewData;
   }
   
 }

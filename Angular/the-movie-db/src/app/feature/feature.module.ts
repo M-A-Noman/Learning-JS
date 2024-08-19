@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeatureRoutingModule } from './feature.routing.module';
 import { HomeModule } from './home/home.module';
-import { MovieModule } from './movie/movie.module';
+import { ListModule } from './List/list.module';
 import { DetailsModule } from './details/details.module';
 
 @NgModule({
@@ -11,9 +11,9 @@ import { DetailsModule } from './details/details.module';
     CommonModule,
     FeatureRoutingModule,
     HomeModule,
-    MovieModule,
+    ListModule,
     DetailsModule,
   ],
-  exports: [HomeModule, MovieModule],
+  exports: [HomeModule, ListModule],
 })
 export class FeatureModule {}

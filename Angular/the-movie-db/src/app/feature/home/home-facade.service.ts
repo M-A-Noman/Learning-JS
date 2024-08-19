@@ -9,6 +9,7 @@ import { PageCardData, PageSingleCardViewModel } from './model/cardModel';
 import { environment } from '../../../environments/environment';
 import { CardDataService } from './services/card-data.service';
 import { HomeModuleState } from './state/reducers/home.reducer';
+import { SharedFacadeService } from '../../shared/services/shared.facade.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,7 +28,8 @@ export class HomeFacadeService {
 
   constructor(
     private store: Store<HomeModuleState>,
-    private cardDataService: CardDataService
+    private cardDataService: CardDataService,
+    private sharedFacadeService:SharedFacadeService,
   ) { }
   selectTrending() {
     this.trendingData$ = this.store.pipe(
@@ -61,29 +63,6 @@ export class HomeFacadeService {
     });
   }
 
-  switchChange(containerType: string, currentMode: string) {
-    switch (containerType) {
-      case 'trending': {
-        if (currentMode === 'Today') {
-          this.cardDataService.trendingButtonSwitch.next('day');
-        } else {
-          this.cardDataService.trendingButtonSwitch.next('week');
-        }
-        // console.log(containerType);
-        break;
-      }
-      case 'popular': {
-        // console.log(containerType)
-        if (currentMode === 'Movie') {
-          this.cardDataService.popularButtonSwitch.next('movie');
-        } else {
-          this.cardDataService.popularButtonSwitch.next('tv');
-        }
-        break;
-      }
-    }
-  }
-
   getSingleCardViewData(data$: Observable<PageCardData>) {
     let singleCardViewData: PageSingleCardViewModel[];
     data$.subscribe((res) => {
@@ -91,17 +70,7 @@ export class HomeFacadeService {
       // let tv=results.map((data)=>data.first_air_date);
       // if(tv)console.log(tv)
       // console.log(res);
-      singleCardViewData = results.map((data) => ({
-        id: data.id,
-        cardTitle: data.original_title || data.name,
-        cardSubtitle: data.release_date || data.first_air_date,
-        cardRatting: parseFloat(data.vote_average.toFixed(1)) * 10,
-        cardType: data.media_type,
-        cardImage:
-          environment.IMAGE_BASE_URL +
-          environment.IMAGE_SIZES.w300 +
-          data.poster_path,
-      }));
+      singleCardViewData = this.sharedFacadeService.getSinglePageCardViewData(results);
     });
 
     return of(singleCardViewData);

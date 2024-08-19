@@ -47,8 +47,7 @@ export class DetailsService {
       // console.log('from details service', res);
       // let commonDetails:CommonDetails=res.common_details
       // console.log('common details',commonDetails);
-      if (res != null) 
-        {
+      if (res != null) {
         shortDescription = {
           background_image:
             environment.IMAGE_BASE_URL +
@@ -58,9 +57,9 @@ export class DetailsService {
             environment.IMAGE_BASE_URL +
             environment.IMAGE_SIZES.w1280 +
             res.poster_path,
-          id:res.id,
-          title:  res.original_name||res.title,
-          release_date:res.first_air_date || res.release_date,
+          id: res.id,
+          title: res.original_name || res.title,
+          release_date: res.first_air_date || res.release_date,
           genres: res.genres,
           runtime: this.convertMinuteToHour(res.runtime),
           ratting: parseFloat(res.vote_average.toFixed(1)) * 10,
@@ -70,10 +69,8 @@ export class DetailsService {
         // console.log('description',shortDescription);
       }
     });
-   
-    return (shortDescription);
+
+    return shortDescription;
   }
-  getRecommendationViewData(data:MovieDetails[]|TVDetails[]) {
-    console.log('recommendation data from details service', data);
-  }
+ 
 }

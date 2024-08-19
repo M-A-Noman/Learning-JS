@@ -36,6 +36,9 @@
     .logo {
       height: 1rem;
       width: 10rem;
+      :hover{
+        cursor: pointer;
+      }
     }
   }
 

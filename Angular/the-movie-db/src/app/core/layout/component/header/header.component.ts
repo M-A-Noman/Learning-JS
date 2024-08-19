@@ -1,44 +1,68 @@
 import { Component } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-   navButtons=[
-    { title:'Movies',
-       menuItems: ['Popular', 'Now Playing', 'Upcoming', 'Top Ratted'],
-      isOpen:false
-      
+  navButtons = [
+    {
+      title: 'Movies',
+      menuItems: [
+        { title: 'Popular', navLink: 'list/movie/popular' },
+        { title: 'Now Playing', navLink: 'list/movie/now_playing' },
+        { title: 'Upcoming', navLink: 'list/movie/upcoming' },
+        { title: 'Top Ratted', navLink: 'list/movie/top_ratted' },
+      ],
+      isOpen: false,
     },
-    { title:'TV Shows',
-      menuItems:['Popular','Airing Today','On TV','Top Ratted'],
-       isOpen:false
+    {
+      title: 'TV Shows',
+      menuItems: [
+        { title: 'Popular', navLink: 'list/tv/popular' },
+        { title: 'Airing Today', navLink: 'list/tv/airing_today' },
+        { title: 'On TV', navLink: 'list/tv/on_tv' },
+        { title: 'Top Ratted', navLink: 'list/tv/top_ratted' },
+      ],
+      isOpen: false,
     },
-    { title:'People',
-      menuItems:['Popular People'],
-       isOpen:false
+    {
+      title: 'People',
+      menuItems: [
+        { title: 'Popular People', navLink: 'list/people/popular_people' },
+      ],
+      isOpen: false,
     },
-    { title:'More',
-      menuItems:['Discussion', 'Leaderboard', 'Support', 'API'],
-       isOpen:false
+    {
+      title: 'More',
+      menuItems: [
+        { title: 'Discussion',navLink:'' },
+        { title: 'Leaderboard',navLink:'' },
+        { title: 'Support' ,navLink:''},
+        { title: 'API',navLink:'' },
+      ],
+      isOpen: false,
     },
-  ]
+  ];
   currentMenu;
   selectedMenu;
   preTrigger;
   curTrigger;
-  
-   timedOutCloser;
-   targetMenuTrigger;
+
+  timedOutCloser;
+  targetMenuTrigger;
+
+  constructor(private router: Router) {}
+
   mouseEnter(trigger, index) {
-    if (this.preTrigger&&this.preTrigger!=trigger) {
+    if (this.preTrigger && this.preTrigger != trigger) {
       this.preTrigger.closeMenu();
     }
     this.navButtons[index].isOpen = true;
-    for (let i = 0; i < this.navButtons.length; i++){
+    for (let i = 0; i < this.navButtons.length; i++) {
       if (i != index) {
         this.navButtons[i].isOpen = false;
       }
@@ -49,13 +73,11 @@ export class HeaderComponent {
     //   clearTimeout(this.timedOutCloser);
     // }
     trigger.openMenu();
-    
   }
 
   mouseLeave(trigger, index) {
     this.preTrigger = trigger;
     if (this.preTrigger != trigger) {
-      
     }
     // if (!this.navButtons[index].isOpen) {
     //   trigger.closeMenu();
@@ -63,5 +85,9 @@ export class HeaderComponent {
     // this.timedOutCloser = setTimeout(() => {
     //   trigger.closeMenu();
     // }, 50);
+  }
+
+  onClick(url: string = '') {
+    this.router.navigate([url]);
   }
 }

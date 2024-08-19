@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DetailsFacadeService } from '../../services/details.facade.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
 import { MovieDetails, TVDetails } from '../../models/details.model';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDescriptionModel } from '../../models/movie-tv-details.model';
@@ -18,7 +18,7 @@ export class MovieDetailsComponent implements OnInit,OnDestroy {
   detailsType: string;
 
   recommendationLoading$: Observable<boolean>;
-  recommendationData: PageSingleCardViewModel[];
+  recommendationData$: Observable<PageSingleCardViewModel[]>;
   recommendationError$: Observable<any>;
 
   detailsLoadingSubscription: Subscription;
@@ -38,8 +38,9 @@ export class MovieDetailsComponent implements OnInit,OnDestroy {
     this.selectRecommendation();
     this.setRecommendation();
     this.setDetails();
+    // this.facade.getRecommendationViewData();
 
-    this.facade.getRecommendationViewData();
+    
   }
 
   selectMovies() {
@@ -59,11 +60,11 @@ export class MovieDetailsComponent implements OnInit,OnDestroy {
   }
   setDetails() {
     if (this.detailsLoading$ != null) {
-      console.log('from details');
+      // console.log('from details');
       this.detailsLoadingSubscription= this.detailsLoading$.subscribe((res) => {
         if (res === false) {
           this.detailsData = this.facade.getDescription(this.detailsType);
-          console.log('details data', this.detailsData);
+          // console.log('details data', this.detailsData);
         }
       });
     }
@@ -73,7 +74,7 @@ export class MovieDetailsComponent implements OnInit,OnDestroy {
       this.recommendationLoadingSubscription = this.recommendationLoading$.subscribe((res) => {
         if (res === false) {
           this.facade.recommendationData$.subscribe((data) => {
-            console.log('recommendation data is',data);
+            this.recommendationData$=of(this.facade.getRecommendationViewData(data.results));
          })
        }
      })
