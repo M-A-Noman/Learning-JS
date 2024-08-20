@@ -20,6 +20,10 @@ export interface PageSingleCardModel{
 }
 export interface PageCardData{
     page:number,
+    dates?:{
+        maximum:string,
+        minimum:string,
+    },
     results:PageSingleCardModel[],
     total_pages:number,
     total_results:number

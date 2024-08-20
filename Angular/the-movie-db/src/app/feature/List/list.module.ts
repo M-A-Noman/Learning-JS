@@ -6,6 +6,7 @@ import { ListComponent } from './list.component';
 import { StoreModule } from '@ngrx/store';
 import { listReducers } from './state/reducers/index.reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { Effects } from './state/effects/index.effects';
 
 
 
@@ -18,7 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
     ListRoutingModule,
     SharedModule,
     StoreModule.forFeature('List',listReducers),
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature(Effects),
   ],
   exports:[
     ListComponent,

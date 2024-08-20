@@ -1,1 +1,19 @@
-<p>list works!</p>
+<div class="container">
+    <div class="side-nav"></div>
+    <div class="main-content">
+        <span *ngFor="let singleListView of listViewContent">
+           <div class="card-container">
+            <app-card
+            [name]="singleListView.cardTitle"
+            [image]="singleListView.cardImage"
+            [subtitle]="singleListView.cardSubtitle"
+            [id]="singleListView.id"
+            [type]="singleListView.cardType"
+            >
+            <app-ratting [ratting]="singleListView.cardRatting.toString()"></app-ratting>
+            </app-card>
+        </div>
+       
+        </span>
+    </div>
+</div>

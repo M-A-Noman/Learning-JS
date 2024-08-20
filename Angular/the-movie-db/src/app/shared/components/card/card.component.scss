@@ -31,11 +31,15 @@
     .cardAction{
        line-height: 1.1;
       font-size: medium;
+      width: 150px;
+        height: auto;
       &:hover{
        background-color: transparent;
         color: blue;
         cursor: pointer;
-  
+        // display: flex;
+        // flex-wrap: wrap;
+        
       }
   
     }
