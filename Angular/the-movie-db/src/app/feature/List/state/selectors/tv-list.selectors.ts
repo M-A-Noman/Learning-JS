@@ -1,21 +1,21 @@
 import { createSelector } from "@ngrx/store";
-import { selectAiringTodayTVListState, selectOnTVListState, selectPopularMovieListState, selectTopRattedTVListState } from "./index.selectors";
+import { selectAiringTodayTVListState, selectOnTVListState, selectPopularMovieListState, selectPopularTVListState, selectTopRattedTVListState } from "./index.selectors";
 import { listState } from "../../models/list-state.model";
 
 // Popular
 
 export const selectPopularTVListData=createSelector(
-    selectPopularMovieListState,
+    selectPopularTVListState,
     (state:listState)=>state.data
 );
 
 export const selectPopularTVListLoading=createSelector(
-    selectPopularMovieListState,
+    selectPopularTVListState,
     (state:listState)=>state.loading
 );
 
 export const selectPopularTVListError=createSelector(
-    selectPopularMovieListState,
+    selectPopularTVListState,
     (state:listState)=>state.error
 );
 

@@ -17,7 +17,24 @@
         width: 60vw;
         // background: #bc1d1d;
         gap: 1vw;
-        
+        .load-more-button{
+            background-color:rgb(1, 180, 228);
+            color: white;
+            margin-top: vh;
+            width: 60vw;
+            height: 3rem;
+            border-radius: 5px;
+            font-size: x-large;
+            font-weight: bold;
+            margin-bottom: 1vh;
+           
+        }
+        .loader{
+            width: 60vw;
+            padding-top:30px ;
+            margin-left: 50%;
+            display: block;
+        }
     }
     
 }

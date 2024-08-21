@@ -1,0 +1,22 @@
+.container {
+    margin-top: 2vh;
+    width: 100vw;
+    // height: 20vh;
+    background: rgb(3, 34, 60);
+    color: white;
+    display: flex;
+    gap: 30px;
+    padding: 5vw;
+
+    .footer-logo {
+        margin-left: 20vw;
+        width: 12vw;
+
+        .text {
+            margin-top: 1rem;
+            font-size: larger;
+        }
+    }
+
+    
+}

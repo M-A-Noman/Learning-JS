@@ -19,6 +19,7 @@ export class ListComponent implements OnInit{
   subtype:string;
   listData:listSelectorState;
   listViewContent:PageSingleCardViewModel[]
+  pageNo:number=1;
   constructor(private listFacade:ListFacadeService,private sharedFacadeService:SharedFacadeService,private route:ActivatedRoute){}
   ngOnInit(): void {
       // let data=this.listFacade.selectSelectorData(MovieListSelector.selectPopularMovieListLoading,MovieListSelector.selectPopularMovieListData,MovieListSelector.selectPopularMovieListError)
@@ -38,5 +39,10 @@ export class ListComponent implements OnInit{
     })
 
 
+  }
+
+  OnClickLoadMore(){
+    this.pageNo++;
+    this.listFacade.loadData(this.type,this.subtype,this.pageNo);
   }
 }

@@ -24,7 +24,7 @@ export class HeaderComponent {
       menuItems: [
         { title: 'Popular', navLink: 'list/tv/popular' },
         { title: 'Airing Today', navLink: 'list/tv/airing_today' },
-        { title: 'On TV', navLink: 'list/tv/on_tv' },
+        { title: 'On TV', navLink: 'list/tv/on_the_air' },
         { title: 'Top Rated', navLink: 'list/tv/top_rated' },
       ],
       isOpen: false,
@@ -32,7 +32,7 @@ export class HeaderComponent {
     {
       title: 'People',
       menuItems: [
-        { title: 'Popular People', navLink: 'list/people/popular_people' },
+        { title: 'Popular People', navLink: 'list/people/popular' },
       ],
       isOpen: false,
     },

@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AuthInterceptor } from './interceptors/auth.inctercptor';
+import { FooterComponent } from './layout/component/footer/footer.component';
 
 
 
@@ -15,7 +16,8 @@ import { AuthInterceptor } from './interceptors/auth.inctercptor';
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,7 @@ import { AuthInterceptor } from './interceptors/auth.inctercptor';
   exports:[
     LayoutComponent,
     HeaderComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,FooterComponent
   ],
   providers:[
     provideAnimationsAsync(),

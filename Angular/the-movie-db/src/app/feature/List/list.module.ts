@@ -7,12 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { listReducers } from './state/reducers/index.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { Effects } from './state/effects/index.effects';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 
 @NgModule({
   declarations: [
     ListComponent,
+    FilterComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,7 @@ import { Effects } from './state/effects/index.effects';
     EffectsModule.forFeature(Effects),
   ],
   exports:[
-    ListComponent,
+    ListComponent,FilterComponent
     
   ]
 })

@@ -32,17 +32,16 @@ export class SharedService {
 
   getCardViewData(results: PageSingleCardModel[]) {
     let singleCardViewData: PageSingleCardViewModel[];
-
     singleCardViewData = results.map((data) => ({
       id: data.id,
       cardTitle: data.original_title || data.name,
       cardSubtitle: data.release_date || data.first_air_date,
-      cardRatting: parseFloat(data.vote_average.toFixed(1)) * 10,
+      cardRatting: parseFloat(data.vote_average?data.vote_average.toFixed(1):'0') * 10,
       cardType: data.media_type,
       cardImage:
         environment.IMAGE_BASE_URL +
         environment.IMAGE_SIZES.w300 +
-        data.poster_path,
+        (data.poster_path),
     }));
     return singleCardViewData;
   }

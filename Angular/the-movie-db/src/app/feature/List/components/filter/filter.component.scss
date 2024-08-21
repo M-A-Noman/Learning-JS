@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    .sort-functionality, .filter-functionality{
+        margin-top: 1vh;
+        margin-left: 1vw;
+        margin-right: 1vw;
+        .input{
+            margin-top: 1vh;
+        }
+        mat-panel-title{
+            font-size: large;
+        }
+    }
+    .sort-functionality{
+        // width: 10px;
+        // display: flex;
+        
+        
+        mat-form-field{
+            width:300px ;
+        }
+    }
+    
+}

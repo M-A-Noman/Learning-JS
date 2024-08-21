@@ -1,7 +1,11 @@
 <div class="container">
-    <div class="side-nav"></div>
+    <div class="side-nav">
+        <app-filter></app-filter>
+    </div>
     <div class="main-content">
-        <span *ngFor="let singleListView of listViewContent">
+        
+       
+        <span class="card-contents" *ngFor="let singleListView of listViewContent">
            <div class="card-container">
             <app-card
             [name]="singleListView.cardTitle"
@@ -13,7 +17,15 @@
             <app-ratting [ratting]="singleListView.cardRatting.toString()"></app-ratting>
             </app-card>
         </div>
-       
         </span>
+        <div class="loader" *ngIf="listData.loading$|async">
+            <app-ratting
+            [mode]="'indeterminate'"
+            [ratting]="''"
+            [spinnerDiameter]="70"
+            [stroke]="7"
+            ></app-ratting>
+        </div>
+    <button class="load-more-button" (click)="OnClickLoadMore()">Load More</button>
     </div>
 </div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="sort-functionality">
+        <mat-accordion>
+            <mat-expansion-panel #expansionPanel="matExpansionPanel">
+                <mat-expansion-panel-header>
+                  <mat-panel-title> Sort </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-divider></mat-divider>
+                <div class="input">
+                    <p>Sort Results By</p>
+                    <mat-form-field >
+                        <mat-select [(value)]="selectedSortType" [panelWidth]="'300px'">
+                          @for (sortType of sortTypes; track sortType) {
+                            <mat-option [value]="sortType.queryValue">{{sortType.viewValue}}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+              </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <div class="filter-functionality">
+        <mat-accordion>
+            <mat-expansion-panel #expansionPanel="matExpansionPanel" [expanded]="true">
+                <mat-expansion-panel-header>
+                  <mat-panel-title> Filters </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-divider></mat-divider>
+                <div class="input">
+                    <p>Release Dates</p>
+                </div>
+              </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

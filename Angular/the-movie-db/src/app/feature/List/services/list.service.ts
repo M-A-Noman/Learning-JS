@@ -26,7 +26,7 @@ export class ListService {
     tv: {
       popular: TVListActions.loadPopularTVList,
       airing_today: TVListActions.loadAiringTodayTVList,
-      on_tv: TVListActions.loadOnTVList,
+      on_the_air: TVListActions.loadOnTVList,
       top_rated: TVListActions.loadTopRattedTVList,
     },
     people: {
@@ -67,7 +67,7 @@ export class ListService {
         loading: TVListSelector.selectAiringTodayTVListLoading,
         error: TVListSelector.selectAiringTodayTVListError,
       },
-      on_tv: {
+      on_the_air: {
         data: TVListSelector.selectOnTVListData,
         loading: TVListSelector.selectOnTVListLoading,
         error: TVListSelector.selectOnTVListError,
@@ -94,16 +94,17 @@ export class ListService {
   ) {}
 
   getListData(type: string, subType: string, pageNumber: number) {
+    if(type==='people')type='person'
     return this.http.get<PageCardData>(
       `${environment.BASE_URL}/${type}/${subType}?language=en-US&page=${pageNumber}`
     );
   }
 
-  loadStoreData(type: string, subtype: string) {
+  loadStoreData(type: string, subtype: string,pageNo:number) {
     const props: listPropsType = {
       type: type,
       subType: subtype,
-      pageNo: 1,
+      pageNo: pageNo,
     };
 
     const action =
@@ -139,10 +140,7 @@ export class ListService {
     const selectors = this.selectorMap[type]?.[subtype];
   
     if (selectors) {
-      console.log('type is',type,'subtype is ',subtype)
-      console.log(selectors)
       this.store.pipe(select(selectors.data)).subscribe((res)=>{
-        console.log('loading response ',res);
       })
       return {
         loading$: this.store.pipe(select(selectors.loading)),

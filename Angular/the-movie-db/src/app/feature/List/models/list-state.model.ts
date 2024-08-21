@@ -27,7 +27,12 @@ export interface listModuleState{
 }
 
 export const initialListState:listState={
-    data:null,
+    data:{
+        page:0,
+        results:[],
+        total_pages:0,
+        total_results:0
+    },
     loading:false,
     error:null
 }
