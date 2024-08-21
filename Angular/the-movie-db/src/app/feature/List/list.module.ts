@@ -8,6 +8,7 @@ import { listReducers } from './state/reducers/index.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { Effects } from './state/effects/index.effects';
 import { FilterComponent } from './components/filter/filter.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +19,7 @@ import { FilterComponent } from './components/filter/filter.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ListRoutingModule,
     SharedModule,
     StoreModule.forFeature('List',listReducers),

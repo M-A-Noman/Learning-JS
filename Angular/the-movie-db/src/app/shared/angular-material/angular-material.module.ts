@@ -9,7 +9,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     
@@ -25,7 +26,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatCardModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule
   ],
   exports:[
     MatGridListModule,
@@ -38,7 +40,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatCardModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule
   ]
 })
 export class AngularMaterialModule { }
