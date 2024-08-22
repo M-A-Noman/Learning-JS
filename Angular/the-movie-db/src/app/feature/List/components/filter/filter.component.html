@@ -1,60 +1,116 @@
 <div class="container">
-    <div class="sort-functionality">
-        <mat-accordion>
-            <mat-expansion-panel #expansionPanel="matExpansionPanel">
-                <mat-expansion-panel-header>
-                  <mat-panel-title> Sort </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-divider></mat-divider>
-                <div class="input">
-                    <p>Sort Results By</p>
-                    <mat-form-field >
-                        <mat-select [(value)]="selectedSortType" [panelWidth]="'300px'">
-                          @for (sortType of sortTypes; track sortType) {
-                            <mat-option [value]="sortType.queryValue">{{sortType.viewValue}}</mat-option>
-                          }
-                        </mat-select>
-                      </mat-form-field>
-                </div>
-              </mat-expansion-panel>
-        </mat-accordion>
-    </div>
-    <div class="filter-functionality">
-        <mat-accordion>
-            <mat-expansion-panel #expansionPanel="matExpansionPanel" [expanded]="true">
-                <mat-expansion-panel-header>
-                  <mat-panel-title> Filters </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-divider></mat-divider>
-                <div class="release-date">
-                <div class="input">
-                    <p>Release Dates</p>
-                    <mat-form-field class="example-form-field">
-                      <mat-label>Choose a date</mat-label>
-                      <input matInput [matDatepicker]="datepicker" [(ngModel)]="selectedInitialReleaseDate" />
-                      <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-                      <mat-datepicker #datepicker>
-                      </mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field2">
-                      <mat-label>Choose a date</mat-label>
-                      <input matInput [matDatepicker]="datepicker2" [(ngModel)]="selectedFinalReleaseDate" />
-                      <mat-datepicker-toggle matIconSuffix [for]="datepicker2"></mat-datepicker-toggle>
-                      <mat-datepicker #datepicker2>
-                      </mat-datepicker>
-                    </mat-form-field>
-                </div>
-              </div>
-              <mat-divider></mat-divider>
-              <div class="genres">
-                <div class="input">
-                  <p>Genres</p>
-                  <span *ngFor="let genre of genres">
-                    <button mat-button>{{genre.name}}</button>
-                  </span>
-                </div>
-              </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-    </div>
+  <div class="sort-functionality">
+    <mat-accordion>
+      <mat-expansion-panel #expansionPanel="matExpansionPanel">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Sort </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <div class="input">
+          <p>Sort Results By</p>
+          <mat-form-field>
+            <mat-select [(value)]="selectedSortType" [panelWidth]="'300px'">
+              @for (sortType of sortTypes; track sortType) {
+              <mat-option [value]="sortType.queryValue">{{
+                sortType.viewValue
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="filter-functionality">
+    <mat-accordion>
+      <mat-expansion-panel
+        #expansionPanel="matExpansionPanel"
+        [expanded]="true"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Filters </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <div class="release-date">
+          <div class="input">
+            <p>Release Dates</p>
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="datepicker"
+                [(ngModel)]="selectedInitialReleaseDate"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="datepicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #datepicker> </mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="datepicker2"
+                [(ngModel)]="selectedFinalReleaseDate"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="datepicker2"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #datepicker2> </mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="genres">
+          <div class="input">
+            <p>Genres</p>
+            <span *ngFor="let genre of genres | async">
+              <button
+                mat-button
+                class="genre-button"
+                (click)="onSelectGenre(genre.id)"
+                [ngStyle]="getStyle(genre.id)"
+              >
+                {{ genre.name }}
+              </button>
+            </span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="slider">
+          <div class="input">
+            <p>User Score</p>
+            <mat-slider min="0" max="10" step="1" showTickMarks discrete>
+              <input value="0" matSliderStartThumb />
+              <input value="10" matSliderEndThumb />
+            </mat-slider>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="input">
+            <p>User Vote</p>
+            <mat-slider min="0" max="500" step="50" showTickMarks discrete>
+              <input value="0" matSliderThumb />
+            </mat-slider>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="input">
+            <p>Runtime</p>
+            <mat-slider min="0" max="405" step="15" showTickMarks discrete>
+              <input value="0" matSliderStartThumb />
+              <input value="405" matSliderEndThumb />
+            </mat-slider>
+          </div>
+          
+        </div>
+
+        
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="search-option">
+    <button mat-button class="search-button">Search</button>
+  </div>
 </div>

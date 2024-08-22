@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { genre } from '../../../details/models/details.model';
+import { ListFacadeService } from '../../services/list-facade.service';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss',
   providers: [provideNativeDateAdapter()]
 })
-export class FilterComponent {
+export class FilterComponent implements OnInit{
   sortTypes = [
     { viewValue: 'Popularity Descending', queryValue: 'popularity.desc' },
     { viewValue: 'Popularity Ascending', queryValue: 'popularity.asc' },
@@ -18,21 +21,30 @@ export class FilterComponent {
     { viewValue: 'Title (Z-A)', queryValue: 'title.asc' },
       
   ];
-  genres = [
-    { name: 'Action', id: 1 },
-    { name: 'Adventure', id: 2 },
-    { name: 'Animation', id: 3 },
-    { name: 'Comedy', id: 4 },
-    { name: 'Crime', id: 5 },
-    { name: 'Documentary', id: 6 },
-    { name: 'Drama', id: 7 },
-    { name: 'Family', id: 8 },
-    { name: 'Fantasy', id: 9 },
-    { name: 'History', id: 10 },
-    { name: 'Horror', id: 11 },
-    
-  ];
+  genres:Observable< genre[]>;
   selectedSortType = this.sortTypes[0].queryValue;
   selectedInitialReleaseDate;
   selectedFinalReleaseDate;
+
+  selectedGenreId:number[]=[];
+  
+
+  constructor(private listFacadeService:ListFacadeService){}
+  ngOnInit(): void {
+    this.listFacadeService.getGenres().subscribe((res)=>{res.subscribe((data)=>{this.genres=of(data.genres)})
+    });
+  }
+
+  onSelectGenre(id:number){
+    this.selectedGenreId.find(num=> num===id)?this.selectedGenreId= this.selectedGenreId.filter(num=>num!==id):this.selectedGenreId.push(id);
+  }
+  isGenreSelected(id:number){
+    return this.selectedGenreId.find(num=>num===id);
+  }
+  getStyle(id:number){
+    return {
+      'color': this.isGenreSelected(id)?'white':'',
+      'background-color':this.isGenreSelected(id)?'rgb(40, 181, 225)':''
+    };
+  }
 }

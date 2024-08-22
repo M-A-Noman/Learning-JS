@@ -8,7 +8,6 @@ export const ListResolver: ResolveFn<any>=(route:ActivatedRouteSnapshot,state:Ro
     let type:string=route.paramMap.get('list-type');
     let subtype:string=(route.paramMap.get('list-subtype'));
     const listFacade=inject(ListFacadeService);
-   listFacade.loadData(type,subtype,1);
-
-    
+    listFacade.loadData(type,subtype,1);
+    listFacade.loadGenres(type);
 }

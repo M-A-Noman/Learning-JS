@@ -9,12 +9,13 @@ import { HomeComponent } from './home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { trendingReducer } from './state/reducers/trending.reducer';
+import { trendingFeature } from './state/reducers/trending.reducer';
 import { Effect } from './state/effects/home.effect';
-import { homeReducer } from './state/reducers/home.reducer';
+// import { homeReducer } from './state/reducers/home.reducer';
 import { TrendingEffects } from './state/effects/trending.effect';
 import { PopularEffects } from './state/effects/popular.effect';
 import { HomePageContainerComponent } from './components/home-page-container/home-page-container.component';
+import { popularFeature } from './state/reducers/popular.reducer';
 
 
 
@@ -31,7 +32,9 @@ import { HomePageContainerComponent } from './components/home-page-container/hom
     SharedModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forFeature('Home', homeReducer),
+    // StoreModule.forFeature('Home', homeReducer),
+    StoreModule.forFeature(popularFeature),
+    StoreModule.forFeature(trendingFeature),
     EffectsModule.forFeature(Effect)
   ],
   exports: [HomeComponent,StaticSearchComponent]

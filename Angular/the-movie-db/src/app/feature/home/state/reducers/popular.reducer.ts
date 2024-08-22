@@ -21,7 +21,7 @@
 //   on(PopularActions.loadPopularFailure, (state, { error }) => ({ ...state, error, loading: false }))
 // );
 
-import { createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, on } from '@ngrx/store';
 import * as PopularActions from '../actions/popular.action';
 import { PageCardData } from '../../model/cardModel';
 
@@ -37,9 +37,23 @@ export const initialPopularState: PopularState = {
   error: null
 };
 
-export const popularReducer = createReducer(
+ const popularReducer = createReducer(
   initialPopularState,
   on(PopularActions.loadPopular, state => ({ ...state, loading: true })),
   on(PopularActions.loadPopularSuccess, (state, { data }) => ({ ...state, data, loading: false })),
   on(PopularActions.loadPopularFailure, (state, { error }) => ({ ...state, error, loading: false }))
 );
+
+export const popularFeature=createFeature(
+  {
+    name:'popular',
+    reducer:popularReducer
+  }
+);
+export const {
+  name,
+  reducer,
+  selectData,
+  selectError,
+  selectLoading
+}=popularFeature

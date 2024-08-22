@@ -21,6 +21,13 @@ export class ListFacadeService {
   getList(type: string, subType: string, pageNumber: number) {
     return this.listService.getListData(type, subType, pageNumber);
   }
+  getGenres(){
+    return this.listService.getGenres();
+  }
+  loadGenres(type:string){
+    this.listService.loadGenres(type);
+  }
+
 
   getSelectedStoreData(type:string,subtype:string){
     return this.listService.selectStoreData(type,subtype);

@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import * as TrendingSelectors from './state/selectors/trending.selectors';
-import * as PopularSelectors from './state/selectors/popular.selector';
+// import * as TrendingSelectors from './state/selectors/trending.selectors';
+// import * as PopularSelectors from './state/selectors/popular.selector';
+import * as TrendingSelectors from './state/reducers/trending.reducer';
+import * as PopularSelectors from './state/reducers/popular.reducer'
 import * as TrendingActions from './state/actions/trending.action';
 import * as PopularActions from './state/actions/popular.action';
 import { PageCardData, PageSingleCardViewModel } from './model/cardModel';
 import { environment } from '../../../environments/environment';
 import { CardDataService } from './services/card-data.service';
-import { HomeModuleState } from './state/reducers/home.reducer';
+// import { HomeModuleState } from './state/reducers/home.reducer';
 import { SharedFacadeService } from '../../shared/services/shared.facade.service';
 @Injectable({
   providedIn: 'root',
@@ -27,31 +29,31 @@ export class HomeFacadeService {
   popularError$: Observable<any>;
 
   constructor(
-    private store: Store<HomeModuleState>,
+    private store: Store,
     private cardDataService: CardDataService,
     private sharedFacadeService:SharedFacadeService,
   ) { }
   selectTrending() {
     this.trendingData$ = this.store.pipe(
-      select(TrendingSelectors.selectTrendingData)
+      select(TrendingSelectors.selectData)
     );
     this.trendingLoading$ = this.store.pipe(
-      select(TrendingSelectors.selectTrendingLoading)
+      select(TrendingSelectors.selectLoading)
     );
     this.trendingError$ = this.store.pipe(
-      select(TrendingSelectors.selectTrendingError)
+      select(TrendingSelectors.selectError)
     );
   }
 
   selectPopular() {
     this.popularData$ = this.store.pipe(
-      select(PopularSelectors.selectPopularData)
+      select(PopularSelectors.selectData)
     );
     this.popularLoading$ = this.store.pipe(
-      select(PopularSelectors.selectPopularLoading)
+      select(PopularSelectors.selectLoading)
     );
     this.popularError$ = this.store.pipe(
-      select(PopularSelectors.selectPopularError)
+      select(PopularSelectors.selectError)
     );
   }
   loadData() {

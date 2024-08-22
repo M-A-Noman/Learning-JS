@@ -21,7 +21,7 @@
 //   on(TrendingActions.loadTrendingFailure, (state, { error }) => ({ ...state, error, loading: false }))
 // );
 
-import { createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, on } from '@ngrx/store';
 import * as TrendingActions from '../actions/trending.action';
 import { PageCardData } from '../../model/cardModel';
 
@@ -37,9 +37,21 @@ export const initialTrendingState: TrendingState = {
   error: null
 };
 
-export const trendingReducer = createReducer(
+ const trendingReducer = createReducer(
   initialTrendingState,
   on(TrendingActions.loadTrending, state => ({ ...state, loading: true })),
   on(TrendingActions.loadTrendingSuccess, (state, { data }) => ({ ...state, data, loading: false })),
   on(TrendingActions.loadTrendingFailure, (state, { error }) => ({ ...state, error, loading: false }))
 );
+
+export const trendingFeature=createFeature({
+  name:'trending',
+  reducer:trendingReducer
+});
+export const{
+  name,
+  reducer,
+  selectData,
+  selectLoading,
+  selectError
+}=trendingFeature

@@ -1,7 +1,7 @@
 .container{
     display: flex;
     flex-direction: column;
-    .sort-functionality, .filter-functionality{
+    .sort-functionality, .filter-functionality,.search-option{
         margin-top: 1vh;
         margin-left: 1vw;
         margin-right: 1vw;
@@ -21,13 +21,38 @@
             width:300px ;
         }
     }
-    button{
+    .genre-button{
         border: 1px solid grey ;
         margin: 5px;
         padding: 15px;
         border-radius: 30px;
-        
+        &:hover{
+            background-color: rgb(40, 181, 225);
+            color: white;
+        }
     }
-   
+    .search-button{
+        border: 1px solid grey;
+        padding: 15px;
+        width: 100%;
+        border-radius: 30px;
+        background-color: rgb(40, 181, 225);
+        color: white;
+        &:hover{
+            background:rgb(6, 37, 64);
+        }
+    }
+    mat-form-field{
+        height:4rem;
+        width: 12rem;
+        // text-decoration: none;
+        // border: none;
+    }
+    mat-slider{
+        width: 90%;
+    }
+    matInput{
+        border: 1px solid black;
+    }
     
 }

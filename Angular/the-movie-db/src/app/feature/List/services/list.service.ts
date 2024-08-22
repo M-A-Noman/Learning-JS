@@ -1,6 +1,7 @@
+import { BehaviorSubject, Observable, of, Subject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PageCardData, PageSingleCardModel } from '../../home/model/cardModel';
+import { PageCardData } from '../../home/model/cardModel';
 import { environment } from '../../../../environments/environment';
 import { listModuleState, listPropsType } from '../models/list-state.model';
 import { select, Store } from '@ngrx/store';
@@ -12,6 +13,7 @@ import * as PeopleListActions from '../state/actions/people-list.actions';
 import * as MovieListSelector from '../state/selectors/movie-list.selectors';
 import * as TVListSelector from '../state/selectors/tv-list.selectors';
 import * as PeopleListSelector from '../state/selectors/people-list.selectors';
+import { genre } from '../../details/models/details.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -87,7 +89,7 @@ export class ListService {
     },
   };
   
-
+  private genres=new BehaviorSubject<any>(null);
   constructor(
     private http: HttpClient,
     private store: Store<listModuleState>
@@ -99,6 +101,15 @@ export class ListService {
       `${environment.BASE_URL}/${type}/${subType}?language=en-US&page=${pageNumber}`
     );
   }
+
+  loadGenres(type:string){
+    this.genres.next(this.http.get(`${environment.BASE_URL}/genre/${type}/list?language=en`))
+     
+  }
+   getGenres(){
+  
+    return (this.genres);
+   }
 
   loadStoreData(type: string, subtype: string,pageNo:number) {
     const props: listPropsType = {
@@ -119,17 +130,10 @@ export class ListService {
   }
 
   selectListData(loadingSelector, dataSelector, errorSelector) {
-
-    // return {
-    //   loading$: this.store.pipe(select(loadingSelector)),
-    //   data$: this.store.pipe(select(dataSelector)),
-    //   error$: this.store.pipe(select(errorSelector)),
-    // };
     let loading$=this.store.pipe(select(loadingSelector));
     let data$=this.store.pipe(select(dataSelector));
     let error$=this.store.pipe(select(errorSelector));
-    data$.subscribe((res)=>console.log('response form list ',res))
-    return{
+    return {
       loading$:loading$,
       data:data$,
       error:error$
@@ -149,7 +153,7 @@ export class ListService {
       };
     } else {
       console.error('Invalid type or subtype provided for selectors');
-      return null; // or throw an error, depending on your use case
+      return null; 
     }
   }
   

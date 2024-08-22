@@ -1,14 +1,14 @@
 .container{
     display: flex;
     // height: 91vh;
-    width: 86vw;
-    margin-left: 7vw;
+    width: 80vw;
+    margin-left: 10vw;
     margin-top: 4vh;
     // background: #000;
     gap: 2vw;
     .side-nav{
         // display: flex;
-        width: 24vw;
+        width: 20vw;
         // background: #d1caca;
     }
     .main-content{
@@ -27,7 +27,7 @@
             font-size: x-large;
             font-weight: bold;
             margin-bottom: 1vh;
-           
+            border: none;
         }
         .loader{
             width: 60vw;
