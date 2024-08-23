@@ -34,3 +34,9 @@ export const loadTopRattedMovieListSuccess=createAction('[List-Movie] TopRatted 
 
 export const loadTopRattedMovieListFailure=createAction('[List-Movie] TopRatted Movie List Failure',props<{error:any}>());
 
+
+
+export const loadMovieList=createAction('[List-Movie] Movie List',props<{data:{type:string,subType:string,qParams:string}}>())
+
+export const loadMovieListSuccess=createAction('[List-Movie] Movie List Success',props<{data:PageCardData}>());
+export const loadMovieListFailure=createAction('[List-Movie] Movie List Failure',props<{error:any}>());

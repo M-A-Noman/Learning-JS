@@ -89,3 +89,5 @@ export const topRattedMovieListReducers = createReducer(
     loading: false,
   }))
 );
+
+

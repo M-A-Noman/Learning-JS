@@ -32,4 +32,7 @@ export class ListFacadeService {
   getSelectedStoreData(type:string,subtype:string){
     return this.listService.selectStoreData(type,subtype);
   }
+  getSelectedStoreDataFromSingleSelector(type:string){
+    return this.listService.selectSingleListData(type);
+  }
 }

@@ -5,7 +5,9 @@ import { PageCardData } from "../../home/model/cardModel";
 export interface listState{
     data:PageCardData,
     loading:boolean,
-    error:any
+    error:any,
+    propsData:listPropsType|null,
+    reset:boolean
 }
 export interface listSelectorState{
     data$:Observable<PageCardData>,
@@ -34,7 +36,9 @@ export const initialListState:listState={
         total_results:0
     },
     loading:false,
-    error:null
+    error:null,
+    propsData:null,
+    reset:false
 }
 
 export interface listPropsType{

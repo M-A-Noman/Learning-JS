@@ -3,6 +3,7 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import { genre } from '../../../details/models/details.model';
 import { ListFacadeService } from '../../services/list-facade.service';
 import { Observable, of } from 'rxjs';
+import { SharedFacadeService } from '../../../../shared/services/shared.facade.service';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -29,7 +30,7 @@ export class FilterComponent implements OnInit{
   selectedGenreId:number[]=[];
   
 
-  constructor(private listFacadeService:ListFacadeService){}
+  constructor(private listFacadeService:ListFacadeService,private sharedFacade:SharedFacadeService){}
   ngOnInit(): void {
     this.listFacadeService.getGenres().subscribe((res)=>{res.subscribe((data)=>{this.genres=of(data.genres)})
     });
@@ -46,5 +47,10 @@ export class FilterComponent implements OnInit{
       'color': this.isGenreSelected(id)?'white':'',
       'background-color':this.isGenreSelected(id)?'rgb(40, 181, 225)':''
     };
+  }
+  onFilterClicked(){
+    if(this.selectedFinalReleaseDate)
+    console.log(this.selectedInitialReleaseDate.toISOString().slice(0,10))
+    // console.log(this.sharedFacade.getAPIParams({primaryReleaseDate_gte :'2024-04-07',withGenres:'12,14',pageNo:2}))
   }
 }

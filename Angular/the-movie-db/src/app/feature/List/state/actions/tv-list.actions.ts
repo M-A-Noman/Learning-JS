@@ -33,3 +33,10 @@ export const loadTopRattedTVList=createAction('[List-TV] TopRatted TV List',prop
 export const loadTopRattedTVListSuccess=createAction('[List-TV] TopRatted TV List Success',props<{data:PageCardData}>());
 
 export const loadTopRattedTVListFailure=createAction('[List-TV] TopRatted TV List Failure',props<{error:any}>());
+
+
+export const loadTVList=createAction('[List-TV] TV List',props<{data:{type:string,subType:string,qParams:string}}>());
+
+export const loadTVListSuccess=createAction('[List-TV] TV List Success',props<{data:PageCardData}>());
+
+export const loadTVListFailure=createAction('[List-TV] TV List Failure',props<{error:any}>());

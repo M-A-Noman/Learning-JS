@@ -13,7 +13,11 @@ import * as PeopleListActions from '../state/actions/people-list.actions';
 import * as MovieListSelector from '../state/selectors/movie-list.selectors';
 import * as TVListSelector from '../state/selectors/tv-list.selectors';
 import * as PeopleListSelector from '../state/selectors/people-list.selectors';
+
+import * as SingleSelector from '../state/reducers/movie-list.feature'
+
 import { genre } from '../../details/models/details.model';
+import { SharedFacadeService } from '../../../shared/services/shared.facade.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -35,7 +39,7 @@ export class ListService {
       popular: PeopleListActions.loadPopularPeopleList,
     },
   };
-   selectorMap = {
+  selectorMap = {
     movie: {
       popular: {
         data: MovieListSelector.selectPopularMovieListData,
@@ -88,64 +92,79 @@ export class ListService {
       },
     },
   };
-  
-  private genres=new BehaviorSubject<any>(null);
+
+  private genres = new BehaviorSubject<any>(null);
   constructor(
     private http: HttpClient,
-    private store: Store<listModuleState>
+    private store: Store<listModuleState>,
+    private sharedFacade: SharedFacadeService
   ) {}
 
-  getListData(type: string, subType: string, pageNumber: number) {
-    if(type==='people')type='person'
+  getListData(type: string, subType: string, pageNumber: number,params:string='') {
+    if (type === 'people') type = 'person';
+    if(params.length===0)
     return this.http.get<PageCardData>(
       `${environment.BASE_URL}/${type}/${subType}?language=en-US&page=${pageNumber}`
     );
+    else return this.http.get<PageCardData>(
+      `${environment.BASE_URL}/discover/${type}/?${params}`
+    );
   }
 
-  loadGenres(type:string){
-    this.genres.next(this.http.get(`${environment.BASE_URL}/genre/${type}/list?language=en`))
-     
+  loadGenres(type: string) {
+    this.genres.next(
+      this.http.get(`${environment.BASE_URL}/genre/${type}/list?language=en`)
+    );
   }
-   getGenres(){
-  
-    return (this.genres);
-   }
+  getGenres() {
+    return this.genres;
+  }
 
-  loadStoreData(type: string, subtype: string,pageNo:number) {
+  loadStoreData(type: string, subtype: string, pageNo: number) {
+    let minUserVote: number = 0;
+    let sortType: string = 'popularity.desc';
+    if (subtype === 'top_rated') {
+      minUserVote = 300;
+      sortType='vote_average:desc'
+    }
+    const listProps = {
+      type: type,
+      subType: subtype,
+      qParams: this.sharedFacade.getAPIParams({ voteCount_gte: minUserVote,pageNo:pageNo }),
+    };
+    this.store.dispatch(MovieListActions.loadMovieList({data:listProps}))
     const props: listPropsType = {
       type: type,
       subType: subtype,
       pageNo: pageNo,
     };
 
-    const action =
-      this.actionMap[type]?.[subtype] ;
+    const action = this.actionMap[type]?.[subtype];
 
     if (action) {
       this.store.dispatch(action({ data: props }));
     } else {
-      console.log(type,subtype)
+      console.log(type, subtype);
       console.error('Invalid type or subtype provided');
     }
   }
 
   selectListData(loadingSelector, dataSelector, errorSelector) {
-    let loading$=this.store.pipe(select(loadingSelector));
-    let data$=this.store.pipe(select(dataSelector));
-    let error$=this.store.pipe(select(errorSelector));
+    let loading$ = this.store.pipe(select(loadingSelector));
+    let data$ = this.store.pipe(select(dataSelector));
+    let error$ = this.store.pipe(select(errorSelector));
     return {
-      loading$:loading$,
-      data:data$,
-      error:error$
-    }
+      loading$: loading$,
+      data: data$,
+      error: error$,
+    };
   }
 
   selectStoreData(type: string, subtype: string) {
     const selectors = this.selectorMap[type]?.[subtype];
-  
+
     if (selectors) {
-      this.store.pipe(select(selectors.data)).subscribe((res)=>{
-      })
+      this.store.pipe(select(selectors.data)).subscribe((res) => {});
       return {
         loading$: this.store.pipe(select(selectors.loading)),
         data$: this.store.pipe(select(selectors.data)),
@@ -153,8 +172,14 @@ export class ListService {
       };
     } else {
       console.error('Invalid type or subtype provided for selectors');
-      return null; 
+      return null;
     }
   }
-  
+  selectSingleListData(type:string){
+      return {
+        loading$:this.store.pipe(select(SingleSelector.selectLoading)),
+        data$:this.store.pipe(select(SingleSelector.selectData)),
+        error$:this.store.pipe(select(SingleSelector.selectError))
+      }
+  }
 }

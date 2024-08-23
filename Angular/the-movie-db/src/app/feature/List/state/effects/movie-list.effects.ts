@@ -92,7 +92,7 @@ import * as PeopleAction from '../actions/people-list.actions'
 export class MovieListEffects {
   constructor(private actions$: Actions, private listFacade: ListFacadeService) {}
 
-  createMovieListEffect(actionType, successAction, failureAction) {
+  createListEffect(actionType, successAction, failureAction) {
     return createEffect(() =>
       this.actions$.pipe(
         ofType(actionType),
@@ -106,52 +106,79 @@ export class MovieListEffects {
       )
     );
   }
+  createListEffect1(actionType, successAction, failureAction) {
+    return createEffect(() =>
+      this.actions$.pipe(
+        ofType(actionType),
+        mergeMap((props) =>
+          this.listFacade.getList(props.data.type, props.data.subType, props.data.qParams).pipe(
+            // tap(()=>console.log('effect called')),
+            map((data) => successAction({ data })),
+            catchError((error) => of(failureAction({ error })))
+          )
+        )
+      )
+    );
+  }
 
-  loadPopularMovieList$ = this.createMovieListEffect(
+  loadMovieList$=this.createListEffect1(
+    MovieAction.loadMovieList,
+    MovieAction.loadMovieListSuccess,
+    MovieAction.loadMovieListFailure
+  );
+
+  loadTVList$=this.createListEffect(
+    TVAction.loadTVList,
+    TVAction.loadTVListSuccess,
+    TVAction.loadTVListFailure
+  );
+  
+
+  loadPopularMovieList$ = this.createListEffect(
     MovieAction.loadPopularMovieList,
     MovieAction.loadPopularMovieListSuccess,
     MovieAction.loadPopularMovieListFailure
   );
 
-  loadNowPlayingMovieList$ = this.createMovieListEffect(
+  loadNowPlayingMovieList$ = this.createListEffect(
     MovieAction.loadNowPlayingMovieList,
     MovieAction.loadNowPlayingMovieListSuccess,
     MovieAction.loadNowPlayingMovieListFailure
   );
 
-  loadUpcomingMovieList$ = this.createMovieListEffect(
+  loadUpcomingMovieList$ = this.createListEffect(
     MovieAction.loadUpcomingMovieList,
     MovieAction.loadUpcomingMovieListSuccess,
     MovieAction.loadUpcomingMovieListFailure
   );
 
-  loadTopRatedMovieList$ = this.createMovieListEffect(
+  loadTopRatedMovieList$ = this.createListEffect(
     MovieAction.loadTopRattedMovieList,
     MovieAction.loadTopRattedMovieListSuccess,
     MovieAction.loadTopRattedMovieListFailure
   );
 
-  loadPopularTVList$=this.createMovieListEffect(
+  loadPopularTVList$=this.createListEffect(
     TVAction.loadPopularTVList,
     TVAction.loadPopularTVListSuccess,
     TVAction.loadPopularTVListFailure
   )
-  loadAiringTodayTVList$=this.createMovieListEffect(
+  loadAiringTodayTVList$=this.createListEffect(
     TVAction.loadAiringTodayTVList,
     TVAction.loadAiringTodayTVListSuccess,
     TVAction.loadAiringTodayTVListFailure
   )
-  loadOnTVList$=this.createMovieListEffect(
+  loadOnTVList$=this.createListEffect(
     TVAction.loadOnTVList,
     TVAction.loadOnTVListSuccess,
     TVAction.loadOnTVListFailure
   )
-  loadTopRattedTVList$=this.createMovieListEffect(
+  loadTopRattedTVList$=this.createListEffect(
     TVAction.loadTopRattedTVList,
     TVAction.loadTopRattedTVListSuccess,
     TVAction.loadTopRattedTVListFailure
   )
-  loadPopularPeopleList$=this.createMovieListEffect(
+  loadPopularPeopleList$=this.createListEffect(
     PeopleAction.loadPopularPeopleList,
     PeopleAction.loadPopularPeopleListSuccess,
     PeopleAction.loadPopularPeopleListFailure

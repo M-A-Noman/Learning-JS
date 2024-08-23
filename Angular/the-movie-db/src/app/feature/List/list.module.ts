@@ -9,6 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { Effects } from './state/effects/index.effects';
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from '@angular/forms';
+import { MovieFeature } from './state/reducers/movie-list.feature';
+import { TVListFeature } from './state/reducers/tv-list.feature';
 
 
 
@@ -23,6 +25,8 @@ import { FormsModule } from '@angular/forms';
     ListRoutingModule,
     SharedModule,
     StoreModule.forFeature('List',listReducers),
+    StoreModule.forFeature(MovieFeature),
+    StoreModule.forFeature(TVListFeature),
     EffectsModule.forFeature(Effects),
   ],
   exports:[
