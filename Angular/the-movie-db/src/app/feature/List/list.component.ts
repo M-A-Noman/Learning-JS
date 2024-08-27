@@ -20,10 +20,18 @@ export class ListComponent implements OnInit{
   listData:listSelectorState;
   listViewContent:PageSingleCardViewModel[]
   pageNo:number=1;
+  queryParams:string='';
+  isFilterClicked:boolean=false;
   constructor(private listFacade:ListFacadeService,private sharedFacadeService:SharedFacadeService,private route:ActivatedRoute){}
   ngOnInit(): void {
       // let data=this.listFacade.selectSelectorData(MovieListSelector.selectPopularMovieListLoading,MovieListSelector.selectPopularMovieListData,MovieListSelector.selectPopularMovieListError)
-     
+      
+     this.listFacade.isFilterItem.subscribe((res)=>{
+      this.isFilterClicked=res;
+     })
+     this.listFacade.queryParams.subscribe((res)=>{
+      this.queryParams=res;
+     })
     this.route.paramMap.subscribe((params)=>{
       this.type=params.get('list-type');
       this.subtype=params.get('list-subtype');
@@ -46,8 +54,17 @@ export class ListComponent implements OnInit{
   }
 
   OnClickLoadMore(){
-    this.pageNo++;
-    this.listFacade.loadData(this.type,this.subtype,this.pageNo);
+    // if(!this.isFilterClicked){
+    this.route.queryParams.subscribe((res)=>{
+      let qParam={...res};
+      qParam['page']=this.pageNo;
+      this.pageNo++;
+      console.log('qparam ',qParam);
+      this.listFacade.loadData(this.type,this.subtype,qParam.toString());
+    })
+    // }else{
+    //   console.log(this.queryParams)
+    // }
     // this.listFacade.loadData(this.type,this.subtype,this.pageNo);
   }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListResolver } from '../../core/resolvers/list.resolver';
 import { RouterModule } from '@angular/router';
 import { ListComponent } from './list.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 const routes=[

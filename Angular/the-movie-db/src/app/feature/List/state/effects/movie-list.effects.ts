@@ -97,7 +97,7 @@ export class MovieListEffects {
       this.actions$.pipe(
         ofType(actionType),
         mergeMap((props) =>
-          this.listFacade.getList(props.data.type, props.data.subType, props.data.pageNo).pipe(
+          this.listFacade.getList(props.data.type, props.data.subType, props.data.queryParams).pipe(
             // tap(()=>console.log('effect called')),
             map((data) => successAction({ data })),
             catchError((error) => of(failureAction({ error })))
@@ -106,12 +106,13 @@ export class MovieListEffects {
       )
     );
   }
+  
   createListEffect1(actionType, successAction, failureAction) {
     return createEffect(() =>
       this.actions$.pipe(
         ofType(actionType),
         mergeMap((props) =>
-          this.listFacade.getList(props.data.type, props.data.subType, props.data.qParams).pipe(
+          this.listFacade.getList(props.data.type, props.data.subType, props.data.queryParams).pipe(
             // tap(()=>console.log('effect called')),
             map((data) => successAction({ data })),
             catchError((error) => of(failureAction({ error })))
@@ -126,13 +127,23 @@ export class MovieListEffects {
     MovieAction.loadMovieListSuccess,
     MovieAction.loadMovieListFailure
   );
+ loadMoreMovieList$=this.createListEffect1(
+  MovieAction.loadMoreMovieList,
+  MovieAction.loadMoreMovieListSuccess,
+  MovieAction.loadMoreMovieListFailure
+ )
 
-  loadTVList$=this.createListEffect(
+  loadTVList$=this.createListEffect1(
     TVAction.loadTVList,
     TVAction.loadTVListSuccess,
     TVAction.loadTVListFailure
   );
   
+loadMoreTVList$=this.createListEffect1(
+  TVAction.loadMoreTVList,
+  TVAction.loadMoreTVListSuccess,
+  TVAction.loadMoreTVListFailure
+)
 
   loadPopularMovieList$ = this.createListEffect(
     MovieAction.loadPopularMovieList,

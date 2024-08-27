@@ -83,23 +83,23 @@
           <div class="input">
             <p>User Score</p>
             <mat-slider min="0" max="10" step="1" showTickMarks discrete>
-              <input value="0" matSliderStartThumb />
-              <input value="10" matSliderEndThumb />
+              <input value="0" [(ngModel)]="selectedFirstUserScore" matSliderStartThumb />
+              <input value="10" [(ngModel)]="selectedLastUserScore" matSliderEndThumb />
             </mat-slider>
           </div>
           <mat-divider></mat-divider>
           <div class="input">
             <p>User Vote</p>
             <mat-slider min="0" max="500" step="50" showTickMarks discrete>
-              <input value="0" matSliderThumb />
+              <input value="0" [(ngModel)]="selectedUserVote" matSliderThumb />
             </mat-slider>
           </div>
           <mat-divider></mat-divider>
           <div class="input">
             <p>Runtime</p>
             <mat-slider min="0" max="400" step="20" showTickMarks discrete>
-              <input value="0" matSliderStartThumb />
-              <input value="400" matSliderEndThumb />
+              <input value="0" [(ngModel)]="SelectedFirstRuntime" matSliderStartThumb />
+              <input value="400" [(ngModel)]="SelectedLastRuntime" matSliderEndThumb />
             </mat-slider>
           </div>
           

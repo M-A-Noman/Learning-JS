@@ -6,8 +6,7 @@ export interface listState{
     data:PageCardData,
     loading:boolean,
     error:any,
-    propsData:listPropsType|null,
-    reset:boolean
+  
 }
 export interface listSelectorState{
     data$:Observable<PageCardData>,
@@ -37,12 +36,11 @@ export const initialListState:listState={
     },
     loading:false,
     error:null,
-    propsData:null,
-    reset:false
+    
 }
 
 export interface listPropsType{
     type:string,
     subType:string,
-    pageNo:number
+    queryParams:string
 }

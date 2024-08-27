@@ -13,7 +13,18 @@ const reducers=createReducer(
             results:[...state.data.results,...data.results]
         }
     })),
-    on(TVListActions.loadTVListFailure,(state,{error})=>({...state,loading:false,error:error}))
+    on(TVListActions.loadTVListFailure,(state,{error})=>({...state,loading:false,error:error})),
+    
+    on(TVListActions.loadMoreTVList,state=>({...state,loading:true})),
+    on(TVListActions.loadMoreTVListSuccess,(state,{data})=>({
+        ...state,
+        loading:false,
+        data:{
+            ...state.data,
+            results:[...state.data.results,...data.results]
+        }
+    })),
+    on(TVListActions.loadMoreTVListFailure,(state,{error})=>({...state,error:error,loading:false}))
 );
 
 export const TVListFeature=createFeature({

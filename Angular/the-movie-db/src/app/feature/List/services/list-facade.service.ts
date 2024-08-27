@@ -2,24 +2,27 @@ import { Injectable } from '@angular/core';
 import { ListService } from './list.service';
 import { Store } from '@ngrx/store';
 import { listModuleState } from '../models/list-state.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListFacadeService {
+  queryParams=new BehaviorSubject<string>('');
+  isFilterItem=new BehaviorSubject<boolean>(false);
 
   constructor(private listService: ListService, private store:Store<listModuleState>) {}
  
-  loadData(type: string, subtype: string,pageNo:number) {
-    this.listService.loadStoreData(type,subtype,pageNo)
+  loadData(type: string, subtype: string,queryParams:string) {
+    this.listService.loadStoreData(type,subtype,queryParams)
   }
   
   selectSelectorData(loadingSelector, dataSelector, errorSelector) {
     return this.listService.selectListData(loadingSelector,dataSelector,errorSelector)
   }
   
-  getList(type: string, subType: string, pageNumber: number) {
-    return this.listService.getListData(type, subType, pageNumber);
+  getList(type: string, subType: string, queryParams: string) {
+    return this.listService.getListData(type, subType, queryParams);
   }
   getGenres(){
     return this.listService.getGenres();

@@ -100,14 +100,15 @@ export class ListService {
     private sharedFacade: SharedFacadeService
   ) {}
 
-  getListData(type: string, subType: string, pageNumber: number,params:string='') {
+  getListData(type: string, subType: string, params:string='') {
     if (type === 'people') type = 'person';
-    if(params.length===0)
+    console.log('api called\n params is',params)
     return this.http.get<PageCardData>(
-      `${environment.BASE_URL}/${type}/${subType}?language=en-US&page=${pageNumber}`
-    );
-    else return this.http.get<PageCardData>(
-      `${environment.BASE_URL}/discover/${type}/?${params}`
+      `${environment.BASE_URL}/discover/${type}?${params}`
+    ).pipe(
+      tap((res)=>{
+        console.log('API response',res);
+      })
     );
   }
 
@@ -120,28 +121,29 @@ export class ListService {
     return this.genres;
   }
 
-  loadStoreData(type: string, subtype: string, pageNo: number) {
-    let minUserVote: number = 0;
-    let sortType: string = 'popularity.desc';
-    if (subtype === 'top_rated') {
-      minUserVote = 300;
-      sortType='vote_average:desc'
-    }
-    const listProps = {
-      type: type,
-      subType: subtype,
-      qParams: this.sharedFacade.getAPIParams({ voteCount_gte: minUserVote,pageNo:pageNo }),
-    };
-    this.store.dispatch(MovieListActions.loadMovieList({data:listProps}))
+  loadStoreData(type: string, subtype: string, queryParams: string) {
+    // let minUserVote: number = 0;
+    // let sortType: string = 'popularity.desc';
+    // if (subtype === 'top_rated') {
+    //   minUserVote = 300;
+    //   sortType='vote_average:desc'
+    // }
+    // const listProps = {
+    //   type: type,
+    //   subType: subtype,
+    //   queryParams: this.sharedFacade.getAPIParams({ voteCount_gte: minUserVote,pageNo:pageNo }),
+    // };
+    // this.store.dispatch(MovieListActions.loadMovieList({data:listProps}))
     const props: listPropsType = {
       type: type,
       subType: subtype,
-      pageNo: pageNo,
+      queryParams: queryParams,
     };
 
     const action = this.actionMap[type]?.[subtype];
 
     if (action) {
+      console.log(props)
       this.store.dispatch(action({ data: props }));
     } else {
       console.log(type, subtype);

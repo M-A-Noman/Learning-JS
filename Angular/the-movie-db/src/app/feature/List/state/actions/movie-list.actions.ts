@@ -36,7 +36,14 @@ export const loadTopRattedMovieListFailure=createAction('[List-Movie] TopRatted 
 
 
 
-export const loadMovieList=createAction('[List-Movie] Movie List',props<{data:{type:string,subType:string,qParams:string}}>())
+
+
+export const loadMovieList=createAction('[List-Movie] Movie List',props<{data:{type:string,subType:string,queryParams:string}}>())
 
 export const loadMovieListSuccess=createAction('[List-Movie] Movie List Success',props<{data:PageCardData}>());
 export const loadMovieListFailure=createAction('[List-Movie] Movie List Failure',props<{error:any}>());
+
+
+export const loadMoreMovieList=createAction('[List-Movie] Load More Movie List',props<{data:{type:string,subType:string,queryParams:string}}>());
+export const loadMoreMovieListSuccess=createAction('[List-Movie] Load More Movie List Success',props<{data:PageCardData}>());
+export const loadMoreMovieListFailure=createAction('[List-Movie] Load More Movie List Failure',props<{error:any}>())
