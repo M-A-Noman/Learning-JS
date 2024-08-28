@@ -2,15 +2,16 @@ import { inject} from "@angular/core";
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
 
 import { ListFacadeService } from "../../feature/List/services/list-facade.service";
+import { SharedFacadeService } from "../../shared/services/shared.facade.service";
 
 // @Injectable()
 export const ListResolver: ResolveFn<any>=(route:ActivatedRouteSnapshot,state:RouterStateSnapshot)=>{
     let type:string=route.paramMap.get('list-type');
     let subtype:string=(route.paramMap.get('list-subtype'));
     const listFacade=inject(ListFacadeService);
-    let page=1;
-    listFacade.loadData(type,subtype,`language=en-US&page=${page}`);
+    const sharedFacade=inject(SharedFacadeService);
+    let paramObject=listFacade.getQueryListObject(route.queryParams)
+    console.log(route.queryParams)
+    listFacade.loadData(type,subtype,sharedFacade.getAPIParams(paramObject));
     listFacade.loadGenres(type);
-    // listFacade.isFilterItem.next(false);
-    // listFacade.queryParams.next('');
 }

@@ -16,6 +16,10 @@ export class ListFacadeService {
   loadData(type: string, subtype: string,queryParams:string) {
     this.listService.loadStoreData(type,subtype,queryParams)
   }
+  loadMoreData(type:string,subtype:string,queryParams:string){
+    this.listService.loadStoreData(type,subtype,queryParams,true);
+
+  }
   
   selectSelectorData(loadingSelector, dataSelector, errorSelector) {
     return this.listService.selectListData(loadingSelector,dataSelector,errorSelector)
@@ -38,4 +42,8 @@ export class ListFacadeService {
   getSelectedStoreDataFromSingleSelector(type:string){
     return this.listService.selectSingleListData(type);
   }
+  getQueryListObject(queryParams){
+    return this.listService.createQueryParamObject(queryParams);
+  }
+
 }

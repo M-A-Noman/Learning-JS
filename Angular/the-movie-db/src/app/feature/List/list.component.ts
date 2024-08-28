@@ -36,10 +36,7 @@ export class ListComponent implements OnInit{
       this.type=params.get('list-type');
       this.subtype=params.get('list-subtype');
       this.listData=this.listFacade.getSelectedStoreData(this.type,this.subtype)
-      let singleSelectorData=this.listFacade.getSelectedStoreDataFromSingleSelector(this.type);
-      singleSelectorData.data$.subscribe((res)=>{
-        console.log('data from single selector is ',res);
-      })
+      
       this.listData.data$.subscribe((res)=>{
         if(res){
             this.listViewContent=(this.sharedFacadeService.getSinglePageCardViewData(res.results));
@@ -57,10 +54,9 @@ export class ListComponent implements OnInit{
     // if(!this.isFilterClicked){
     this.route.queryParams.subscribe((res)=>{
       let qParam={...res};
-      qParam['page']=this.pageNo;
       this.pageNo++;
-      console.log('qparam ',qParam);
-      this.listFacade.loadData(this.type,this.subtype,qParam.toString());
+      qParam['page']=this.pageNo;
+      this.listFacade.loadMoreData(this.type,this.subtype,this.sharedFacadeService.getAPIParams(this.listFacade.getQueryListObject(qParam)));
     })
     // }else{
     //   console.log(this.queryParams)

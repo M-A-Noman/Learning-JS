@@ -59,7 +59,7 @@ export class FilterComponent implements OnInit {
       this.selectedGenreId = queryParams['with_genres']
         ? queryParams['with_genres'].split(',').map(Number)
         : [];
-      this.sortTypes = queryParams['sortBy'];
+      this.selectedSortType = queryParams['sortBy']||'popularity.desc';
       this.selectedFirstUserScore = queryParams['vote_average.gte'] || 0;
       this.selectedLastUserScore = queryParams['vote_average.lte'] || 10;
       this.selectedUserVote = queryParams['vote_count.gte'] || 0;
@@ -111,8 +111,17 @@ export class FilterComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       let type = params.get('list-type');
       let subtype = params.get('list-subtype');
-      this.router.navigateByUrl( `list/${type}/${subtype}?${this.APIQueryParams}`);
+      const queryParams = this.convertQueryParamsToObject(this.APIQueryParams);
+      this.router.navigate(['list', type, subtype], { queryParams: queryParams });
       this.listFacadeService.loadData(type,subtype,this.APIQueryParams);
     });
+  }
+  private convertQueryParamsToObject(queryParamsString: string): { [key: string]: any } {
+    const queryParams = new URLSearchParams(queryParamsString);
+    const paramsObject: { [key: string]: any } = {};
+    queryParams.forEach((value, key) => {
+      paramsObject[key] = value;
+    });
+    return paramsObject;
   }
 }

@@ -11,17 +11,21 @@ export const popularMovieListReducers = createReducer(
   on(MovieListAction.loadPopularMovieListSuccess, (state, { data }) => ({
     ...state,
     loading: false,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data,
   })),
   on(MovieListAction.loadPopularMovieListFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error: error,
-  }))
+  })),
+  on(MovieListAction.loadMoreMovieList,state=>({...state,loading:true})),
+  on(MovieListAction.loadMoreMovieListSuccess,(state,{data})=>({...state,loading:false,
+    data:{
+      ...state.data,
+      results:[...state.data.results,...data.results]
+    }
+  })),
+  on(MovieListAction.loadMoreMovieListFailure,(state,{error})=>({...state, loading:false,error}))
 );
 
 export const nowPlayingMovieListReducers = createReducer(

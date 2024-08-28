@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { SharedFacadeService } from '../../../../shared/services/shared.facade.service';
 
 @Component({
   selector: 'app-header',
@@ -55,39 +55,51 @@ export class HeaderComponent {
   timedOutCloser;
   targetMenuTrigger;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private sharedFacade:SharedFacadeService) {}
 
-  mouseEnter(trigger, index) {
-    if (this.preTrigger && this.preTrigger != trigger) {
-      this.preTrigger.closeMenu();
-    }
-    this.navButtons[index].isOpen = true;
-    for (let i = 0; i < this.navButtons.length; i++) {
-      if (i != index) {
-        this.navButtons[i].isOpen = false;
-      }
-    }
-    this.currentMenu = this.navButtons[index].title;
-    // if (this.timedOutCloser)
-    // {
-    //   clearTimeout(this.timedOutCloser);
-    // }
-    trigger.openMenu();
-  }
+  // mouseEnter(trigger, index) {
+  //   if (this.preTrigger && this.preTrigger != trigger) {
+  //     this.preTrigger.closeMenu();
+  //   }
+  //   this.navButtons[index].isOpen = true;
+  //   for (let i = 0; i < this.navButtons.length; i++) {
+  //     if (i != index) {
+  //       this.navButtons[i].isOpen = false;
+  //     }
+  //   }
+  //   this.currentMenu = this.navButtons[index].title;
+  //   // if (this.timedOutCloser)
+  //   // {
+  //   //   clearTimeout(this.timedOutCloser);
+  //   // }
+  //   trigger.openMenu();
+  // }
 
-  mouseLeave(trigger, index) {
-    this.preTrigger = trigger;
-    if (this.preTrigger != trigger) {
-    }
-    // if (!this.navButtons[index].isOpen) {
-    //   trigger.closeMenu();
-    // }
-    // this.timedOutCloser = setTimeout(() => {
-    //   trigger.closeMenu();
-    // }, 50);
-  }
+  // mouseLeave(trigger, index) {
+  //   this.preTrigger = trigger;
+  //   if (this.preTrigger != trigger) {
+  //   }
+  //   // if (!this.navButtons[index].isOpen) {
+  //   //   trigger.closeMenu();
+  //   // }
+  //   // this.timedOutCloser = setTimeout(() => {
+  //   //   trigger.closeMenu();
+  //   // }, 50);
+  // }
 
   onClick(url: string = '') {
-    this.router.navigate([url]);
+    
+    let qParams=this.convertQueryParamsToObject(this.sharedFacade.getAPIParams({language:'en-US',pageNo:1,adult:false}))
+    // this.router.navigateByUrl(`${url}?${qParams}`);
+    this.router.navigate([url],{queryParams:qParams})
+  }
+
+   convertQueryParamsToObject(queryParamsString: string): { [key: string]: any } {
+    const queryParams = new URLSearchParams(queryParamsString);
+    const paramsObject: { [key: string]: any } = {};
+    queryParams.forEach((value, key) => {
+      paramsObject[key] = value;
+    });
+    return paramsObject;
   }
 }

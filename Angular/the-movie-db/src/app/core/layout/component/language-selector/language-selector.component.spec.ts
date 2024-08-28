@@ -1,13 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LanguageSelectorComponent } from './language-selector.component';
-
+import { SharedModule } from '../../../../shared/shared.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 describe('LanguageSelectorComponent', () => {
   let component: LanguageSelectorComponent;
   let fixture: ComponentFixture<LanguageSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[SharedModule,NoopAnimationsModule],
       declarations: [LanguageSelectorComponent]
     })
     .compileComponents();

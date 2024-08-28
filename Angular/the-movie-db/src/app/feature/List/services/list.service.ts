@@ -39,6 +39,23 @@ export class ListService {
       popular: PeopleListActions.loadPopularPeopleList,
     },
   };
+  loadMoreActionMap = {
+    movie: {
+      popular: MovieListActions.loadMorePopularMovieList,
+      now_playing: MovieListActions.loadMoreNowPlayingMovieList,
+      upcoming: MovieListActions.loadMoreUpcomingMovieList,
+      top_rated: MovieListActions.loadMoreTopRatedMovieList,
+    },
+    tv: {
+      popular: TVListActions.loadMorePopularTVList,
+      airing_today: TVListActions.loadMoreAiringTodayTVList,
+      on_the_air: TVListActions.loadMoreOnTVList,
+      top_rated: TVListActions.loadMoreTopRatedTVList,
+    },
+    people: {
+      popular: PeopleListActions.loadMorePopularPeopleList,
+    },
+  };
   selectorMap = {
     movie: {
       popular: {
@@ -102,13 +119,8 @@ export class ListService {
 
   getListData(type: string, subType: string, params:string='') {
     if (type === 'people') type = 'person';
-    console.log('api called\n params is',params)
     return this.http.get<PageCardData>(
       `${environment.BASE_URL}/discover/${type}?${params}`
-    ).pipe(
-      tap((res)=>{
-        console.log('API response',res);
-      })
     );
   }
 
@@ -121,35 +133,24 @@ export class ListService {
     return this.genres;
   }
 
-  loadStoreData(type: string, subtype: string, queryParams: string) {
-    // let minUserVote: number = 0;
-    // let sortType: string = 'popularity.desc';
-    // if (subtype === 'top_rated') {
-    //   minUserVote = 300;
-    //   sortType='vote_average:desc'
-    // }
-    // const listProps = {
-    //   type: type,
-    //   subType: subtype,
-    //   queryParams: this.sharedFacade.getAPIParams({ voteCount_gte: minUserVote,pageNo:pageNo }),
-    // };
-    // this.store.dispatch(MovieListActions.loadMovieList({data:listProps}))
-    const props: listPropsType = {
-      type: type,
-      subType: subtype,
-      queryParams: queryParams,
-    };
+loadStoreData(type: string, subtype: string, queryParams: string, loadMore = false) {
+  const props: listPropsType = {
+    type: type,
+    subType: subtype,
+    queryParams: queryParams,
+  };
 
-    const action = this.actionMap[type]?.[subtype];
+  const action = loadMore 
+    ? this.loadMoreActionMap[type]?.[subtype] 
+    : this.actionMap[type]?.[subtype];
 
-    if (action) {
-      console.log(props)
-      this.store.dispatch(action({ data: props }));
-    } else {
-      console.log(type, subtype);
-      console.error('Invalid type or subtype provided');
-    }
+  if (action) {
+    this.store.dispatch(action({ data: props }));
+  } else {
+    console.log(type, subtype);
+    console.error('Invalid type or subtype provided');
   }
+}
 
   selectListData(loadingSelector, dataSelector, errorSelector) {
     let loading$ = this.store.pipe(select(loadingSelector));
@@ -183,5 +184,41 @@ export class ListService {
         data$:this.store.pipe(select(SingleSelector.selectData)),
         error$:this.store.pipe(select(SingleSelector.selectError))
       }
+  }
+  createQueryParamObject(queryParams){
+    let selectedInitialReleaseDate = queryParams['releaseDate_gte'] || null;
+      let selectedFinalReleaseDate = queryParams['releaseDate_lte'] || null;
+      let selectedGenreId = queryParams['with_genres']
+        ? queryParams['with_genres'].split(',').map(Number)
+        : [];
+      let selectedSortType = queryParams['sortBy']||'popularity.desc';
+      let selectedFirstUserScore = queryParams['vote_average.gte'] || 0;
+      let selectedLastUserScore = queryParams['vote_average.lte'] || 10;
+      let selectedUserVote = queryParams['vote_count.gte'] || 0;
+      // this.vote
+      let SelectedFirstRuntime = queryParams['with_runtime.gte'] || 0;
+      let SelectedLastRuntime = queryParams['with_runtime.lte'] || 400;
+
+    return {
+      adult: false,
+      video: false,
+      language: 'en-US',
+      pageNo:queryParams['page']||1,
+      releaseDate_gte: selectedInitialReleaseDate
+      ? selectedInitialReleaseDate.toISOString().slice(0, 10)
+      : '',
+    releaseDate_lte: selectedFinalReleaseDate
+      ? selectedFinalReleaseDate.toISOString().slice(0, 10)
+      : '',
+    sortBy: selectedSortType,
+    voteAverage_gte: selectedFirstUserScore,
+    voteAverage_lte: selectedLastUserScore,
+    voteCount_gte: selectedUserVote,
+    voteCount_lte: 0,
+    withGenres:
+      selectedGenreId.length > 0 ? selectedGenreId.toString() : '',
+    withKeyword: '',
+    }
+
   }
 }

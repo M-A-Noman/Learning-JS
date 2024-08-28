@@ -10,6 +10,22 @@ export const loadPopularTVListSuccess=createAction('[List-TV] Popular TV List Su
 
 export const loadPopularTVListFailure=createAction('[List-TV] Popular TV List Failure',props<{error:any}>());
 
+export const loadMorePopularTVList = createAction(
+    '[List-TV] Load More Popular TV List',
+    props<{ data: listPropsType }>()
+  );
+  
+  export const loadMorePopularTVListSuccess = createAction(
+    '[List-TV] Load More Popular TV List Success',
+    props<{ data: PageCardData }>()
+  );
+  
+  export const loadMorePopularTVListFailure = createAction(
+    '[List-TV] Load More Popular TV List Failure',
+    props<{ error: any }>()
+  );
+  
+
 // Airing Today 
 
 export const loadAiringTodayTVList=createAction('[List-TV] AiringToday TV List',props<{data:listPropsType}>());
@@ -17,6 +33,21 @@ export const loadAiringTodayTVList=createAction('[List-TV] AiringToday TV List',
 export const loadAiringTodayTVListSuccess=createAction('[List-TV] AiringToday TV List Success',props<{data:PageCardData}>());
 
 export const loadAiringTodayTVListFailure=createAction('[List-TV] AiringToday TV List Failure',props<{error:any}>());
+export const loadMoreAiringTodayTVList = createAction(
+    '[List-TV] Load More Airing Today TV List',
+    props<{ data: listPropsType }>()
+  );
+  
+  export const loadMoreAiringTodayTVListSuccess = createAction(
+    '[List-TV] Load More Airing Today TV List Success',
+    props<{ data: PageCardData }>()
+  );
+  
+  export const loadMoreAiringTodayTVListFailure = createAction(
+    '[List-TV] Load More Airing Today TV List Failure',
+    props<{ error: any }>()
+  );
+  
 
 // On TV
 
@@ -25,6 +56,21 @@ export const loadOnTVList=createAction('[List-TV] On TV List',props<{data:listPr
 export const loadOnTVListSuccess=createAction('[List-TV] On TV List Success',props<{data:PageCardData}>());
 
 export const loadOnTVListFailure=createAction('[List-TV] On TV List Failure',props<{error:any}>());
+export const loadMoreOnTVList = createAction(
+    '[List-TV] Load More On TV List',
+    props<{ data: listPropsType }>()
+  );
+  
+  export const loadMoreOnTVListSuccess = createAction(
+    '[List-TV] Load More On TV List Success',
+    props<{ data: PageCardData }>()
+  );
+  
+  export const loadMoreOnTVListFailure = createAction(
+    '[List-TV] Load More On TV List Failure',
+    props<{ error: any }>()
+  );
+  
 
 // Top Ratted
 
@@ -33,7 +79,24 @@ export const loadTopRattedTVList=createAction('[List-TV] TopRatted TV List',prop
 export const loadTopRattedTVListSuccess=createAction('[List-TV] TopRatted TV List Success',props<{data:PageCardData}>());
 
 export const loadTopRattedTVListFailure=createAction('[List-TV] TopRatted TV List Failure',props<{error:any}>());
+export const loadMoreTopRatedTVList = createAction(
+    '[List-TV] Load More Top Rated TV List',
+    props<{ data: listPropsType }>()
+  );
+  
+  export const loadMoreTopRatedTVListSuccess = createAction(
+    '[List-TV] Load More Top Rated TV List Success',
+    props<{ data: PageCardData }>()
+  );
+  
+  export const loadMoreTopRatedTVListFailure = createAction(
+    '[List-TV] Load More Top Rated TV List Failure',
+    props<{ error: any }>()
+  );
+  
 
+
+// just tv list action
 
 export const loadTVList=createAction('[List-TV] TV List',props<{data:{type:string,subType:string,queryParams:string}}>());
 
