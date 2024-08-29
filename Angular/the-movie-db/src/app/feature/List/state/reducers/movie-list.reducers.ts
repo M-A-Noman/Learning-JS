@@ -36,11 +36,13 @@ export const nowPlayingMovieListReducers = createReducer(
   })),
   on(MovieListAction.loadNowPlayingMovieListSuccess, (state, { data }) => ({
     ...state,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data
+    // : {
+    //     ...state.data,
+    //     page:data.page,
+    //     results:[...state.data.results,...data.results]
+    // }
+    ,
     loading: false,
   })),
   on(MovieListAction.loadNowPlayingMovieListFailure, (state, { error }) => ({
@@ -58,11 +60,13 @@ export const upcomingMovieListReducers = createReducer(
   })),
   on(MovieListAction.loadUpcomingMovieListSuccess, (state, { data }) => ({
     ...state,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data
+    // : {
+    //     ...state.data,
+    //     page:data.page,
+    //     results:[...state.data.results,...data.results]
+    // }
+    ,
     loading: false,
   })),
   on(MovieListAction.loadUpcomingMovieListFailure, (state, { error }) => ({
@@ -80,11 +84,13 @@ export const topRattedMovieListReducers = createReducer(
   })),
   on(MovieListAction.loadTopRattedMovieListSuccess, (state, { data }) => ({
     ...state,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data
+    // : {
+    //     ...state.data,
+    //     page:data.page,
+    //     results:[...state.data.results,...data.results]
+    // }
+    ,
     loading: false,
   })),
   on(MovieListAction.loadTopRattedMovieListFailure, (state, { error }) => ({

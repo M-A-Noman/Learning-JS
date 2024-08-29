@@ -1,5 +1,5 @@
 
-<app-image-overlay [src]="detailsData.background_image">
+<app-image-overlay *ngIf="detailsData" [src]="detailsData.background_image">
   <mat-card>
     <div class="container">
       <div class="image-container">

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SwitchableButtonComponent } from './switchable-button.component';
+import { SharedFacadeService } from '../../services/shared.facade.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SwitchableButtonComponent', () => {
   let component: SwitchableButtonComponent;
@@ -8,7 +10,9 @@ describe('SwitchableButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SwitchableButtonComponent]
+      imports:[HttpClientTestingModule],
+      declarations: [SwitchableButtonComponent],
+      providers:[SharedFacadeService]
     })
     .compileComponents();
     

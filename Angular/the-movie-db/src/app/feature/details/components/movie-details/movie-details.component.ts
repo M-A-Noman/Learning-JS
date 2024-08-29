@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DetailsFacadeService } from '../../services/details.facade.service';
 import { Observable, Subscription, of } from 'rxjs';
-import { MovieDetails, TVDetails } from '../../models/details.model';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDescriptionModel } from '../../models/movie-tv-details.model';
 import { PageSingleCardViewModel } from '../../../home/model/cardModel';
@@ -29,7 +28,7 @@ export class MovieDetailsComponent implements OnInit,OnDestroy {
     private activeRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.detailsType = this.activeRoute.snapshot.params['type'];
+    this.detailsType = this.activeRoute.snapshot.params? this.activeRoute.snapshot.params['type']:'';
     if (this.detailsType == 'movie') {
       this.selectMovies();
     } else {

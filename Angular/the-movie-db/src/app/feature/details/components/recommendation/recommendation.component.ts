@@ -14,6 +14,7 @@ export class RecommendationComponent implements OnInit{
   containerName:string='Recommendations'
   constructor(){}
   ngOnInit(): void {
+    if(this.recommendationData$)
       this.recommendationData$.subscribe((res)=>console.log('response from recommendation component',res))
   }
 }

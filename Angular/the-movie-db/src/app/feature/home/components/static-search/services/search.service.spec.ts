@@ -1,18 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SharedService } from './shared.service';
-import { CardDataService } from '../../feature/home/services/card-data.service';
+import { SearchService } from './search.service';
+import { SharedFacadeService } from '../../../../../shared/services/shared.facade.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('SharedService', () => {
-  let service: SharedService;
+describe('SearchService', () => {
+  let service: SearchService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports:[HttpClientTestingModule],
-      providers:[CardDataService]
+      providers:[SharedFacadeService]
     });
-    service = TestBed.inject(SharedService);
+    service = TestBed.inject(SearchService);
   });
 
   it('should be created', () => {

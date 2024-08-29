@@ -53,6 +53,7 @@ export class FilterComponent implements OnInit {
         this.genres = of(data.genres);
       });
     });
+    if(this.activatedRoute.queryParams)
     this.activatedRoute.queryParams.subscribe((queryParams) => {
       this.selectedInitialReleaseDate = queryParams['releaseDate_gte'] || null;
       this.selectedFinalReleaseDate = queryParams['releaseDate_lte'] || null;
@@ -107,14 +108,21 @@ export class FilterComponent implements OnInit {
       withKeyword: '',
     };
     this.APIQueryParams = this.sharedFacade.getAPIParams(queryParamObject);
-
+    let queryParams;
     this.activatedRoute.paramMap.subscribe((params) => {
-      let type = params.get('list-type');
-      let subtype = params.get('list-subtype');
-      const queryParams = this.convertQueryParamsToObject(this.APIQueryParams);
-      this.router.navigate(['list', type, subtype], { queryParams: queryParams });
-      this.listFacadeService.loadData(type,subtype,this.APIQueryParams);
+      console.log('query params from filter', this.APIQueryParams);
+      this.pageType = params.get('list-type');
+      this.dataType = params.get('list-subtype');
+       queryParams = this.convertQueryParamsToObject(this.APIQueryParams);
+       this.listFacadeService.loadData(this.pageType,this.dataType,this.APIQueryParams);
+
     });
+    // setTimeout(() => {
+      console.log(this.pageType);
+      if(this.pageType){
+      this.router.navigate(['list', this.pageType, this.dataType], { queryParams: queryParams });
+      }
+    // },0);
   }
   private convertQueryParamsToObject(queryParamsString: string): { [key: string]: any } {
     const queryParams = new URLSearchParams(queryParamsString);

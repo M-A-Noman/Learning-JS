@@ -36,8 +36,10 @@ export class SharedFacadeService {
     voteCount_lte = 0,
     withGenres = '',
     withKeyword = '',
+    query='',
+    isForSearch=false
   } = {}) {
-    return this.sharedService.createQParams(adult, video, language, pageNo, releaseDate_gte, releaseDate_lte, sortBy, voteAverage_gte, voteAverage_lte, voteCount_gte, voteCount_lte, withGenres, withKeyword);
+    return this.sharedService.createQParams(adult, video, language, pageNo, releaseDate_gte, releaseDate_lte, sortBy, voteAverage_gte, voteAverage_lte, voteCount_gte, voteCount_lte, withGenres, withKeyword,query,isForSearch);
   }
   
 }

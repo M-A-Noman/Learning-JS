@@ -20,6 +20,7 @@ export class CardComponent {
   onClickCard(movieId: string) {
     console.log(movieId, this.cardId);
     this.sharedFacade.setCurrentMovieId(this.cardId, this.cardType);
+    // console.log(
     this.router.navigate([this.cardType, 'details', this.cardId]);
   }
 }

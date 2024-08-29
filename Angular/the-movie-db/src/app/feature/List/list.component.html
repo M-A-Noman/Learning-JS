@@ -18,7 +18,7 @@
             </app-card>
         </div>
         </span>
-        <div class="loader" *ngIf="listData.loading$|async">
+        <div class="loader" *ngIf="(loading$|async)">
             <app-ratting
             [mode]="'indeterminate'"
             [ratting]="''"

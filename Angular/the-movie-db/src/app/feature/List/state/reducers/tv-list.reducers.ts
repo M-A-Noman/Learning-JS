@@ -8,11 +8,13 @@ export const popularTVListReducers = createReducer(
   on(TVListAction.loadPopularTVList, (state) => ({ ...state, loading: true })),
   on(TVListAction.loadPopularTVListSuccess, (state, { data }) => ({
     ...state,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data
+    // : {
+    //     ...state.data,
+    //     page:data.page,
+    //     results:[...state.data.results,...data.results]
+    // }
+    ,
     loading: false,
   })),
   on(TVListAction.loadPopularTVListFailure, (state, { error }) => ({
@@ -30,11 +32,13 @@ export const airingTodayTVListReducers = createReducer(
   })),
   on(TVListAction.loadAiringTodayTVListSuccess, (state, { data }) => ({
     ...state,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data
+    // : {
+    //     ...state.data,
+    //     page:data.page,
+    //     results:[...state.data.results,...data.results]
+    // }
+    ,
     loading: false,
   })),
   on(TVListAction.loadAiringTodayTVListFailure, (state, { error }) => ({
@@ -50,11 +54,13 @@ export const onTVListReducers = createReducer(
   on(TVListAction.loadOnTVListSuccess, (state, { data }) => ({
     ...state,
     loading: false,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data
+    // : {
+    //     ...state.data,
+    //     page:data.page,
+    //     results:[...state.data.results,...data.results]
+    // }
+    ,
   })),
   on(TVListAction.loadOnTVListFailure, (state, { error }) => ({
     ...state,
@@ -71,11 +77,13 @@ export const topRattedTVListReducers = createReducer(
   })),
   on(TVListAction.loadTopRattedTVListSuccess, (state, { data }) => ({
     ...state,
-    data: {
-        ...state.data,
-        page:data.page,
-        results:[...state.data.results,...data.results]
-    },
+    data
+    // : {
+    //     ...state.data,
+    //     page:data.page,
+    //     results:[...state.data.results,...data.results]
+    // }
+    ,
     loading: false,
   })),
   on(TVListAction.loadTopRattedTVListFailure, (state, { error }) => ({

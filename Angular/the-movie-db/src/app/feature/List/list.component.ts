@@ -21,6 +21,7 @@ export class ListComponent implements OnInit{
   listViewContent:PageSingleCardViewModel[]
   pageNo:number=1;
   queryParams:string='';
+  loading$:Observable<boolean>;
   isFilterClicked:boolean=false;
   constructor(private listFacade:ListFacadeService,private sharedFacadeService:SharedFacadeService,private route:ActivatedRoute){}
   ngOnInit(): void {
@@ -32,11 +33,12 @@ export class ListComponent implements OnInit{
      this.listFacade.queryParams.subscribe((res)=>{
       this.queryParams=res;
      })
+     if(this.route.paramMap)
     this.route.paramMap.subscribe((params)=>{
       this.type=params.get('list-type');
       this.subtype=params.get('list-subtype');
       this.listData=this.listFacade.getSelectedStoreData(this.type,this.subtype)
-      
+    if(this.listData)this.loading$=this.listData.loading$;
       this.listData.data$.subscribe((res)=>{
         if(res){
             this.listViewContent=(this.sharedFacadeService.getSinglePageCardViewData(res.results));

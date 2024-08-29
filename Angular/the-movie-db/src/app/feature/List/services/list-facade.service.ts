@@ -11,7 +11,7 @@ export class ListFacadeService {
   queryParams=new BehaviorSubject<string>('');
   isFilterItem=new BehaviorSubject<boolean>(false);
 
-  constructor(private listService: ListService, private store:Store<listModuleState>) {}
+  constructor(private listService: ListService) {}
  
   loadData(type: string, subtype: string,queryParams:string) {
     this.listService.loadStoreData(type,subtype,queryParams)

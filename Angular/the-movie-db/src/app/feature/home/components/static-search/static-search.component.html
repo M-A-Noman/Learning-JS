@@ -5,23 +5,12 @@
         Millions of movies, TV shows and people to discover. Explore now.
       </div>
       <div class="search-bar">
-        <input matInput placeholder="Search for movies, TV shows, people...">
-        <button mat-flat-button >
+        <input matInput placeholder="Search for movies, TV shows, people..." [(ngModel)]="searchQuery" (ngModelChange)="onSearchQueryChange()">
+        <button mat-flat-button (click)="onSearch()">
           Search
         </button>
       </div>
     </div>
   </div>
 
-  <!-- <div class="home-searchbar">
-    <div class="home-searchbar-title">
-      <h2>Welcome.</h2>
-      <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
-    </div>
-    <div class="home-search">
-      <mat-form-field appearance="fill" class="home-search-input">
-        <input matInput placeholder="Search for a movie, TV show, person...">
-      </mat-form-field>
-      <button mat-button matSuffix [ngClass]="'input-inside-search'">Search</button>
-    </div>
-  </div> -->
+ 

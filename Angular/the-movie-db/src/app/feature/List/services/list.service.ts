@@ -114,7 +114,6 @@ export class ListService {
   constructor(
     private http: HttpClient,
     private store: Store<listModuleState>,
-    private sharedFacade: SharedFacadeService
   ) {}
 
   getListData(type: string, subType: string, params:string='') {

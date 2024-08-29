@@ -9,8 +9,7 @@ import { Store } from '@ngrx/store';
   styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit{
-  movie$;
-  constructor(private detailsFacade:DetailsFacadeService,private store:Store){}
+
   ngOnInit(): void {
       // this.detailsFacade.selectMovieDetails();
   }

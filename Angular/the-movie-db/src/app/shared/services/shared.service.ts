@@ -70,17 +70,24 @@ export class SharedService {
   }
 
   // ?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=2024-07-04&primary_release_date.lte=2025-07-07&sort_by=popularity.desc&vote_average.gte=2&vote_average.lte=10&vote_count.gte=300&vote_count.lte=500&with_genres=1%2C2&with_keywords=abc'
-  createQParams(adult:boolean,video:boolean,language:string,pageNo:number,releaseDate_gte:string,releaseDate_lte:string,sortBy:string,voteAverage_gte:number,voteAverage_lte:number,voteCount_gte:number,voteCount_lte:number,withGenres:string,withKeyword:string){
+  createQParams(adult:boolean,video:boolean,language:string,pageNo:number,releaseDate_gte:string,releaseDate_lte:string,sortBy:string,voteAverage_gte:number,voteAverage_lte:number,voteCount_gte:number,voteCount_lte:number,withGenres:string,withKeyword:string,query:string,isForSearch){
     let qParams:string=``;
-    qParams+=`include_adult=${adult}&include_video=${video}&language=${language}&page=${pageNo}&sort_by=${sortBy}`;
-    releaseDate_gte.length!==0?qParams+=`&release_date.gte=${releaseDate_gte}`:``;
-    releaseDate_lte.length!==0?qParams+=`&release_date.lte=${releaseDate_lte}`:``;
-    voteAverage_gte>0?qParams+=`&vote_average.gte=${voteAverage_gte}`:``;
-    voteAverage_lte<10?qParams+=`&vote_average.lte=${voteAverage_lte}`:``;
-    voteCount_gte>0?qParams+=`&vote_count.gte=${voteCount_gte}`:``;
-    voteCount_lte>0?qParams+=`&vote_count.lte=${voteCount_lte}`:``;
-    withGenres.length>0?qParams+=`&with_genres=${withGenres}`:``;
-    withKeyword.length>0?qParams+=`&with_keywords=${withKeyword}`:``;
+    if(isForSearch)
+      query.length>0?qParams+=`query=${query}&`:``
+    qParams+=`include_adult=${adult}&language=${language}&page=${pageNo}`;
+    if(!isForSearch)
+      {
+        qParams+=`&include_video=${video}&sort_by=${sortBy}`
+        releaseDate_gte.length!==0?qParams+=`&release_date.gte=${releaseDate_gte}`:``;
+        releaseDate_lte.length!==0?qParams+=`&release_date.lte=${releaseDate_lte}`:``;
+        voteAverage_gte>0?qParams+=`&vote_average.gte=${voteAverage_gte}`:``;
+        voteAverage_lte<10?qParams+=`&vote_average.lte=${voteAverage_lte}`:``;
+        voteCount_gte>0?qParams+=`&vote_count.gte=${voteCount_gte}`:``;
+        voteCount_lte>0?qParams+=`&vote_count.lte=${voteCount_lte}`:``;
+        withGenres.length>0?qParams+=`&with_genres=${withGenres}`:``;
+        withKeyword.length>0?qParams+=`&with_keywords=${withKeyword}`:``;
+      }
+  
     // console.log(qParams);
     return qParams;
   }
