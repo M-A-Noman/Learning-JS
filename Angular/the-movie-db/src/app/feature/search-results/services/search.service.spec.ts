@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SearchService } from './search.service';
-import { SharedFacadeService } from '../../../../../shared/services/shared.facade.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SharedFacadeService } from '../../../shared/services/shared.facade.service';
 
 describe('SearchService', () => {
   let service: SearchService;

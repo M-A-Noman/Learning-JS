@@ -38,7 +38,8 @@ export class ListComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.isUrlChange.next(false);
-    if (this.route.params) {
+    if (this.route.params) 
+      {
       this.route.paramMap.subscribe((params) => {
         this.type = params.get('list-type');
         this.subtype = params.get('list-subtype');

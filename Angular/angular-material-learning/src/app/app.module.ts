@@ -14,6 +14,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { PostModule } from './post/post.module';
 import { SharedModule } from './shared/shared.module';
+import { ImageOverlayComponent } from './image-overlay/image-overlay.component';
 // import {ThemeModule} from '~@angular/material/theming'
 
 
@@ -21,7 +22,8 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     TestComponent,
-    HomeComponent
+    HomeComponent,
+    ImageOverlayComponent
   ],
   imports: [
     BrowserModule,

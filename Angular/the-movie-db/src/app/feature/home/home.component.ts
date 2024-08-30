@@ -5,7 +5,7 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HomeFacadeService } from './home-facade.service';
 import { PageSingleCardViewModel } from './model/cardModel';
 import { SharedFacadeService } from '../../shared/services/shared.facade.service';
-
+ import * as fromPopular from './state/reducers/popular.reducer'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   trendingError$: Observable<any>;
   trailerError$: Observable<any>;
   popularError$: Observable<any>;
-
+  
  
   constructor(private facadeService: HomeFacadeService,private sharedFacade:SharedFacadeService) {}
 

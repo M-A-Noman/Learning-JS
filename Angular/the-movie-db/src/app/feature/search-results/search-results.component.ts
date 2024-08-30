@@ -16,6 +16,7 @@ export class SearchResultsComponent implements OnInit{
   queryParams;
   constructor(private searchService:SearchService,private sharedFacade:SharedFacadeService,private route:ActivatedRoute){}
 ngOnInit(): void {
+  if(this.queryParams)
   this.route.queryParams.subscribe((res)=>{
     this.queryParams=res['query'];
     this.searchService.onSearchClicked(this.queryParams);

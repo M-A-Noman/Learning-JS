@@ -6,10 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
-import {
-  ProgressSpinnerMode,
-  MatProgressSpinnerModule,
-} from '@angular/material/progress-spinner';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [],
   imports: [
