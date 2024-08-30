@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchService } from './services/search.service';
+import { SearchService } from '../../../search-results/services/search.service';
 
 @Component({
   selector: 'app-static-search',
@@ -20,7 +20,13 @@ import { SearchService } from './services/search.service';
     this.searchService.onSearchQueryChangeAction(this.searchQuery,this.route,this.router);
     }
     onSearch(){
-      this.searchService.onSearchClicked(this.searchQuery)
+      this.searchService.onSearchClicked(this.searchQuery);
+      this.route.queryParams.subscribe((res)=>{
+
+        this.router.navigate(['/search'],{
+          queryParams:res
+        })
+      })
     }
   
     fetchRandomBackground() {

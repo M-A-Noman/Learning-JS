@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListComponent } from './list.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { CardComponent } from '../../shared/components/card/card.component';
@@ -20,15 +19,25 @@ describe('ListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule,SharedModule,NoopAnimationsModule,FormsModule],
-      declarations: [ListComponent,FilterComponent,CardComponent,RattingComponent],
-      providers:[ListFacadeService,SharedFacadeService,provideMockStore({}),{
-        provide:ActivatedRoute,
-        useValue: {
-          params: of({ id: '123' }), // Mock route parameters
-          snapshot: { paramMap: { get: (key: string) => '123' } }, // Mock snapshot
+      imports: [HttpClientTestingModule, SharedModule, NoopAnimationsModule, FormsModule],
+      declarations: [ListComponent, FilterComponent, CardComponent, RattingComponent],
+      providers: [
+        ListFacadeService,
+        SharedFacadeService,
+        provideMockStore({}),
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of({
+              get: (key: string) => key === 'list-type' ? 'mock-type' : 'mock-subtype'
+            }),
+            queryParamMap: of({
+              keys: ['param1', 'param2'],
+              get: (key: string) => key === 'param1' ? 'value1' : 'value2'
+            })
+          }
         }
-      }]
+      ]
     })
     .compileComponents();
     

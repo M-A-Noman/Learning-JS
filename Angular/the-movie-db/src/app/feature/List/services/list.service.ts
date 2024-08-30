@@ -110,6 +110,7 @@ export class ListService {
     },
   };
 
+  
   private genres = new BehaviorSubject<any>(null);
   constructor(
     private http: HttpClient,
@@ -118,6 +119,7 @@ export class ListService {
 
   getListData(type: string, subType: string, params:string='') {
     if (type === 'people') type = 'person';
+    // console.log('called api with params',params,'\nfor type => ',type,' for subtype',subType);
     return this.http.get<PageCardData>(
       `${environment.BASE_URL}/discover/${type}?${params}`
     );
@@ -202,7 +204,7 @@ loadStoreData(type: string, subtype: string, queryParams: string, loadMore = fal
       adult: false,
       video: false,
       language: 'en-US',
-      pageNo:queryParams['page']||1,
+      page:queryParams['page']||1,
       releaseDate_gte: selectedInitialReleaseDate
       ? selectedInitialReleaseDate.toISOString().slice(0, 10)
       : '',
@@ -210,13 +212,15 @@ loadStoreData(type: string, subtype: string, queryParams: string, loadMore = fal
       ? selectedFinalReleaseDate.toISOString().slice(0, 10)
       : '',
     sortBy: selectedSortType,
-    voteAverage_gte: selectedFirstUserScore,
-    voteAverage_lte: selectedLastUserScore,
-    voteCount_gte: selectedUserVote,
-    voteCount_lte: 0,
-    withGenres:
+    vote_average_gte: selectedFirstUserScore,
+    vote_average_lte: selectedLastUserScore,
+    vote_count_gte: selectedUserVote,
+    vote_count_lte: 0,
+    with_genres:
       selectedGenreId.length > 0 ? selectedGenreId.toString() : '',
-    withKeyword: '',
+    with_keyword: '',
+    with_runtime_gte:SelectedFirstRuntime,
+    with_runtime_lte:SelectedLastRuntime
     }
 
   }

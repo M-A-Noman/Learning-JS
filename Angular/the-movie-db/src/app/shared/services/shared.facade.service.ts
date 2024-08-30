@@ -22,24 +22,27 @@ export class SharedFacadeService {
   getSinglePageCardViewData(result:PageSingleCardModel[]){
    return this.sharedService.getCardViewData(result);
   }
+
    getAPIParams({
     adult = false,
     video = false,
     language = 'en-US',
-    pageNo = 1,
+    page = 1,
     releaseDate_gte = '',
     releaseDate_lte = '',
     sortBy = 'popularity.desc',
-    voteAverage_gte = 0.0,
-    voteAverage_lte = 10.0,
-    voteCount_gte = 0,
-    voteCount_lte = 0,
-    withGenres = '',
-    withKeyword = '',
+    vote_average_gte = 0,
+    vote_average_lte = 10,
+    vote_count_gte = 0,
+    vote_count_lte = 0,
+    with_genres = '',
+    with_keyword = '',
+    with_runtime_gte=0,
+    with_runtime_lte=400,
     query='',
     isForSearch=false
   } = {}) {
-    return this.sharedService.createQParams(adult, video, language, pageNo, releaseDate_gte, releaseDate_lte, sortBy, voteAverage_gte, voteAverage_lte, voteCount_gte, voteCount_lte, withGenres, withKeyword,query,isForSearch);
+    return this.sharedService.createQParams(adult, video, language, page, releaseDate_gte, releaseDate_lte, sortBy, vote_average_gte, vote_average_lte, vote_count_gte, vote_count_lte, with_genres, with_keyword,with_runtime_gte,with_runtime_lte,query,isForSearch);
   }
   
 }

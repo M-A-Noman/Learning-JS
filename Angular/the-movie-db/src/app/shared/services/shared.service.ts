@@ -70,7 +70,7 @@ export class SharedService {
   }
 
   // ?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=2024-07-04&primary_release_date.lte=2025-07-07&sort_by=popularity.desc&vote_average.gte=2&vote_average.lte=10&vote_count.gte=300&vote_count.lte=500&with_genres=1%2C2&with_keywords=abc'
-  createQParams(adult:boolean,video:boolean,language:string,pageNo:number,releaseDate_gte:string,releaseDate_lte:string,sortBy:string,voteAverage_gte:number,voteAverage_lte:number,voteCount_gte:number,voteCount_lte:number,withGenres:string,withKeyword:string,query:string,isForSearch){
+  createQParams(adult:boolean,video:boolean,language:string,pageNo:number,releaseDate_gte:string,releaseDate_lte:string,sortBy:string,voteAverage_gte:number,voteAverage_lte:number,voteCount_gte:number,voteCount_lte:number,withGenres:string,withKeyword:string,with_runtime_gte:number,with_runtime_lte:number,query:string,isForSearch){
     let qParams:string=``;
     if(isForSearch)
       query.length>0?qParams+=`query=${query}&`:``
@@ -86,6 +86,8 @@ export class SharedService {
         voteCount_lte>0?qParams+=`&vote_count.lte=${voteCount_lte}`:``;
         withGenres.length>0?qParams+=`&with_genres=${withGenres}`:``;
         withKeyword.length>0?qParams+=`&with_keywords=${withKeyword}`:``;
+        with_runtime_gte>0?qParams+=`&with_runtime.gte=${with_runtime_gte}`:``
+        with_runtime_lte<400?qParams+=`&with_runtime.lte=${with_runtime_lte}`:``
       }
   
     // console.log(qParams);

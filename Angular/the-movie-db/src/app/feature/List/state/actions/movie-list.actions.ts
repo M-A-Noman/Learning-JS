@@ -23,17 +23,17 @@ export const loadNowPlayingMovieListSuccess=createAction('[List-Movie] NowPlayin
 export const loadNowPlayingMovieListFailure=createAction('[List-Movie] NowPlaying Movie List Failure',props<{error:any}>());
 
 export const loadMoreNowPlayingMovieList = createAction(
-    '[List-Movie] Load More Now Playing Movie List',
+    '[List-Movie] Load More NowPlaying Movie List',
     props<{ data: listPropsType }>()
   );
   
   export const loadMoreNowPlayingMovieListSuccess = createAction(
-    '[List-Movie] Load More Now Playing Movie List Success',
+    '[List-Movie] Load More NowPlaying Movie List Success',
     props<{ data: PageCardData }>()
   );
   
   export const loadMoreNowPlayingMovieListFailure = createAction(
-    '[List-Movie] Load More Now Playing Movie List Failure',
+    '[List-Movie] Load More NowPlaying Movie List Failure',
     props<{ error: any }>()
   );
   
@@ -69,17 +69,17 @@ export const loadTopRattedMovieListSuccess=createAction('[List-Movie] TopRatted 
 export const loadTopRattedMovieListFailure=createAction('[List-Movie] TopRatted Movie List Failure',props<{error:any}>());
 
 export const loadMoreTopRatedMovieList = createAction(
-    '[List-Movie] Load More Top Rated Movie List',
+    '[List-Movie] Load More TopRated Movie List',
     props<{ data: listPropsType }>()
   );
   
   export const loadMoreTopRatedMovieListSuccess = createAction(
-    '[List-Movie] Load More Top Rated Movie List Success',
+    '[List-Movie] Load More TopRated Movie List Success',
     props<{ data: PageCardData }>()
   );
   
   export const loadMoreTopRatedMovieListFailure = createAction(
-    '[List-Movie] Load More Top Rated Movie List Failure',
+    '[List-Movie] Load More TopRated Movie List Failure',
     props<{ error: any }>()
   );
   

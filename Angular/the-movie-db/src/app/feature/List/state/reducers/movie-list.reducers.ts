@@ -18,14 +18,14 @@ export const popularMovieListReducers = createReducer(
     loading: false,
     error: error,
   })),
-  on(MovieListAction.loadMoreMovieList,state=>({...state,loading:true})),
-  on(MovieListAction.loadMoreMovieListSuccess,(state,{data})=>({...state,loading:false,
+  on(MovieListAction.loadMorePopularMovieList,state=>({...state,loading:true})),
+  on(MovieListAction.loadMorePopularMovieListSuccess,(state,{data})=>({...state,loading:false,
     data:{
       ...state.data,
       results:[...state.data.results,...data.results]
     }
   })),
-  on(MovieListAction.loadMoreMovieListFailure,(state,{error})=>({...state, loading:false,error}))
+  on(MovieListAction.loadMorePopularMovieListFailure,(state,{error})=>({...state, loading:false,error}))
 );
 
 export const nowPlayingMovieListReducers = createReducer(
@@ -49,7 +49,18 @@ export const nowPlayingMovieListReducers = createReducer(
     ...state,
     error: error,
     loading: false,
-  }))
+  })),
+
+  on(MovieListAction.loadMoreNowPlayingMovieList,state=>({...state,loading:true})),
+  on(MovieListAction.loadMoreNowPlayingMovieListSuccess,(state,{data})=>({
+    ...state,
+    loading:false,
+    data:{
+      ...state.data,
+      results:[...state.data.results,...data.results]
+    }
+  })),
+  on(MovieListAction.loadMoreNowPlayingMovieListFailure,(state,{error})=>({...state,error:error,loading:false}))
 );
 
 export const upcomingMovieListReducers = createReducer(
@@ -73,7 +84,17 @@ export const upcomingMovieListReducers = createReducer(
     ...state,
     error: error,
     loading: false,
-  }))
+  })),
+  on(MovieListAction.loadMoreUpcomingMovieList,state=>({...state,loading:true})),
+  on(MovieListAction.loadMoreUpcomingMovieListSuccess,(state,{data})=>({
+    ...state,
+    loading:false,
+    data:{
+      ...state.data,
+      results:[...state.data.results,...data.results]
+    }
+  })),
+  on(MovieListAction.loadMoreUpcomingMovieListFailure,(state,{error})=>({...state,error:error,loading:false}))
 );
 
 export const topRattedMovieListReducers = createReducer(
@@ -97,7 +118,17 @@ export const topRattedMovieListReducers = createReducer(
     ...state,
     error: error,
     loading: false,
-  }))
+  })),
+  on(MovieListAction.loadMoreTopRatedMovieList,state=>({...state,loading:true})),
+  on(MovieListAction.loadMoreTopRatedMovieListSuccess,(state,{data})=>({
+    ...state,
+    loading:false,
+    data:{
+      ...state.data,
+      results:[...state.data.results,...data.results]
+    }
+  })),
+  on(MovieListAction.loadMoreTopRatedMovieListFailure,(state,{error})=>({...state,error:error,loading:false}))
 );
 
 

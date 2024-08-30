@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '../../../../../../environments/environment';
-import { PageCardData, PageSingleCardModel } from '../../../model/cardModel';
-import { SharedFacadeService } from '../../../../../shared/services/shared.facade.service';
+
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from '../../../../environments/environment';
+import { SharedFacadeService } from '../../../shared/services/shared.facade.service';
+import { PageSingleCardModel, PageCardData } from '../../home/model/cardModel';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,8 @@ export class SearchService {
    }
   }
 
-  onSearchClicked(searchQuery:string,type:string='movie'){
+  onSearchClicked(searchQuery:string,type:string='multi'){
     let params=this.sharedFacade.getAPIParams({query:searchQuery,isForSearch:true})
-    console.log(params)
     
      this.http.get<PageCardData>(`${environment.BASE_URL}/search/${type}?${params}`).subscribe((res)=>{
       if(res)

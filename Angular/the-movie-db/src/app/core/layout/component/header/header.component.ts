@@ -89,8 +89,8 @@ export class HeaderComponent {
 
   onClick(url: string = '') {
     
-    let qParams=this.convertQueryParamsToObject(this.sharedFacade.getAPIParams({language:'en-US',pageNo:1,adult:false}))
-    console.log('q params from header',qParams)
+    let qParams=this.convertQueryParamsToObject(this.sharedFacade.getAPIParams({language:'en-US',page:1,adult:false}))
+    // console.log('q params from header',qParams)
     // this.router.navigateByUrl(`${url}?${qParams}`);
     this.router.navigate([url],{queryParams:qParams})
   }

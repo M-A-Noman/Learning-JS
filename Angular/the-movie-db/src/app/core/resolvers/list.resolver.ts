@@ -11,7 +11,6 @@ export const ListResolver: ResolveFn<any>=(route:ActivatedRouteSnapshot,state:Ro
     const listFacade=inject(ListFacadeService);
     const sharedFacade=inject(SharedFacadeService);
     let paramObject=listFacade.getQueryListObject(route.queryParams)
-    console.log('route params form resolver',route.queryParams)
     listFacade.loadData(type,subtype,sharedFacade.getAPIParams(paramObject));
     listFacade.loadGenres(type);
 }

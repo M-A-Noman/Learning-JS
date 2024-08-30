@@ -86,12 +86,13 @@ export class FilterComponent implements OnInit {
       'background-color': this.isGenreSelected(id) ? 'rgb(40, 181, 225)' : '',
     };
   }
-  onFilterClicked() {
-    let queryParamObject = {
+
+  getCurrentQueryParamObject(){
+    return {
       adult: false,
       video: false,
       language: 'en-US',
-      pageNo: 1,
+      page: 1,
       releaseDate_gte: this.selectedInitialReleaseDate
         ? this.selectedInitialReleaseDate.toISOString().slice(0, 10)
         : '',
@@ -99,29 +100,40 @@ export class FilterComponent implements OnInit {
         ? this.selectedFinalReleaseDate.toISOString().slice(0, 10)
         : '',
       sortBy: this.selectedSortType,
-      voteAverage_gte: this.selectedFirstUserScore,
-      voteAverage_lte: this.selectedLastUserScore,
-      voteCount_gte: this.selectedUserVote,
-      voteCount_lte: 0,
-      withGenres:
+      vote_average_gte: this.selectedFirstUserScore,
+      vote_average_lte: this.selectedLastUserScore,
+      vote_count_gte: this.selectedUserVote,
+      vote_count_lte: 0,
+      with_genres:
         this.selectedGenreId.length > 0 ? this.selectedGenreId.toString() : '',
-      withKeyword: '',
+      with_keyword: '',
+      with_runtime_gte:this.SelectedFirstRuntime,
+      with_runtime_lte:this.SelectedLastRuntime
     };
-    this.APIQueryParams = this.sharedFacade.getAPIParams(queryParamObject);
-    let queryParams;
-    this.activatedRoute.paramMap.subscribe((params) => {
-      console.log('query params from filter', this.APIQueryParams);
-      this.pageType = params.get('list-type');
-      this.dataType = params.get('list-subtype');
-       queryParams = this.convertQueryParamsToObject(this.APIQueryParams);
-       this.listFacadeService.loadData(this.pageType,this.dataType,this.APIQueryParams);
+  }
 
-    });
+  onFilterClicked() {
+    let queryParamObject = this.getCurrentQueryParamObject();
+    this.APIQueryParams = this.sharedFacade.getAPIParams((queryParamObject));
+    // console.log('current query params is',this.APIQueryParams);
+    this.router.navigate([],{
+      relativeTo:this.activatedRoute,
+      queryParams:this.convertQueryParamsToObject(this.APIQueryParams)
+    })
+    // let queryParams;
+    // this.activatedRoute.paramMap.subscribe((params) => {
+    //   console.log('query params from filter', this.APIQueryParams);
+    //   this.pageType = params.get('list-type');
+    //   this.dataType = params.get('list-subtype');
+    //    queryParams = this.convertQueryParamsToObject(this.APIQueryParams);
+    //    this.listFacadeService.loadData(this.pageType,this.dataType,this.APIQueryParams);
+
+    // });
     // setTimeout(() => {
-      console.log(this.pageType);
-      if(this.pageType){
-      this.router.navigate(['list', this.pageType, this.dataType], { queryParams: queryParams });
-      }
+      // console.log(this.pageType);
+      // if(this.pageType){
+      // this.router.navigate(['list', this.pageType, this.dataType], { queryParams: queryParams });
+      // }
     // },0);
   }
   private convertQueryParamsToObject(queryParamsString: string): { [key: string]: any } {
