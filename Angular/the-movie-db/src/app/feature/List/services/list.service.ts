@@ -140,6 +140,7 @@ loadStoreData(type: string, subtype: string, queryParams: string, loadMore = fal
     subType: subtype,
     queryParams: queryParams,
   };
+  
 
   const action = loadMore 
     ? this.loadMoreActionMap[type]?.[subtype] 
@@ -187,12 +188,12 @@ loadStoreData(type: string, subtype: string, queryParams: string, loadMore = fal
       }
   }
   createQueryParamObject(queryParams){
-    let selectedInitialReleaseDate = queryParams['releaseDate_gte'] || null;
-      let selectedFinalReleaseDate = queryParams['releaseDate_lte'] || null;
+    let selectedInitialReleaseDate = queryParams['release_date.gte']?new Date(queryParams['release_date.gte']) : null;
+      let selectedFinalReleaseDate =queryParams['release_date.lte']?new Date( queryParams['release_date.lte']) : null;
       let selectedGenreId = queryParams['with_genres']
         ? queryParams['with_genres'].split(',').map(Number)
         : [];
-      let selectedSortType = queryParams['sortBy']||'popularity.desc';
+      let selectedSortType = queryParams['sort_by']||'popularity.desc';
       let selectedFirstUserScore = queryParams['vote_average.gte'] || 0;
       let selectedLastUserScore = queryParams['vote_average.lte'] || 10;
       let selectedUserVote = queryParams['vote_count.gte'] || 0;
@@ -206,10 +207,10 @@ loadStoreData(type: string, subtype: string, queryParams: string, loadMore = fal
       language: 'en-US',
       page:queryParams['page']||1,
       releaseDate_gte: selectedInitialReleaseDate
-      ? selectedInitialReleaseDate.toISOString().slice(0, 10)
+      ? selectedInitialReleaseDate.toString().slice(0, 10)
       : '',
     releaseDate_lte: selectedFinalReleaseDate
-      ? selectedFinalReleaseDate.toISOString().slice(0, 10)
+      ? selectedFinalReleaseDate.toString().slice(0, 10)
       : '',
     sortBy: selectedSortType,
     vote_average_gte: selectedFirstUserScore,

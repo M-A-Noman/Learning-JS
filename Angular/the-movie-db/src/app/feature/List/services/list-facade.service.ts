@@ -26,6 +26,7 @@ export class ListFacadeService {
   }
   
   getList(type: string, subType: string, queryParams: string) {
+    // console.log('query params form facade',queryParams)
     return this.listService.getListData(type, subType, queryParams);
   }
   getGenres(){

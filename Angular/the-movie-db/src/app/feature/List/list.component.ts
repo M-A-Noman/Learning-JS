@@ -52,6 +52,9 @@ export class ListComponent implements OnInit {
         queryParams.keys.forEach((key) => {
           this.queryParamObject[key] = queryParams.get(key);
         });
+        console.log('query params object from list component', this.sharedFacadeService.getAPIParams(
+          this.listFacade.getQueryListObject(this.queryParamObject)
+        ))
         // console.log(this.route.snapshot.paramMap.get('list-type'));
         if(this.type===this.route.snapshot.paramMap.get('list-type'))
           this.listFacade.loadData(

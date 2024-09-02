@@ -12,26 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [provideNativeDateAdapter()],
 })
 export class FilterComponent implements OnInit {
-  sortTypes = [
-    { viewValue: 'Popularity Descending', queryValue: 'popularity.desc' },
-    { viewValue: 'Popularity Ascending', queryValue: 'popularity.asc' },
-    { viewValue: 'Rating Descending', queryValue: 'rating.desc' },
-    { viewValue: 'Rating Ascending', queryValue: 'rating.asc' },
-    {
-      viewValue: 'Release Date Descending',
-      queryValue: 'primary_release_date.desc',
-    },
-    {
-      viewValue: 'Release Date Ascending',
-      queryValue: 'primary_release_date.asc',
-    },
-    { viewValue: 'Title (A-Z)', queryValue: 'title.desc' },
-    { viewValue: 'Title (Z-A)', queryValue: 'title.asc' },
-  ];
+  
   genres: Observable<genre[]>;
-  selectedSortType = this.sortTypes[0].queryValue;
-  selectedInitialReleaseDate;
-  selectedFinalReleaseDate;
+  selectedInitialReleaseDate:Date;
+  selectedFinalReleaseDate:Date=new Date('2024-12-31');
   selectedGenreId: number[] = [];
   selectedFirstUserScore: number = 0;
   selectedLastUserScore: number = 10;
@@ -39,8 +23,28 @@ export class FilterComponent implements OnInit {
   SelectedFirstRuntime: number = 0;
   SelectedLastRuntime: number = 400;
   APIQueryParams: string;
-  pageType: string;
+  pageType: string='movie';
   dataType: string;
+
+  sortTypes = [
+    { viewValue: 'Popularity Descending', queryValue: 'popularity.desc' },
+    { viewValue: 'Popularity Ascending', queryValue: 'popularity.asc' },
+    { viewValue: 'Rating Descending', queryValue: 'vote_average.desc' },
+    { viewValue: 'Rating Ascending', queryValue: 'vote_average.asc' },
+    {
+      viewValue: 'Release Date Descending',
+      queryValue: this.pageType!=='tv'?'primary_release_date.desc':'first_air_date.desc',
+    },
+    {
+      viewValue: 'Release Date Ascending',
+      queryValue:this.pageType!=='tv'? 'primary_release_date.asc':'first_air_date.asc',
+    },
+    { viewValue: 'Title (A-Z)', queryValue:this.pageType!=='tv'? 'title.desc':'name.desc' },
+    { viewValue: 'Title (Z-A)', queryValue:this.pageType!=='tv'? 'title.asc':'name.asc' },
+  ];
+
+  selectedSortType = this.sortTypes[0].queryValue;
+
   constructor(
     private listFacadeService: ListFacadeService,
     private sharedFacade: SharedFacadeService,
@@ -53,14 +57,20 @@ export class FilterComponent implements OnInit {
         this.genres = of(data.genres);
       });
     });
+    if(this.activatedRoute.paramMap)
+    this.activatedRoute.paramMap.subscribe((params)=>
+    {
+      this.pageType=params.get('list-type')
+      console.log(this.pageType)
+    })
     if(this.activatedRoute.queryParams)
     this.activatedRoute.queryParams.subscribe((queryParams) => {
-      this.selectedInitialReleaseDate = queryParams['releaseDate_gte'] || null;
-      this.selectedFinalReleaseDate = queryParams['releaseDate_lte'] || null;
+      this.selectedInitialReleaseDate = queryParams['release_date.gte']?new Date(queryParams['release_date.gte']) : null;
+      this.selectedFinalReleaseDate = queryParams['release_date.lte']?new Date(queryParams['release_date.lte']) : this.selectedFinalReleaseDate|| null;
       this.selectedGenreId = queryParams['with_genres']
         ? queryParams['with_genres'].split(',').map(Number)
         : [];
-      this.selectedSortType = queryParams['sortBy']||'popularity.desc';
+      this.selectedSortType = queryParams['sort_by']||'popularity.desc';
       this.selectedFirstUserScore = queryParams['vote_average.gte'] || 0;
       this.selectedLastUserScore = queryParams['vote_average.lte'] || 10;
       this.selectedUserVote = queryParams['vote_count.gte'] || 0;
@@ -93,7 +103,7 @@ export class FilterComponent implements OnInit {
       video: false,
       language: 'en-US',
       page: 1,
-      releaseDate_gte: this.selectedInitialReleaseDate
+      releaseDate_gte: this.selectedInitialReleaseDate!==null
         ? this.selectedInitialReleaseDate.toISOString().slice(0, 10)
         : '',
       releaseDate_lte: this.selectedFinalReleaseDate
