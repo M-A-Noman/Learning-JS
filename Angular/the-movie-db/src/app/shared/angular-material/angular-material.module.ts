@@ -12,7 +12,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSliderModule} from '@angular/material/slider';
-
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     
@@ -30,7 +30,9 @@ import {MatSliderModule} from '@angular/material/slider';
     MatExpansionModule,
     MatDividerModule,
     MatDatepickerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule
+
   ],
   exports:[
     MatGridListModule,
@@ -45,7 +47,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatExpansionModule,
     MatDividerModule,
     MatDatepickerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule
   ]
 })
 export class AngularMaterialModule { }

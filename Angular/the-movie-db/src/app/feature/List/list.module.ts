@@ -11,6 +11,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from '@angular/forms';
 import { MovieFeature } from './state/reducers/movie-list.feature';
 import { TVListFeature } from './state/reducers/tv-list.feature';
+import { CustomPaginatorComponent } from './components/custom-paginator/custom-paginator.component';
 
 
 
@@ -18,6 +19,7 @@ import { TVListFeature } from './state/reducers/tv-list.feature';
   declarations: [
     ListComponent,
     FilterComponent,
+    CustomPaginatorComponent,
   ],
   imports: [
     CommonModule,

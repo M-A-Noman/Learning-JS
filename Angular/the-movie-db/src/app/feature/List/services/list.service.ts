@@ -119,7 +119,7 @@ export class ListService {
 
   getListData(type: string, subType: string, params:string='') {
     if (type === 'people') type = 'person';
-    // console.log('called api with params',params,'\nfor type => ',type,' for subtype',subType);
+    params=params.replace(/,/g,' ');
     return this.http.get<PageCardData>(
       `${environment.BASE_URL}/discover/${type}?${params}`
     );

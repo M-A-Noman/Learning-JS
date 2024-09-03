@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { genre } from '../../../details/models/details.model';
 import { ListFacadeService } from '../../services/list-facade.service';
 import { Observable, of } from 'rxjs';
 import { SharedFacadeService } from '../../../../shared/services/shared.facade.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatExpansionPanel } from '@angular/material/expansion';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -51,7 +52,9 @@ export class FilterComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
+  @ViewChild('expansionPanel!') expansionPanel!: MatExpansionPanel;
   ngOnInit(): void {
+    // this.checkScreenSize()
     this.listFacadeService.getGenres().subscribe((res) => {
       res.subscribe((data) => {
         this.genres = of(data.genres);
@@ -61,7 +64,7 @@ export class FilterComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params)=>
     {
       this.pageType=params.get('list-type')
-      console.log(this.pageType)
+      // console.log(this.pageType)
     })
     if(this.activatedRoute.queryParams)
     this.activatedRoute.queryParams.subscribe((queryParams) => {
@@ -80,6 +83,18 @@ export class FilterComponent implements OnInit {
     });
   }
 
+@HostListener('window:resize', ['$event'])onResize(event: any) {
+    this.checkScreenSize();
+  }
+ private checkScreenSize() {
+    if (window.outerWidth <= 768 ) {
+      this.expansionPanel.close();
+    }
+    else{
+      this.expansionPanel.open()
+    }
+   
+  }
   onSelectGenre(id: number) {
     this.selectedGenreId.find((num) => num === id)
       ? (this.selectedGenreId = this.selectedGenreId.filter(
@@ -125,26 +140,11 @@ export class FilterComponent implements OnInit {
   onFilterClicked() {
     let queryParamObject = this.getCurrentQueryParamObject();
     this.APIQueryParams = this.sharedFacade.getAPIParams((queryParamObject));
-    // console.log('current query params is',this.APIQueryParams);
     this.router.navigate([],{
       relativeTo:this.activatedRoute,
       queryParams:this.convertQueryParamsToObject(this.APIQueryParams)
     })
-    // let queryParams;
-    // this.activatedRoute.paramMap.subscribe((params) => {
-    //   console.log('query params from filter', this.APIQueryParams);
-    //   this.pageType = params.get('list-type');
-    //   this.dataType = params.get('list-subtype');
-    //    queryParams = this.convertQueryParamsToObject(this.APIQueryParams);
-    //    this.listFacadeService.loadData(this.pageType,this.dataType,this.APIQueryParams);
-
-    // });
-    // setTimeout(() => {
-      // console.log(this.pageType);
-      // if(this.pageType){
-      // this.router.navigate(['list', this.pageType, this.dataType], { queryParams: queryParams });
-      // }
-    // },0);
+    
   }
   private convertQueryParamsToObject(queryParamsString: string): { [key: string]: any } {
     const queryParams = new URLSearchParams(queryParamsString);
