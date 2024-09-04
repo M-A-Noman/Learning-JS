@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { genre } from '../../../details/models/details.model';
 import { ListFacadeService } from '../../services/list-facade.service';
@@ -12,7 +12,7 @@ import { MatExpansionPanel } from '@angular/material/expansion';
   styleUrl: './filter.component.scss',
   providers: [provideNativeDateAdapter()],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnInit,AfterViewInit {
   
   genres: Observable<genre[]>;
   selectedInitialReleaseDate:Date;
@@ -50,12 +50,13 @@ export class FilterComponent implements OnInit {
     private listFacadeService: ListFacadeService,
     private sharedFacade: SharedFacadeService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
   @ViewChild('expansionPanel!') expansionPanel!: MatExpansionPanel;
+
   ngOnInit(): void {
-    // this.checkScreenSize()
-    this.listFacadeService.getGenres().subscribe((res) => {
+        this.listFacadeService.getGenres().subscribe((res) => {
       res.subscribe((data) => {
         this.genres = of(data.genres);
       });
@@ -83,6 +84,10 @@ export class FilterComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.checkScreenSize();
+    this.changeDetectorRef.detectChanges();
+  }
 @HostListener('window:resize', ['$event'])onResize(event: any) {
     this.checkScreenSize();
   }
@@ -90,7 +95,7 @@ export class FilterComponent implements OnInit {
     if (window.outerWidth <= 768 ) {
       this.expansionPanel.close();
     }
-    else{
+    else if(window.outerWidth>768){
       this.expansionPanel.open()
     }
    

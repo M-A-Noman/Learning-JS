@@ -58,7 +58,7 @@ export class ListComponent implements OnInit {
         queryParams.keys.forEach((key) => {
           this.queryParamObject[key] = queryParams.get(key);
         });
-        
+        this.currentPage=this.queryParamObject['page']-1;
         if(this.type===this.route.snapshot.paramMap.get('list-type'))
           this.listFacade.loadData(
             this.type,
