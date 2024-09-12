@@ -1,0 +1,14 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    gap: 1%;
+    .logo{
+        grid-column: 1/2;
+        img{min-width: 150px; max-width: min(150px,15%);}
+    }
+    .menu-items .menu{
+       display: grid;
+       grid-template-columns: repeat(6,1fr);
+    //    grid-template-rows: 1fr;
+    }
+}
