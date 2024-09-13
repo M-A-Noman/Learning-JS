@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { faBars,faSortUp } from '@fortawesome/free-solid-svg-icons';
+import {  faBell } from '@fortawesome/free-regular-svg-icons';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,30 +8,100 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'grid-layout';
+  menuOpen = true;
   menuItems = [
     {
-      name:'L1',
-      subList:['SL1','SL2','SL3']
+      menuButtonTitle:'Overview',
+      menuButtonNavigationLink:'/overview',
+      subMenu:[
+        {
+          subMenuButtonTitle:'subMenu 1',
+          subMenuButtonNavigationLink:'/sub-menu-1'
+        },
+        {
+          subMenuButtonTitle:'subMenu 2',
+          subMenuButtonNavigationLink:'/sub-menu-2'
+        }
+      ]
     },
     {
-      name:'L3',
-      subList:['SL1','SL2','SL3']
+      menuButtonTitle:'Location',
+      menuButtonNavigationLink:'/location',
+      subMenu:[
+        {
+          subMenuButtonTitle:'subMenu 1',
+          subMenuButtonNavigationLink:'/sub-menu-1'
+        },
+        {
+          subMenuButtonTitle:'subMenu 2',
+          subMenuButtonNavigationLink:'/sub-menu-2'
+        }
+      ]
     },
     {
-      name:'L3',
-      subList:['SL1','SL2','SL3']
+      menuButtonTitle:'Usage',
+      menuButtonNavigationLink:'/usage',
+      subMenu:[
+        {
+          subMenuButtonTitle:'subMenu 1',
+          subMenuButtonNavigationLink:'/sub-menu-1'
+        },
+        {
+          subMenuButtonTitle:'subMenu 2',
+          subMenuButtonNavigationLink:'/sub-menu-2'
+        }
+      ]
     },
     {
-      name:'L4',
-      subList:['SL1','SL2','SL3']
+      menuButtonTitle:'Run Time',
+      menuButtonNavigationLink:'/run-time',
+      subMenu:[
+        {
+          subMenuButtonTitle:'subMenu 1',
+          subMenuButtonNavigationLink:'/sub-menu-1'
+        },
+        {
+          subMenuButtonTitle:'subMenu 2',
+          subMenuButtonNavigationLink:'/sub-menu-2'
+        }
+      ]
     },
     {
-      name:'L5',
-      subList:['SL1','SL2','SL3']
+      menuButtonTitle:'Admin',
+      menuButtonNavigationLink:'/admin',
+      subMenu:[
+        {
+          subMenuButtonTitle:'subMenu 1',
+          subMenuButtonNavigationLink:'/sub-menu-1'
+        },
+        {
+          subMenuButtonTitle:'subMenu 2',
+          subMenuButtonNavigationLink:'/sub-menu-2'
+        }
+      ]
     },
     {
-      name:'L6',
-      subList:['SL1','SL2','SL3']
+      menuButtonTitle:'Service',
+      menuButtonNavigationLink:'/service',
+      subMenu:[
+        {
+          subMenuButtonTitle:'subMenu 1',
+          subMenuButtonNavigationLink:'/sub-menu-1'
+        },
+        {
+          subMenuButtonTitle:'subMenu 2',
+          subMenuButtonNavigationLink:'/sub-menu-2'
+        }
+      ]
     },
-  ];
+  ]
+  userName:string='USER@GMAIL.COM'
+  icons={
+      faBars:faBars,
+      faBell:faBell,
+      faSortUp:faSortUp
+  }
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 }

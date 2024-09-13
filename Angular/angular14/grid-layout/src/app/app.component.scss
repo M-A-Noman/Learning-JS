@@ -1,14 +1,268 @@
-.container{
-    display: grid;
-    grid-template-columns: repeat(8,1fr);
-    gap: 1%;
-    .logo{
-        grid-column: 1/2;
-        img{min-width: 150px; max-width: min(150px,15%);}
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+
+    .logo {
+        max-width: 150px;
+
+        img {
+            width: 100%;
+            height: 40px;
+        }
     }
-    .menu-items .menu{
-       display: grid;
-       grid-template-columns: repeat(6,1fr);
-    //    grid-template-rows: 1fr;
+
+    .profiles,.menu-items {
+        display: none;
+    }
+
+    .menu-items{
+        .menu{
+            li {
+                position: relative; // For the submenu to be positioned correctly relative to the parent li
+                height: 20px;
+                padding: 5px;
+                cursor: pointer;
+                .sub-menu {
+                  display: none;
+                  position: absolute;
+                  left: 0; // Align to left for the normal menu
+                  top: 100%; // Show the submenu below the parent li
+                  background-color: #fff; // Add a background for clarity
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional shadow for the submenu
+                  padding: 10px;
+                  list-style: none;
+                  z-index: 10;
+        
+                  li {
+                    padding: 5px 10px;
+                    white-space: nowrap; // Prevent text from wrapping in the submenu items
+                  }
+                }
+        
+                &:hover .sub-menu {
+                  display: block; // Show submenu on hover
+                }
+              }
+        }
+    }
+
+    .toggle-button {
+        position: absolute;
+        left: 5%;
+        font-size: x-large;
+        color: rgb(117, 117, 117)
+    }
+
+    .alerts {
+        position: absolute;
+        right: 8%;
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            position: relative;
+            font-size: x-large;
+            color: rgb(117, 117, 117);
+            gap: 1%;
+            .badge {
+                position: absolute;
+                top: -6px;
+                /* Positioning the badge above the icon */
+                right: -16px;
+                /* Positioning the badge to the right of the icon */
+                background-color: rgb(250, 78, 87);
+                /* Badge background color */
+                color: rgb(255, 249, 249);
+                /* Badge text color */
+                border-radius: 50%;
+                /* Makes the badge round */
+                padding: 4px 6px;
+                /* Padding around the text */
+                font-size: 12px;
+                /* Font size for the number */
+                font-weight: bold;
+                line-height: 1;
+            }
+        }
+    }
+    
+    .dropdown_menu{
+        position: absolute;
+        left: 5%;
+        top:8%;
+        list-style: none;
+        width: 80%;
+        background: #c3c3c4;
+        color: rgb(72, 71, 71);
+        
+        padding: 5%;
+        li{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin:2%;
+            // width: 50px;
+            height: 30px;
+            cursor: pointer;
+            a{
+               display: flex;
+               align-items: center;
+               gap: 2%;
+               font-size: 1rem;
+               border: 1px solid rgb(186, 187, 188);
+               padding: 2%;
+               border-radius: 5px;
+                img{
+                width: 25px;
+               }
+
+            }
+
+            position: relative; // To position submenu correctly
+
+            .sub-menu {
+              display: none;
+              position: absolute;
+              left: 65%; // Show submenu on the right side of the parent li in the dropdown menu
+              top: 0; // Align submenu with the parent li in dropdown
+              background-color: #fff; // Add a background for clarity
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional shadow for the submenu
+              padding: 10px;
+              list-style: none;
+              z-index: 10;
+      
+              li {
+                padding: 5px 10px;
+                white-space: nowrap;
+              }
+            }
+      
+            &:hover .sub-menu {
+              display: block; // Show submenu on hover
+            }
+      
+
+            
+        }
+    }
+    .view {
+        display: none;
+    }
+}
+@media (max-width:385px) {
+    .dropdown_menu{
+       
+        top:9% !important;
+    }
+}
+@media (min-width:500px) and (max-width:768px){
+    .dropdown_menu{
+        width: 280px !important;
+    }
+}
+@media (min-width:769px) {
+    .dropdown_menu, .toggle-button{
+        display: none;
+    }
+    .view{
+        display: inline-block !important;
+    }
+    .container{
+        width: 95%;
+        // padding-left: 0;
+        height: 30px !important;
+       
+        display: grid;
+        grid-template-columns: repeat(9,1fr);
+
+        justify-content: start;
+        .logo, .alerts,.menu-items,.profiles{display: grid !important;  position: relative;}
+        .logo{
+            grid-column: 1/span 2;
+          
+        }
+        .menu-items{
+            grid-column: 3/span 5;
+            width: 100%;
+            margin-left: 0;
+            justify-self:center;
+            .menu{
+                list-style: none;
+               display: flex;
+               width: 95%;
+               
+                gap: 2%;
+                
+                
+                li{
+                    
+                   justify-self: center;
+                   width: 100%;
+                };
+            }
+
+        }
+        .alerts{
+            grid-column: 8/span 1;
+            right: 0;
+            justify-self: end;
+            .view{
+                font-size: 1rem;
+            }
+        }
+        .profiles{
+            grid-column: 9/-1;
+            justify-self: end;
+            a{
+                span{
+                    display: none;
+                }
+              
+                 img{
+                 width: 25px;
+                }
+ 
+             }
+        }
+
+    }
+
+}
+@media (min-width:1024px) {
+   .container .profiles{
+        grid-column: 9/-1;
+        a{
+            span{display: inline;}
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 3px;
+            font-size: 1rem;
+            border: 1px solid rgb(186, 187, 188);
+            padding: min(10px,3%) ;
+            // padding: 5%;
+            border-radius: 5px;
+             img{
+             width: 25px;
+            }
+
+         }
+    }
+    .container .alerts{
+        justify-self: center;
+    }
+}
+
+@media (min-width:1428px) {
+    .container .menu-items .menu{width: 68%;}
+    .container {
+        .alerts, .profiles{
+            justify-self: start;
+        }
     }
 }
