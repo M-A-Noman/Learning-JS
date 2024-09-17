@@ -15,15 +15,21 @@
         </li>
       </ul>
     </div>
-    <div class="alerts">
-      <a>
+    <div class="alerts" #alertContainer>
+      <a (click)="toggleAlert()">
         <fa-icon [icon]="icons.faBell"></fa-icon>
-        <span [ngClass]="'view'">alerts</span>
-        <span class="badge">3</span>
-      </a>
+        <span [ngClass]="'view'">Alerts</span>
+        <span class="badge">{{numberOfAlerts}}</span>
+      </a> 
+      <ul class="sub-menu" [ngClass]="isAlertOpen?'open':'' ">
+        <li *ngFor="let item of alertItems">{{item.alertItemName}}</li>
+      </ul>
     </div>
-    <div class="profiles">
-      <a><img src="../assets/logo/user_icon.png"> <span>{{userName}}</span></a>
+    <div class="profiles" #profileContainer>
+      <a (click)="toggleProfile()"><img src="../assets/logo/user_icon.png"> <span>{{userName}}</span></a>
+      <ul class="sub-menu" [ngClass]="isProfileOpen?'open':''">
+        <li *ngFor="let item of profileItems">{{item.profileItemName}}</li>
+      </ul>
     </div>
     <div class="toggle-button" (click)="toggleMenu()">
       <fa-icon [icon]="icons.faBars"></fa-icon>
@@ -32,7 +38,7 @@
     <!-- <span *ngIf="menuOpen" class="menuOpenIcon"> <fa-icon [icon]="icons.faSortUp"></fa-icon> </span> -->
     <div class="dropdown_menu" *ngIf="menuOpen">
           
-      <li *ngFor="let menu of menuItems">
+      <li *ngFor="let menu of menuItems" >
             {{ menu.menuButtonTitle }}
             <span *ngIf="menu.subMenu.length>0">
             <ul class="sub-menu">
@@ -40,7 +46,10 @@
             </ul>
           </span>
           </li>
-       <li> <a><img src="../assets/logo/user_icon.png">{{userName}}</a></li>
+       <li class="profile"> <a (click)="toggleProfile()"><img src="../assets/logo/user_icon.png"> <span>{{userName}}</span></a>
+        <ul class="sub-menu" [ngClass]="isProfileOpen?'open':''">
+          <li *ngFor="let item of profileItems">{{item.profileItemName}}</li>
+        </ul></li>
     
     </div>
   </div>
