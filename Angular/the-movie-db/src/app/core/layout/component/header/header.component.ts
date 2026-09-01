@@ -1,4 +1,9 @@
-import { AfterViewChecked, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedFacadeService } from '../../../../shared/services/shared.facade.service';
 import { SearchService } from '../../../../feature/search-results/services/search.service';
@@ -8,7 +13,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements AfterViewChecked{
+export class HeaderComponent implements AfterViewChecked {
   navButtons = [
     {
       title: 'Movies',
@@ -57,14 +62,14 @@ export class HeaderComponent implements AfterViewChecked{
   searchToggle: boolean = false;
   searchQuery: string = '';
   searchLoading$: BehaviorSubject<boolean>;
-  searchResults: string[]=[];
+  searchResults: string[] = [];
   loading: boolean = false;
 
-  @ViewChild('searchInput',{static:false})searchInput:ElementRef
+  @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
   constructor(
     private router: Router,
     private sharedFacade: SharedFacadeService,
-    private searchService: SearchService,
+    private searchService: SearchService
   ) {}
 
   // mouseEnter(trigger, index) {
@@ -97,19 +102,18 @@ export class HeaderComponent implements AfterViewChecked{
   //   // }, 50);
   // }
 
-
   hoveredMenu: number | null = null;
 
-openMenu(index: number) {
-  this.hoveredMenu = index;
-}
+  openMenu(index: number) {
+    this.hoveredMenu = index;
+  }
 
-closeMenu(index: number) {
-  this.hoveredMenu = null;
-}
-  ngAfterViewChecked(){
-    if(this.searchToggle){
-      if(this.searchInput){
+  closeMenu(index: number) {
+    this.hoveredMenu = null;
+  }
+  ngAfterViewChecked() {
+    if (this.searchToggle) {
+      if (this.searchInput) {
         this.searchInput.nativeElement.focus();
       }
     }

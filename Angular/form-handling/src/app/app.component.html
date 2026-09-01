@@ -31,7 +31,7 @@
             #email="ngModel"
             >
           </div>
-          <span class="help-block" *ngIf="!email.valid&&email.touched">Please enter a valid email</span>
+          <span class="help-block" *ngIf="!email.valid&&email.touched && email.dirty">Please enter a valid email</span>
         </div>
         <span class="help-block" *ngIf="!userData.valid&&userData.touched">Please enter valid user input</span>
         <div class="form-group">

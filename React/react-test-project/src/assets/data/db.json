@@ -1,0 +1,33 @@
+{
+  "stored-message": [
+    {
+      "message": "Hello my friend",
+      "direction": "outgoing",
+      "position": "first",
+      "id": "de5a"
+    },
+    {
+      "message": "Hello my friend",
+      "direction": "incoming",
+      "position": "last",
+      "id": "8a08"
+    },
+    {
+      "id": "dced",
+      "message": "hello",
+      "direction": "outgoing",
+      "position": "last"
+    },
+    {
+      "id": "29c3",
+      "message": "Error while fetching data",
+      "direction": "incoming",
+      "position": "last"
+    }
+  ],
+  "response": {
+    "message": "Error while fetching data",
+    "direction": "incoming",
+    "position": "last"
+  }
+}
